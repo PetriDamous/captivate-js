@@ -1,0 +1,55 @@
+{
+    "ports": [
+        
+        {
+            "protocol":"FTP-Data",
+             
+            "port":"Port 20"   
+
+
+        },
+        
+        {
+            
+            "protocol":"FTP-Control",
+            
+            "port":"Port 21"
+
+        },
+
+        {
+
+            "protocol":"TFTP",
+
+            "port":"Port 69"
+        
+        },
+
+        {
+
+            "protocol":"SNMP",
+            
+            "port":"Port 161"
+
+
+        },
+
+        {
+
+            "protocol":"DHCP Client",
+        
+            "port":"Port 546"
+
+        },
+
+        {
+
+            "protocol":"DHCP Server",
+
+            "port":"Port 547"
+
+        }
+
+    ]
+
+}
