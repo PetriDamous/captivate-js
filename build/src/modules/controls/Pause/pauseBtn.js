@@ -1,10 +1,14 @@
-// Pause        
-$(getElement("Pause", "obj")).click(function () {
-    if (cpInfoCurrentFrame < (lastFrame - 1)) {
-        cpCmndPause = 1;                
-        hidePause();
-    } else {
-        cpCmndPause = 1;
-        hidePlay();                
-    }
-});
+import { hidePlayPause } from "../../utility";
+
+// Pause
+export function pauseFunc(lastFrame) {
+  if (cpInfoCurrentFrame < lastFrame - 1) {
+    cpCmndPause = 1;
+    hidePlayPause("pause");
+    // hidePause();
+  } else {
+    cpCmndPause = 1;
+    hidePlayPause("play");
+    // hidePlay();
+  }
+}

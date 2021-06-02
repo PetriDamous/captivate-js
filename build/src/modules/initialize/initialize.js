@@ -13,20 +13,20 @@ function initialize() {
     "Pause",
     "Previous",
     "Next",
+    "Rewind",
   ];
 
   toolTipArray.forEach(function (elm) {
     var setDataAttr;
 
     if (isIE) {
-      console.log("frog");
       setDataAttr = $("p:contains(" + elm + ")")
         .parent()
         .parent();
     } else {
       setDataAttr = $('div[aria-label="' + elm + " " + '"]');
     }
-
+    console.log(setDataAttr);
     setDataAttr.attr("data-button", elm);
     setDataAttr.attr("title", elm);
     setDataAttr.css("cursor", "pointer");

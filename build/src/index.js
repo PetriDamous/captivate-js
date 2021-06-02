@@ -1,4 +1,8 @@
 import initialize from "./modules/initialize/initialize";
+import { slideRest, getElement } from "./modules/utility";
+import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
+import { playFunc } from "./modules/controls/Play/playBtn";
+import { pauseFunc } from "./modules/controls/Pause/pauseBtn";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   //evt.Data carries the interface object.
@@ -7,8 +11,6 @@ window.addEventListener("moduleReadyEvent", function (e) {
   // console.log(interfaceObj)
   // var eventEmitterObj = interfaceObj.getEventEmitter();
   // console.log(eventEmitterObj)
-
-  console.log(e);
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
     $(document).ready(function () {
@@ -27,6 +29,19 @@ window.addEventListener("moduleReadyEvent", function (e) {
       // Checks for audio on slide
       var slideAudioName = currentSlide.audioName;
       initialize();
+      slideRest();
+
+      $(getElement("Play", "obj")).click(function () {
+        playFunc(lastFrame);
+      });
+
+      $(getElement("Pause", "obj")).click(function () {
+        pauseFunc(lastFrame);
+      });
+
+      $(getElement("Rewind", "obj")).click(function () {
+        rewindFunc(firstFrame);
+      });
     });
   });
 });
