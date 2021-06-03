@@ -25,7 +25,7 @@ module.exports = {
     compress: true,
     contentBase: path.join(__dirname, `${projectPath}`),
     port: 3000,
-    open: "Chrome",
+    open: "Edge",
   },
   devtool: "source-map",
   target: "es5",

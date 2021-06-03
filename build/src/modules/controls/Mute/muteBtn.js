@@ -1,5 +1,6 @@
-// Mute              
-$(getElement("Mute", "obj")).click(function () {
-    cpCmndMute = 1; 
-    hideMute();      
-});
+import { hideMuteUnmute } from "../globalButton";
+
+export function muteFunc() {
+  cpCmndMute = 1;
+  hideMuteUnmute("Mute");
+}

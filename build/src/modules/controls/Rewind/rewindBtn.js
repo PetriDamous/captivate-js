@@ -1,4 +1,4 @@
-import { hidePlay, stayMute } from "../../utility";
+import { hidePlayPause, stayMute } from "../globalButton";
 
 // Rewind
 export function rewindFunc(firstFrame) {
@@ -9,12 +9,12 @@ export function rewindFunc(firstFrame) {
     cpInfoCurrentFrame > firstFrame + rewindTime
   ) {
     cpCmndGotoFrameAndResume = cpInfoCurrentFrame - rewindTime;
-    hidePlay();
+    hidePlayPause("Play");
     stayMute();
     cpCmndTOCVisible = 0;
   } else {
     cpCmndGotoFrameAndResume = firstFrame;
-    hidePlay();
+    hidePlayPause("Play");
     stayMute();
     cpCmndTOCVisible = 0;
   }

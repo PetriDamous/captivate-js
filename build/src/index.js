@@ -1,8 +1,12 @@
 import initialize from "./modules/initialize/initialize";
-import { slideRest, getElement } from "./modules/utility";
+import { slideRest, getElement } from "./modules/controls/globalButton";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
+import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
 import { pauseFunc } from "./modules/controls/Pause/pauseBtn";
+import { menuFunc } from "./modules/controls/Menu/menuBtn";
+import { muteFunc } from "./modules/controls/Mute/muteBtn";
+import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   //evt.Data carries the interface object.
@@ -28,9 +32,11 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       // Checks for audio on slide
       var slideAudioName = currentSlide.audioName;
+
       initialize();
       slideRest();
 
+      // Buttons
       $(getElement("Play", "obj")).click(function () {
         playFunc(lastFrame);
       });
@@ -41,6 +47,22 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       $(getElement("Rewind", "obj")).click(function () {
         rewindFunc(firstFrame);
+      });
+
+      $(getElement("Replay", "obj")).click(function () {
+        replayFunc(firstFrame);
+      });
+
+      $(getElement("Menu", "obj")).click(function () {
+        menuFunc();
+      });
+
+      $(getElement("Mute", "obj")).click(function () {
+        muteFunc();
+      });
+
+      $(getElement("Unmute", "obj")).click(function () {
+        unmuteFunc();
       });
     });
   });

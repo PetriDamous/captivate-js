@@ -1,6 +1,6 @@
 import { isIE } from "../global/global";
 
-function initialize() {
+export default function initialize() {
   /////////////////////// Tool tips, Elements, ID ///////////////////////////////////////
 
   var toolTipArray = [
@@ -26,11 +26,9 @@ function initialize() {
     } else {
       setDataAttr = $('div[aria-label="' + elm + " " + '"]');
     }
-    console.log(setDataAttr);
+
     setDataAttr.attr("data-button", elm);
     setDataAttr.attr("title", elm);
     setDataAttr.css("cursor", "pointer");
   });
 }
-
-export default initialize;
