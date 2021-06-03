@@ -7,6 +7,7 @@ import { pauseFunc } from "./modules/controls/Pause/pauseBtn";
 import { menuFunc } from "./modules/controls/Menu/menuBtn";
 import { muteFunc } from "./modules/controls/Mute/muteBtn";
 import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
+import { videoRest, videoPlayBtn } from "./modules/controls/Video/video";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   //evt.Data carries the interface object.
@@ -35,6 +36,8 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       initialize();
       slideRest();
+      videoRest();
+      videoPlayBtn();
 
       // Buttons
       $(getElement("Play", "obj")).click(function () {

@@ -1,9 +1,9 @@
 // Fetches the element or ID
-export function getElement(attribute, property) {
+export function getElement(name, property) {
   return property === "obj"
-    ? document.querySelector('div[data-button="' + attribute + '"]')
+    ? document.querySelector('div[data-button="' + name + '"]')
     : document
-        .querySelector('div[data-button="' + attribute + '"]')
+        .querySelector('div[data-button="' + name + '"]')
         .getAttribute("id");
 }
 
@@ -23,27 +23,16 @@ export function stayMute() {
   }
 }
 
-// Hides play or pause buttons
+// Toggle between hiding and showing play and pause
 export function hidePlayPause(hideElm) {
   var showElm = hideElm.toLowerCase() === "play" ? "Pause" : "Play";
   cp.hide(getElement(hideElm, "id"));
   cp.show(getElement(showElm, "id"));
 }
 
-// Hides mute or unmute buttons
+// Toggle between hiding and showing mute and unmute
 export function hideMuteUnmute(hideElm) {
   var showElm = hideElm.toLowerCase() === "mute" ? "Unmute" : "Mute";
   cp.hide(getElement(hideElm, "id"));
   cp.show(getElement(showElm, "id"));
-}
-
-// Custom play function for WQP
-// Place inside of play button
-export function videoPlay() {
-  if (cpInfoCurrentSlideLabel.indexOf("Intro Video") !== -1) {
-    cp.hide("SmartShape_114");
-    cp.hide("Image_372");
-    cp.hide("Image_371");
-    cp.hide("Image_370");
-  }
 }

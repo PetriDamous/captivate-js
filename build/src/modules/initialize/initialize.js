@@ -17,6 +17,23 @@ export default function initialize() {
   ];
 
   toolTipArray.forEach(function (elm) {
+    var setDataAttr = setDataButton(elm);
+
+    setDataAttr.attr("data-button", elm);
+    setDataAttr.attr("title", elm);
+    setDataAttr.css("cursor", "pointer");
+  });
+
+  // Extra Elements
+  var extraElementArray = ["Next_hide"];
+
+  extraElementArray.forEach(function (elm) {
+    var setDataAttr = setDataButton(elm);
+    setDataAttr.attr("data-button", elm);
+  });
+
+  // Finds Element to set attributes on
+  function setDataButton(elm) {
     var setDataAttr;
 
     if (isIE) {
@@ -28,7 +45,6 @@ export default function initialize() {
     }
 
     setDataAttr.attr("data-button", elm);
-    setDataAttr.attr("title", elm);
-    setDataAttr.css("cursor", "pointer");
-  });
+    return setDataAttr;
+  }
 }
