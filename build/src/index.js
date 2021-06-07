@@ -5,7 +5,7 @@ import {
   ccFunc,
   ccToolTip,
   keepCCBoxOpen,
-} from "./modules/controls/Close-Caption/closeCaptionBtn";
+} from "./modules/controls/Close-Caption/closeCaption-auto";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
 import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
