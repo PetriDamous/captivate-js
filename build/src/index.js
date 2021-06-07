@@ -1,5 +1,11 @@
-import initialize from "./modules/initialize/initialize";
+import { initialize } from "./modules/initialize/initialize";
 import { slideRest, getElement } from "./modules/controls/globalButton";
+import { getButtonsList } from "./modules/controls/globalButton";
+import {
+  ccFunc,
+  ccToolTip,
+  keepCCBoxOpen,
+} from "./modules/controls/Close-Caption/closeCaptionBtn";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
 import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
@@ -51,11 +57,29 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       initialize();
       slideRest();
+      ccToolTip();
+      keepCCBoxOpen();
       videoRest();
       videoPlayBtn();
       videoCompletion();
 
+      var manuBtns = getButtonsList("Menu");
+      var glossaryBtns = getButtonsList("Glossary");
+      var referneceBtns = getButtonsList("Referneces");
+      var exitBtns = getButtonsList("Exit");
+      var playBtns = getButtonsList("Play");
+      var pasueBtns = getButtonsList("Pause");
+      var previousBtns = getButtonsList("Previous");
+      var nextBtns = getButtonsList("Next");
+      var rewindBtns = getButtonsList("Rewind");
+      var closeCaptionBtns = getButtonsList("Closed Caption");
+
       // Buttons
+
+      closeCaptionBtns.forEach(function (ccBtn) {
+        ccBtn.addEventListener("click", ccFunc);
+      });
+
       $(getElement("Play", "obj")).click(function () {
         playFunc();
       });

@@ -1,6 +1,6 @@
 import { isIE } from "../global/global";
 
-export default function initialize() {
+export function initialize() {
   /////////////////////// Tool tips, Elements, ID ///////////////////////////////////////
 
   var toolTipArray = [
@@ -8,7 +8,6 @@ export default function initialize() {
     "Glossary",
     "Referneces",
     "Exit",
-    "Closed Caption",
     "Play",
     "Pause",
     "Previous",
@@ -25,7 +24,7 @@ export default function initialize() {
   });
 
   // Extra Elements
-  var extraElementArray = ["Next_hide"];
+  var extraElementArray = ["Closed Caption", "Next_hide"];
 
   extraElementArray.forEach(function (elm) {
     var setDataAttr = setDataButton(elm);

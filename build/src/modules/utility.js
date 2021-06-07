@@ -25,3 +25,9 @@ export function isValueInArray(array, value) {
     return elm === value;
   });
 }
+
+export function getElementAttr(elm, attr) {
+  return document
+    .querySelector('div[data-button="' + elm + '"]')
+    .getAttribute(attr);
+}
