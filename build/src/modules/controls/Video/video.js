@@ -1,4 +1,8 @@
-import { hidePlayPause } from "../globalButton";
+import { hidePlayPause, getElement } from "../globalButton";
+import { currentSlide } from "../../../index";
+import { isValueInArray } from "../../utility";
+
+console.log(currentSlide);
 
 // Hides Nav Play button if video play button is clicked
 export function videoPlayBtn() {
@@ -68,4 +72,58 @@ export function videoRest() {
     cpCmndPause = 1;
     hidePlayPause("Pause");
   }
+}
+
+export function videoUnlock(videoEndFrame) {
+  var unlockElms = ["Btn_Nxt1_hide_q4_241"];
+  if (!localStorage.getItem("viewedVidoes")) {
+    localStorage.setItem("viewedVidoes", JSON.stringify([]));
+  }
+
+  cp.hide(getElement("Next", "id"));
+
+  if (
+    JSON.parse(localStorage.getItem("viewedVidoes")).some(
+      (elm) => currentSlide.lb === elm
+    )
+  ) {
+    unlockElms.forEach(function (elms) {
+      cp.hide(elms);
+    });
+
+    cp.show(getElement("Next", "id"));
+    return;
+  }
+
+  cpAPIEventEmitter.addEventListener(
+    "CPAPI_VARIABLEVALUECHANGED",
+    function () {
+      if (cpInfoCurrentFrame === videoEndFrame) {
+        var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
+
+        if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
+          viewedVidoes.push(currentSlide.lb);
+          localStorage.setItem("viewedVidoes", JSON.stringify(viewedVidoes));
+        }
+
+        cp.show(getElement("Next", "id"));
+      }
+    },
+    "cpInfoCurrentFrame"
+  );
+}
+
+export function videoCompletion() {
+  var projectVideos = [
+    {
+      videoLabel: "SlideVideo_8",
+      videoEnd: 10729,
+    },
+  ];
+
+  projectVideos.forEach(function (elm) {
+    if (currentSlide.videos && currentSlide.videos[0] === elm.videoLabel) {
+      videoUnlock(elm.videoEnd);
+    }
+  });
 }

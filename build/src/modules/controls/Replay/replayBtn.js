@@ -1,6 +1,7 @@
 import { stayMute, hidePlayPause } from "../globalButton";
+import { firstFrame } from "../../../index";
 
-export function replayFunc(firstFrame) {
+export function replayFunc() {
   cpCmndGotoFrame = firstFrame;
 
   if (cpCmndPause) {

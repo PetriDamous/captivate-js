@@ -19,3 +19,9 @@ export function customSettings() {
     disableMenuStyle();
   }
 }
+
+export function isValueInArray(array, value) {
+  return array.some(function (elm) {
+    return elm === value;
+  });
+}

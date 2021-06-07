@@ -1,7 +1,8 @@
 import { hidePlayPause, stayMute } from "../globalButton";
+import { firstFrame } from "../../../index";
 
 // Rewind
-export function rewindFunc(firstFrame) {
+export function rewindFunc() {
   var rewindTime = 90;
 
   if (

@@ -1,8 +1,9 @@
 import { hidePlayPause, stayMute } from "../globalButton";
 import { playVideo } from "../Video/video";
+import { lastFrame } from "../../../index";
 
 // Play
-export function playFunc(lastFrame) {
+export function playFunc() {
   playVideo();
 
   if (cpInfoCurrentFrame < lastFrame - 1) {

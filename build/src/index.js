@@ -7,7 +7,26 @@ import { pauseFunc } from "./modules/controls/Pause/pauseBtn";
 import { menuFunc } from "./modules/controls/Menu/menuBtn";
 import { muteFunc } from "./modules/controls/Mute/muteBtn";
 import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
-import { videoRest, videoPlayBtn } from "./modules/controls/Video/video";
+import {
+  videoRest,
+  videoPlayBtn,
+  videoCompletion,
+} from "./modules/controls/Video/video";
+
+// List of slides in project
+var slides;
+
+// Current Slide
+var currentSlide;
+
+// lastFrame is the last frame for the current slide
+var lastFrame;
+
+// firstFrame is the starting frame
+var firstFrame;
+
+// Checks for audio on slide
+var slideAudioName;
 
 window.addEventListener("moduleReadyEvent", function (e) {
   //evt.Data carries the interface object.
@@ -20,40 +39,37 @@ window.addEventListener("moduleReadyEvent", function (e) {
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
     $(document).ready(function () {
       // Grabs the list of slides from the project and splits them into an array
-      var slides = cp.model.data.project_main.slides.split(",");
+      slides = cp.model.data.project_main.slides.split(",");
 
-      // Current Slide
-      var currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
+      currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
 
-      // lastFrame is the last frame for the current slide
-      var lastFrame = currentSlide.to;
+      lastFrame = currentSlide.to;
 
-      // firstFrame is the starting frame
-      var firstFrame = currentSlide.from;
+      firstFrame = currentSlide.from;
 
-      // Checks for audio on slide
-      var slideAudioName = currentSlide.audioName;
+      slideAudioName = currentSlide.audioName;
 
       initialize();
       slideRest();
       videoRest();
       videoPlayBtn();
+      videoCompletion();
 
       // Buttons
       $(getElement("Play", "obj")).click(function () {
-        playFunc(lastFrame);
+        playFunc();
       });
 
       $(getElement("Pause", "obj")).click(function () {
-        pauseFunc(lastFrame);
+        pauseFunc();
       });
 
       $(getElement("Rewind", "obj")).click(function () {
-        rewindFunc(firstFrame);
+        rewindFunc();
       });
 
       $(getElement("Replay", "obj")).click(function () {
-        replayFunc(firstFrame);
+        replayFunc();
       });
 
       $(getElement("Menu", "obj")).click(function () {
@@ -70,3 +86,5 @@ window.addEventListener("moduleReadyEvent", function (e) {
     });
   });
 });
+
+export var currentSlide, firstFrame, lastFrame, slideAudioName;
