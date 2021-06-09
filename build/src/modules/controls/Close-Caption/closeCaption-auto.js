@@ -23,7 +23,7 @@ export function ccToolTip() {
   });
 }
 
-export function keepCCBoxOpen() {
+export function ccBoxOnEnter_auto() {
   if (cpInfoCurrentSlide === 1 && !window.ccOpen) cpCmndCC = 0;
 
   // Checks if variable has changed for cc text hide and show

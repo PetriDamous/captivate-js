@@ -4,8 +4,13 @@ import { getButtonsList } from "./modules/controls/globalButton";
 import {
   ccFunc,
   ccToolTip,
-  keepCCBoxOpen,
+  ccBoxOnEnter_auto,
 } from "./modules/controls/Close-Caption/closeCaption-auto";
+
+import {
+  openCCBox,
+  ccBoxOnEnter_manuel,
+} from "./modules/controls/Close-Caption/closeCaption-manuel";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
 import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
@@ -57,8 +62,9 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       initialize();
       slideRest();
-      ccToolTip();
-      keepCCBoxOpen();
+      // ccToolTip();
+      // ccBoxOnEnter_auto();
+      ccBoxOnEnter_manuel();
       videoRest();
       videoPlayBtn();
       videoCompletion();
@@ -77,7 +83,7 @@ window.addEventListener("moduleReadyEvent", function (e) {
       // Buttons
 
       $closeCaptionBtns.forEach(function (ccBtn) {
-        ccBtn.addEventListener("click", ccFunc);
+        ccBtn.addEventListener("click", openCCBox);
       });
 
       $playBtns.forEach(function (playBtn) {

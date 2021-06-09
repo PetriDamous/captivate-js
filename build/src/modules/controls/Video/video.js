@@ -2,8 +2,6 @@ import { hidePlayPause, getElement } from "../globalButton";
 import { currentSlide } from "../../../index";
 import { isValueInArray } from "../../utility";
 
-console.log(currentSlide);
-
 // Hides Nav Play button if video play button is clicked
 export function videoPlayBtn() {
   var videoSlideLabels = ["Intro Video"];
@@ -120,7 +118,7 @@ export function videoCompletion() {
       videoEnd: 10729,
     },
   ];
-
+  console.log(currentSlide);
   projectVideos.forEach(function (elm) {
     if (currentSlide.videos && currentSlide.videos[0] === elm.videoLabel) {
       videoUnlock(elm.videoEnd);
