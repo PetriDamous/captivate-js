@@ -16,9 +16,9 @@ export function videoPlayBtn() {
   if (isVideo) {
     for (var i = 0; i < videoPlayBtnList.length; i++) {
       if (cpInfoCurrentSlideLabel.indexOf(videoSlideLabels[i]) !== -1) {
-        var videoBtn = document.getElementById(videoPlayBtnList[i]);
+        var $videoBtn = document.getElementById(videoPlayBtnList[i]);
 
-        videoBtn.addEventListener("click", function () {
+        $videoBtn.addEventListener("click", function () {
           hidePlayPause("Play");
         });
         break;
@@ -27,7 +27,7 @@ export function videoPlayBtn() {
   }
 }
 
-// Custom play function for WQP
+// Allows nav bar play button to play video on slides
 // Place inside of play button
 export function playVideo() {
   var videoSlideLabels = ["Intro Video"];

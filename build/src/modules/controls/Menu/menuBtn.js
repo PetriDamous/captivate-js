@@ -11,6 +11,7 @@ export function menuFunc() {
   }
 }
 
+// Disables menu actions
 // Put on menu function
 export function disableMenuAction() {
   var slideLabels = ["Pre-Test"];
@@ -20,6 +21,7 @@ export function disableMenuAction() {
   });
 }
 
+// Adds visual styling for disabled button
 // Put on main JS file to read on slide enter
 export function disableMenuStyle() {
   var menuBtn = document.querySelectorAll('div[title="Menu"]');
@@ -30,7 +32,7 @@ export function disableMenuStyle() {
   }
 }
 
-// Controls Height of TOC
+// Controls Height of TOC when opened
 export function menuCss() {
   document.querySelector("#tocFooter").style.top = "585px";
   document.querySelector("#tocContent").style.height = "509px";

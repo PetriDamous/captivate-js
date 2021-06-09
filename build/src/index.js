@@ -63,49 +63,33 @@ window.addEventListener("moduleReadyEvent", function (e) {
       videoPlayBtn();
       videoCompletion();
 
-      var manuBtns = getButtonsList("Menu");
-      var glossaryBtns = getButtonsList("Glossary");
-      var referneceBtns = getButtonsList("Referneces");
-      var exitBtns = getButtonsList("Exit");
-      var playBtns = getButtonsList("Play");
-      var pasueBtns = getButtonsList("Pause");
-      var previousBtns = getButtonsList("Previous");
-      var nextBtns = getButtonsList("Next");
-      var rewindBtns = getButtonsList("Rewind");
-      var closeCaptionBtns = getButtonsList("Closed Caption");
+      var $menuBtns = getButtonsList("Menu");
+      var $glossaryBtns = getButtonsList("Glossary");
+      var $referneceBtns = getButtonsList("Referneces");
+      var $exitBtns = getButtonsList("Exit");
+      var $playBtns = getButtonsList("Play");
+      var $pauseBtns = getButtonsList("Pause");
+      var $previousBtns = getButtonsList("Previous");
+      var $nextBtns = getButtonsList("Next");
+      var $rewindBtns = getButtonsList("Rewind");
+      var $closeCaptionBtns = getButtonsList("Closed Caption");
 
       // Buttons
 
-      closeCaptionBtns.forEach(function (ccBtn) {
+      $closeCaptionBtns.forEach(function (ccBtn) {
         ccBtn.addEventListener("click", ccFunc);
       });
 
-      $(getElement("Play", "obj")).click(function () {
-        playFunc();
+      $playBtns.forEach(function (playBtn) {
+        playBtn.addEventListener("click", playFunc);
       });
 
-      $(getElement("Pause", "obj")).click(function () {
-        pauseFunc();
+      $pauseBtns.forEach(function (pauseBtn) {
+        pauseBtn.addEventListener("click", pauseFunc);
       });
 
-      $(getElement("Rewind", "obj")).click(function () {
-        rewindFunc();
-      });
-
-      $(getElement("Replay", "obj")).click(function () {
-        replayFunc();
-      });
-
-      $(getElement("Menu", "obj")).click(function () {
-        menuFunc();
-      });
-
-      $(getElement("Mute", "obj")).click(function () {
-        muteFunc();
-      });
-
-      $(getElement("Unmute", "obj")).click(function () {
-        unmuteFunc();
+      $rewindBtns.forEach(function (rewindBtn) {
+        rewindBtn.addEventListener("click", rewindFunc);
       });
     });
   });

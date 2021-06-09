@@ -1,7 +1,6 @@
 import { getButtonsList } from "../globalButton";
 import { currentSlide, lastFrame, firstFrame } from "../../../index";
 
-// CC button Captivate 9
 export function ccFunc() {
   if (cpCmndCC === 0) {
     window.ccOpen = true;

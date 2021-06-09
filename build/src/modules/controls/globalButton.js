@@ -40,7 +40,7 @@ export function hideMuteUnmute(hideElm) {
 // Gets a list of button elements
 export function getButtonsList(name) {
   // Grabs multiple instances of button layers
-  var btnsList = document.querySelectorAll('div[data-button="' + name + '"]');
+  var $btnsList = document.querySelectorAll('div[data-button="' + name + '"]');
 
-  return Array.prototype.slice.call(btnsList);
+  return Array.prototype.slice.call($btnsList);
 }
