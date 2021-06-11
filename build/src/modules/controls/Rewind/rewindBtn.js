@@ -1,9 +1,11 @@
 import { hidePlayPause, stayMute } from "../globalButton";
-import { firstFrame } from "../../../index";
+import { fetchGlobal } from "../../global/global";
 
 // Rewind
 export function rewindFunc() {
   var rewindTime = 90;
+
+  var firstFrame = fetchGlobal("firstFrame");
 
   if (
     cpInfoCurrentFrame != firstFrame &&

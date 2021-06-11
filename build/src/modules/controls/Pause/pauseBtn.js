@@ -1,8 +1,10 @@
 import { hidePlayPause } from "../globalButton";
-import { lastFrame } from "../../../index";
+import { fetchGlobal } from "../../global/global";
 
 // Pause
 export function pauseFunc() {
+  var lastFrame = fetchGlobal("lastFrame");
+
   if (cpInfoCurrentFrame < lastFrame - 1) {
     cpCmndPause = 1;
     hidePlayPause("Pause");

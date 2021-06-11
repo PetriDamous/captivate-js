@@ -1,19 +1,21 @@
 import { getButtonsList } from "../globalButton";
-import { currentSlide, lastFrame, firstFrame } from "../../../index";
+import { setGlobalValue, fetchGlobal } from "../../global/global";
 
-export function ccFunc() {
+export function ccFunc_auto() {
   if (cpCmndCC === 0) {
-    window.ccOpen = true;
+    setGlobalValue("isCcOnEnter_auto", true);
+    // window.ccOpen = true;
     cpCmndCC = 1;
     cp.hide("ccClose");
-    ccToolTip();
+    ccToolTip_auto();
   } else {
     cpCmndCC = 0;
-    ccToolTip();
+    ccToolTip_auto();
+    setGlobalValue("isCcOnEnter_auto", true);
   }
 }
 
-export function ccToolTip() {
+export function ccToolTip_auto() {
   var ccBtnsList = getButtonsList("Closed Caption");
 
   ccBtnsList.forEach(function (ccBtn) {
@@ -24,12 +26,16 @@ export function ccToolTip() {
 }
 
 export function ccBoxOnEnter_auto() {
-  if (cpInfoCurrentSlide === 1 && !window.ccOpen) cpCmndCC = 0;
+  var currentSlide = fetchGlobal("currentSlide");
+  var lastFrame = fetchGlobal("lastFrame");
+  var firstFrame = fetchGlobal("firstFrame");
+
+  if (cpInfoCurrentSlide === 1 && fetchGlobal("isCcOnEnter_auto")) cpCmndCC = 0;
 
   // Checks if variable has changed for cc text hide and show
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    ccToolTip,
+    ccToolTip_auto,
     "cpInfoCurrentFrame"
   );
 

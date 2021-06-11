@@ -1,9 +1,11 @@
 import { hidePlayPause, stayMute } from "../globalButton";
 import { playVideo } from "../Video/video";
-import { lastFrame } from "../../../index";
+import { fetchGlobal } from "../../global/global";
 
 // Play
 export function playFunc() {
+  var lastFrame = fetchGlobal("lastFrame");
+
   playVideo();
 
   if (cpInfoCurrentFrame < lastFrame - 1) {

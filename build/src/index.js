@@ -1,17 +1,21 @@
-import { setupGlobal, fetchGlobal } from "./modules/global/global";
+import {
+  setupGlobal,
+  fetchGlobal,
+  setGlobalValue,
+} from "./modules/global/global";
 import { initialize } from "./modules/initialize/initialize";
 import { slideRest, getElement } from "./modules/controls/globalButton";
 import { getButtonsList } from "./modules/controls/globalButton";
 import {
-  ccFunc,
-  ccToolTip,
+  ccFunc_auto,
+  ccToolTip_auto,
   ccBoxOnEnter_auto,
 } from "./modules/controls/Close-Caption/closeCaption-auto";
 
 import {
-  openCCBox,
+  ccFunc_manual,
   ccBoxOnEnter_manuel,
-} from "./modules/controls/Close-Caption/closeCaption-manuel";
+} from "./modules/components/Close-Caption/closeCaption-manuel";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
 import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
@@ -25,20 +29,20 @@ import {
   videoCompletion,
 } from "./modules/controls/Video/video";
 
-// List of slides in project
-var slides;
+// // List of slides in project
+// var slides;
 
-// Current Slide
-var currentSlide;
+// // Current Slide
+// var currentSlide;
 
-// lastFrame is the last frame for the current slide
-var lastFrame;
+// // lastFrame is the last frame for the current slide
+// var lastFrame;
 
-// firstFrame is the starting frame
-var firstFrame;
+// // firstFrame is the starting frame
+// var firstFrame;
 
-// Checks for audio on slide
-var slideAudioName;
+// // Checks for audio on slide
+// var slideAudioName;
 
 window.addEventListener("moduleReadyEvent", function (e) {
   setupGlobal();
@@ -52,21 +56,39 @@ window.addEventListener("moduleReadyEvent", function (e) {
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
     $(document).ready(function () {
       // Grabs the list of slides from the project and splits them into an array
-      slides = cp.model.data.project_main.slides.split(",");
+      var slides = cp.model.data.project_main.slides.split(",");
 
-      currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
+      var currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
 
-      lastFrame = currentSlide.to;
+      var lastFrame = currentSlide.to;
 
-      firstFrame = currentSlide.from;
+      var firstFrame = currentSlide.from;
 
-      slideAudioName = currentSlide.audioName;
+      var slideAudioName = currentSlide.audioName;
+
+      var propToSetList = [
+        "slides",
+        "currentSlide",
+        "lastFrame",
+        "firstFrame",
+        "slideAudioName ",
+      ];
+
+      var valueToSetList = [
+        slides,
+        currentSlide,
+        lastFrame,
+        firstFrame,
+        slideAudioName,
+      ];
+
+      setGlobalValue(propToSetList, valueToSetList);
 
       initialize();
       slideRest();
-      // ccToolTip();
-      // ccBoxOnEnter_auto();
-      ccBoxOnEnter_manuel();
+      ccToolTip_auto();
+      ccBoxOnEnter_auto();
+      // ccBoxOnEnter_manuel();
       videoRest();
       videoPlayBtn();
       videoCompletion();
@@ -85,7 +107,8 @@ window.addEventListener("moduleReadyEvent", function (e) {
       // Buttons
 
       $closeCaptionBtns.forEach(function (ccBtn) {
-        ccBtn.addEventListener("click", openCCBox);
+        ccBtn.addEventListener("click", ccFunc_auto);
+        // ccBtn.addEventListener("click", ccFunc_manual);
       });
 
       $playBtns.forEach(function (playBtn) {

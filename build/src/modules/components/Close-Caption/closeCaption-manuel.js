@@ -1,8 +1,8 @@
 import { ccTextArray } from "../../../ccText/ccText";
-import { getButtonsList } from "../globalButton";
-import { fetchGlobal, setGlobalValue } from "../../global/global";
+import { getButtonsList } from "../../../modules/controls/globalButton";
+import { fetchGlobal, setGlobalValue } from "../../../modules/global/global";
 
-function createCCTextBox() {
+function createCCElements() {
   var $ccBox = document.createElement("div");
   var $ccPara = document.createElement("p");
   $ccBox.id = "ccTextBox";
@@ -100,7 +100,7 @@ function ccToolTip_manuel() {
   }
 }
 
-export function openCCBox() {
+export function ccFunc_manual() {
   var $ccTextBox = document.getElementById("ccTextBox");
 
   if (fetchGlobal("isCcDisplay_manual")) {
@@ -118,7 +118,7 @@ export function openCCBox() {
 }
 
 export function ccBoxOnEnter_manuel() {
-  createCCTextBox();
+  createCCElements();
   appendCCText();
   ccToolTip_manuel();
 

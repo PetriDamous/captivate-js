@@ -1,7 +1,10 @@
 import { stayMute, hidePlayPause } from "../globalButton";
-import { firstFrame } from "../../../index";
+import { fetchGlobal } from "../../global/global";
+// import { firstFrame } from "../../../index";
 
 export function replayFunc() {
+  var firstFrame = fetchGlobal("firstFrame");
+
   cpCmndGotoFrame = firstFrame;
 
   if (cpCmndPause) {

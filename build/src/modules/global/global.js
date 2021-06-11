@@ -1,9 +1,3 @@
-///////////// Used to check for browser type ////////////////////////////////
-// var isFirefox = typeof InstallTrigger !== "undefined";
-// var isIE = /*@cc_on!@*/ false || !!document.documentMode;
-// var isEdge = !isIE && !!window.StyleMedia;
-// var isChrome = navigator.webkitGetUserMedia;
-
 export function setupGlobal() {
   var isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
@@ -14,6 +8,12 @@ export function setupGlobal() {
     isChrome: navigator.webkitGetUserMedia,
     isCcOnEnter_manual: false,
     isCcDisplay_manual: true,
+    isCcOnEnter_auto: false,
+    slides: null,
+    currentSlide: null,
+    lastFrame: null,
+    firstFrame: null,
+    slideAudioName: null,
   };
 }
 
@@ -31,10 +31,32 @@ export function fetchGlobal(prop) {
       return window.cpGlobalSetup[prop];
     case "isCcDisplay_manual":
       return window.cpGlobalSetup[prop];
+    case "isCcOnEnter_auto":
+      return window.cpGlobalSetup[prop];
+    case "slides":
+      return window.cpGlobalSetup[prop];
+    case "currentSlide":
+      return window.cpGlobalSetup[prop];
+    case "lastFrame":
+      return window.cpGlobalSetup[prop];
+    case "firstFrame":
+      return window.cpGlobalSetup[prop];
+    case "slideAudioName":
+      return window.cpGlobalSetup[prop];
+    default:
+      console.log("In correct property");
   }
 }
 
 export function setGlobalValue(prop, value) {
+  if (typeof prop === "object" && typeof value === "object") {
+    prop.forEach(function (propObj, idx) {
+      window.cpGlobalSetup[propObj] = value[idx];
+    });
+
+    return;
+  }
+
   switch (prop) {
     case "isFirefox":
       return (window.cpGlobalSetup[prop] = value);
@@ -48,7 +70,19 @@ export function setGlobalValue(prop, value) {
       return (window.cpGlobalSetup[prop] = value);
     case "isCcDisplay_manual":
       return (window.cpGlobalSetup[prop] = value);
+    case "isCcOnEnter_auto":
+      return (window.cpGlobalSetup[prop] = value);
+    case "slides":
+      return (window.cpGlobalSetup[prop] = value);
+    case "currentSlide":
+      return (window.cpGlobalSetup[prop] = value);
+    case "lastFrame":
+      return (window.cpGlobalSetup[prop] = value);
+    case "firstFrame":
+      return (window.cpGlobalSetup[prop] = value);
+    case "slideAudioName":
+      return (window.cpGlobalSetup[prop] = value);
+    default:
+      console.log("In correct property");
   }
 }
-
-// export { isFirefox, isIE, isEdge, isChrome };
