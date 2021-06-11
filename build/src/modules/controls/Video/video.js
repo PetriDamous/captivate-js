@@ -74,6 +74,7 @@ export function videoRest() {
 
 export function videoUnlock(videoEndFrame) {
   var unlockElms = ["Btn_Nxt1_hide_q4_241"];
+
   if (!localStorage.getItem("viewedVidoes")) {
     localStorage.setItem("viewedVidoes", JSON.stringify([]));
   }

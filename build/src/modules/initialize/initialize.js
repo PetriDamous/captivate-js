@@ -1,7 +1,10 @@
-import { isIE } from "../global/global";
+// import { isIE } from "../global/global";
+import { fetchGlobal } from "../global/global";
 
 export function initialize() {
   /////////////////////// Tool tips, Elements, ID ///////////////////////////////////////
+
+  var isIE = fetchGlobal("isIE");
 
   var toolTipArray = [
     "Menu",

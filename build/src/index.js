@@ -1,3 +1,4 @@
+import { setupGlobal, fetchGlobal } from "./modules/global/global";
 import { initialize } from "./modules/initialize/initialize";
 import { slideRest, getElement } from "./modules/controls/globalButton";
 import { getButtonsList } from "./modules/controls/globalButton";
@@ -40,6 +41,7 @@ var firstFrame;
 var slideAudioName;
 
 window.addEventListener("moduleReadyEvent", function (e) {
+  setupGlobal();
   //evt.Data carries the interface object.
   //It is same as window.cpAPIInterface
   // var interfaceObj = e.Data;

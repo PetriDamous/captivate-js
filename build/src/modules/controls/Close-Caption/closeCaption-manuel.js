@@ -1,4 +1,6 @@
 import { ccTextArray } from "../../../ccText/ccText";
+import { getButtonsList } from "../globalButton";
+import { fetchGlobal, setGlobalValue } from "../../global/global";
 
 function createCCTextBox() {
   var $ccBox = document.createElement("div");
@@ -80,38 +82,49 @@ function appendCCText() {
       $ccParagraph.textContent = "No Audio";
     }
   }
+}
 
-  //   window.ccOnEnter = false;
+function ccToolTip_manuel() {
+  var $closeCaptionBtns = getButtonsList("Closed Caption");
+
+  if (fetchGlobal("isCcOnEnter_manual")) {
+    $closeCaptionBtns.forEach(function (ccBtn) {
+      ccBtn.setAttribute("title", "Closed Caption Close");
+    });
+    return;
+  } else {
+    $closeCaptionBtns.forEach(function (ccBtn) {
+      ccBtn.setAttribute("title", "Closed Caption Open");
+    });
+    return;
+  }
 }
 
 export function openCCBox() {
   var $ccTextBox = document.getElementById("ccTextBox");
 
-  if (window.isCcOnEnter === undefined) {
-    window.isCcOnEnter = true;
-  }
-
-  if (window.isCcDisplay === undefined) {
-    window.isCcDisplay = true;
-  }
-
-  if (window.isCcDisplay) {
+  if (fetchGlobal("isCcDisplay_manual")) {
     $ccTextBox.style.visibility = "visible";
-    window.isCcOnEnter = true;
-    window.isCcDisplay = !true;
+
+    setGlobalValue("isCcOnEnter_manual", true);
+    setGlobalValue("isCcDisplay_manual", !true);
+    ccToolTip_manuel();
   } else {
     $ccTextBox.style.visibility = "hidden";
-    window.isCcOnEnter = !true;
-    window.isCcDisplay = true;
+    setGlobalValue("isCcOnEnter_manual", !true);
+    setGlobalValue("isCcDisplay_manual", true);
+    ccToolTip_manuel();
   }
 }
 
 export function ccBoxOnEnter_manuel() {
   createCCTextBox();
   appendCCText();
+  ccToolTip_manuel();
+
   var $ccTextBox = document.getElementById("ccTextBox");
 
-  if (window.isCcOnEnter) {
+  if (fetchGlobal("isCcOnEnter_manual")) {
     $ccTextBox.style.visibility = "visible";
   } else {
     $ccTextBox.style.visibility = "hidden";
