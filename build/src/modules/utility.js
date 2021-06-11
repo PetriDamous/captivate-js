@@ -31,3 +31,10 @@ export function getElementAttr(elm, attr) {
     .querySelector('div[data-button="' + elm + '"]')
     .getAttribute(attr);
 }
+
+export function clearStorageUnload() {
+  // Clears local storage when window is closed
+  window.addEventListener("beforeunload", function () {
+    localStorage.clear();
+  });
+}
