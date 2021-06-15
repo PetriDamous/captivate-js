@@ -14,37 +14,30 @@ export function setupGlobal() {
     lastFrame: null,
     firstFrame: null,
     slideAudioName: null,
+    slideLabel: "",
   };
 }
 
 export function fetchGlobal(prop) {
-  switch (prop) {
-    case "isFirefox":
+  var propList = [
+    "isFirefox",
+    "isEdge",
+    "isChrome",
+    "isCcOnEnter_manual",
+    "isCcDisplay_manual",
+    "isCcOnEnter_auto",
+    "slides",
+    "currentSlide",
+    "lastFrame",
+    "firstFrame",
+    "slideAudioName",
+    "slideLabel",
+  ];
+
+  for (var i = 0; i < propList.length; i++) {
+    if (prop === propList[i]) {
       return window.cpGlobalSetup[prop];
-    case "isIE":
-      return window.cpGlobalSetup[prop];
-    case "isEdge":
-      return window.cpGlobalSetup[prop];
-    case "isChrome":
-      return window.cpGlobalSetup[prop];
-    case "isCcOnEnter_manual":
-      return window.cpGlobalSetup[prop];
-    case "isCcDisplay_manual":
-      return window.cpGlobalSetup[prop];
-    case "isCcOnEnter_auto":
-      return window.cpGlobalSetup[prop];
-    case "slides":
-      return window.cpGlobalSetup[prop];
-    case "currentSlide":
-      return window.cpGlobalSetup[prop];
-    case "lastFrame":
-      return window.cpGlobalSetup[prop];
-    case "firstFrame":
-      return window.cpGlobalSetup[prop];
-    case "slideAudioName":
-      return window.cpGlobalSetup[prop];
-    default:
-      console.log("In correct property");
+    }
   }
 }
 
@@ -57,32 +50,24 @@ export function setGlobalValue(prop, value) {
     return;
   }
 
-  switch (prop) {
-    case "isFirefox":
+  var propList = [
+    "isFirefox",
+    "isEdge",
+    "isChrome",
+    "isCcOnEnter_manual",
+    "isCcDisplay_manual",
+    "isCcOnEnter_auto",
+    "slides",
+    "currentSlide",
+    "lastFrame",
+    "firstFrame",
+    "slideAudioName",
+    "slideLabel",
+  ];
+
+  for (var i = 0; i < propList.length; i++) {
+    if (prop === propList[i]) {
       return (window.cpGlobalSetup[prop] = value);
-    case "isIE":
-      return (window.cpGlobalSetup[prop] = value);
-    case "isEdge":
-      return (window.cpGlobalSetup[prop] = value);
-    case "isChrome":
-      return (window.cpGlobalSetup[prop] = value);
-    case "isCcOnEnter_manual":
-      return (window.cpGlobalSetup[prop] = value);
-    case "isCcDisplay_manual":
-      return (window.cpGlobalSetup[prop] = value);
-    case "isCcOnEnter_auto":
-      return (window.cpGlobalSetup[prop] = value);
-    case "slides":
-      return (window.cpGlobalSetup[prop] = value);
-    case "currentSlide":
-      return (window.cpGlobalSetup[prop] = value);
-    case "lastFrame":
-      return (window.cpGlobalSetup[prop] = value);
-    case "firstFrame":
-      return (window.cpGlobalSetup[prop] = value);
-    case "slideAudioName":
-      return (window.cpGlobalSetup[prop] = value);
-    default:
-      console.log("In correct property");
+    }
   }
 }

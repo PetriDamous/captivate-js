@@ -29,20 +29,7 @@ import {
   videoCompletion,
 } from "./modules/controls/Video/video";
 
-// // List of slides in project
-// var slides;
-
-// // Current Slide
-// var currentSlide;
-
-// // lastFrame is the last frame for the current slide
-// var lastFrame;
-
-// // firstFrame is the starting frame
-// var firstFrame;
-
-// // Checks for audio on slide
-// var slideAudioName;
+import { initializeProgressBar } from "./modules/components/Progress-Bar/progressBar";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   setupGlobal();
@@ -60,6 +47,8 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       var currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
 
+      var slideLabel = currentSlide.lb;
+
       var lastFrame = currentSlide.to;
 
       var firstFrame = currentSlide.from;
@@ -71,7 +60,8 @@ window.addEventListener("moduleReadyEvent", function (e) {
         "currentSlide",
         "lastFrame",
         "firstFrame",
-        "slideAudioName ",
+        "slideAudioName",
+        "slideLabel",
       ];
 
       var valueToSetList = [
@@ -80,18 +70,20 @@ window.addEventListener("moduleReadyEvent", function (e) {
         lastFrame,
         firstFrame,
         slideAudioName,
+        slideLabel,
       ];
 
       setGlobalValue(propToSetList, valueToSetList);
 
       initialize();
       slideRest();
-      ccToolTip_auto();
-      ccBoxOnEnter_auto();
-      // ccBoxOnEnter_manuel();
+      // ccToolTip_auto();
+      // ccBoxOnEnter_auto();
+      ccBoxOnEnter_manuel();
       videoRest();
       videoPlayBtn();
       videoCompletion();
+      initializeProgressBar();
 
       var $menuBtns = getButtonsList("Menu");
       var $glossaryBtns = getButtonsList("Glossary");
@@ -107,8 +99,8 @@ window.addEventListener("moduleReadyEvent", function (e) {
       // Buttons
 
       $closeCaptionBtns.forEach(function (ccBtn) {
-        ccBtn.addEventListener("click", ccFunc_auto);
-        // ccBtn.addEventListener("click", ccFunc_manual);
+        // ccBtn.addEventListener("click", ccFunc_auto);
+        ccBtn.addEventListener("click", ccFunc_manual);
       });
 
       $playBtns.forEach(function (playBtn) {
@@ -125,5 +117,3 @@ window.addEventListener("moduleReadyEvent", function (e) {
     });
   });
 });
-
-export var currentSlide, firstFrame, lastFrame, slideAudioName;

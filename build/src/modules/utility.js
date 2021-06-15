@@ -38,3 +38,9 @@ export function clearStorageUnload() {
     localStorage.clear();
   });
 }
+
+export function applyStyles(cssStyleList, elmToApply) {
+  cssStyleList.forEach(function (style) {
+    elmToApply.style[style[0]] = style[1];
+  });
+}

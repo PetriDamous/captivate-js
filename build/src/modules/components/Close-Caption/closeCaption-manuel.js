@@ -1,6 +1,7 @@
 import { ccTextArray } from "../../../ccText/ccText";
 import { getButtonsList } from "../../../modules/controls/globalButton";
 import { fetchGlobal, setGlobalValue } from "../../../modules/global/global";
+import { applyStyles } from "../../utility";
 
 function createCCElements() {
   var $ccBox = document.createElement("div");
@@ -61,13 +62,9 @@ function createCCElements() {
     ["line-height", "24px"],
   ];
 
-  ccTextBoxCss.forEach(function (style) {
-    $ccTextBox.style[style[0]] = style[1];
-  });
+  applyStyles(ccTextBoxCss, $ccTextBox);
 
-  ccParagraphCss.forEach(function (style) {
-    $ccParagraph.style[style[0]] = style[1];
-  });
+  applyStyles(ccParagraphCss, $ccParagraph);
 }
 
 function appendCCText() {
