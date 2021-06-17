@@ -9,8 +9,6 @@ import {
   videoCompletion,
 } from "../controls/Video/video";
 
-// import { initializeProgressBar } from "./modules/components/Progress-Bar/progressBar";
-
 export function initialize() {
   // Grabs the list of slides from the project and splits them into an array
   var slides = cp.model.data.project_main.slides.split(",");
@@ -87,6 +85,7 @@ export function initialize() {
         .parent()
         .parent();
     } else {
+      console.log("working");
       setDataAttr = $('div[aria-label="' + elm + " " + '"]');
     }
 
@@ -96,8 +95,8 @@ export function initialize() {
 
   slideRest();
   // ccToolTip_auto();
-  ccBoxOnEnter_auto();
-  // ccBoxOnEnter_manuel();
+  // ccBoxOnEnter_auto();
+  ccBoxOnEnter_manuel();
   videoRest();
   videoPlayBtn();
   videoCompletion();

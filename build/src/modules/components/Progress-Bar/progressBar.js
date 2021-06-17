@@ -43,7 +43,7 @@ export function createProgressBar() {
   $progressBar.max = lastFrame;
 
   // Places Progress Bar on slide
-  document.querySelector("#div_Slide").append($progressBar);
+  document.querySelector("#div_Slide").appendChild($progressBar);
 
   // Disables playBar Control
   $progressBar.disabled = true;

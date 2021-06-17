@@ -21,6 +21,7 @@ export function setupGlobal() {
 export function fetchGlobal(prop) {
   var propList = [
     "isFirefox",
+    "isIE",
     "isEdge",
     "isChrome",
     "isCcOnEnter_manual",

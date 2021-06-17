@@ -10,8 +10,8 @@ function createCCElements() {
   $ccBox.id = "ccTextBox";
   $ccPara.id = "ccParagraph";
 
-  document.querySelector("#div_Slide").append($ccBox);
-  document.querySelector("#ccTextBox").append($ccPara);
+  document.querySelector("#div_Slide").appendChild($ccBox);
+  document.querySelector("#ccTextBox").appendChild($ccPara);
 
   var $ccTextBox = document.getElementById("ccTextBox");
   var $ccParagraph = document.getElementById("ccParagraph");

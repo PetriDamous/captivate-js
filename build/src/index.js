@@ -43,7 +43,7 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       $closeCaptionBtns.forEach(function (ccBtn) {
         // ccBtn.addEventListener("click", ccFunc_auto);
-        ccBtn.addEventListener("click", ccFunc_auto);
+        ccBtn.addEventListener("click", ccFunc_manual);
       });
 
       $playBtns.forEach(function (playBtn) {
