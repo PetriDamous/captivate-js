@@ -1,7 +1,7 @@
 import { fetchGlobal, setGlobalValue } from "../global/global";
 import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaption-manuel";
 import { ccBoxOnEnter_auto } from "../controls/Close-Caption/closeCaption-auto";
-import { initializeProgressBar } from "../components/Progress-Bar/progressBar";
+import { ProgressBarInitialize } from "../components/Progress-Bar/progressBar";
 import { slideRest } from "../controls/globalButton";
 import {
   videoRest,
@@ -101,5 +101,5 @@ export function initialize() {
   videoRest();
   videoPlayBtn();
   videoCompletion();
-  // initializeProgressBar();
+  ProgressBarInitialize();
 }

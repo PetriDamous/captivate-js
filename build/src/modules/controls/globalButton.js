@@ -1,9 +1,9 @@
 // Fetches the element or ID
-export function getElement(name, property) {
+export function getElement(name, property, elm = "div", type = "button") {
   return property === "obj"
-    ? document.querySelector('div[data-button="' + name + '"]')
+    ? document.querySelector(elm + "[data-" + type + '="' + name + '"]')
     : document
-        .querySelector('div[data-button="' + name + '"]')
+        .querySelector(elm + "[data-" + type + '="' + name + '"]')
         .getAttribute("id");
 }
 

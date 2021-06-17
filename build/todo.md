@@ -8,3 +8,4 @@
 8. Random Question
 9. SCORM stuff
 10. Disable menu items (play with canvas elements)
+11. Make it to where all elements will have a data attribute and use getElement function to get elements

@@ -1,4 +1,5 @@
 import { setupGlobal } from "./modules/global/global";
+import { createStyleTag } from "./modules/components/Styles/styles";
 import { initialize } from "./modules/initialize/initialize";
 import { getButtonsList } from "./modules/controls/globalButton";
 
@@ -15,6 +16,7 @@ import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   setupGlobal();
+  createStyleTag();
   //evt.Data carries the interface object.
   //It is same as window.cpAPIInterface
   // var interfaceObj = e.Data;

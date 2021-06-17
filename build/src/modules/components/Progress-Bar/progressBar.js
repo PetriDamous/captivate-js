@@ -5,6 +5,15 @@ import {
   progressStyles,
   noProgressSlides,
 } from "./progressBarSettings";
+import { addCssRules } from "../Styles/styles";
+
+export function ProgressBarInitialize() {
+  if (hideProgress()) return;
+
+  var $progressBar = createProgressBar();
+  progressStyle($progressBar);
+  progressEventEmitter($progressBar);
+}
 
 function hideProgress() {
   var isProgressHide = false;
@@ -17,14 +26,6 @@ function hideProgress() {
   }
 
   return isProgressHide;
-}
-
-export function initializeProgressBar() {
-  if (hideProgress()) return;
-
-  var $progressBar = createProgressBar();
-  progressStyle($progressBar);
-  progressEventEmitter($progressBar);
 }
 
 export function createProgressBar() {
@@ -234,10 +235,7 @@ function progressStyle($progressBar) {
       chrome.input_fcs;
   }
 
-  // Progress Bar style
-  var $styleElm = document.createElement("style");
-  document.head.appendChild($styleElm);
-  $styleElm.innerHTML = styles;
+  addCssRules(styles);
 
   applyStyles(progressPos, $progressBar);
 }
