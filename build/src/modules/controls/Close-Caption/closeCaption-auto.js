@@ -15,7 +15,7 @@ export function ccFunc_auto() {
   }
 }
 
-export function ccToolTip_auto() {
+function ccToolTip_auto() {
   var ccBtnsList = getButtonsList("Closed Caption");
 
   ccBtnsList.forEach(function (ccBtn) {
@@ -30,7 +30,7 @@ export function ccBoxOnEnter_auto() {
   var lastFrame = fetchGlobal("lastFrame");
   var firstFrame = fetchGlobal("firstFrame");
 
-  if (cpInfoCurrentSlide === 1 && fetchGlobal("isCcOnEnter_auto")) cpCmndCC = 0;
+  ccToolTip_auto();
 
   // Checks if variable has changed for cc text hide and show
   cpAPIEventEmitter.addEventListener(

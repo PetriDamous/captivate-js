@@ -1,9 +1,12 @@
 import { applyStyles } from "../../utility";
 import { fetchGlobal } from "../../global/global";
+import {
+  progressPos,
+  progressStyles,
+  noProgressSlides,
+} from "./progressBarSettings";
 
 function hideProgress() {
-  var noProgressSlides = ["Welcome"];
-
   var isProgressHide = false;
 
   for (var i = 0; i < noProgressSlides.length; i++) {
@@ -54,43 +57,52 @@ function progressStyle($progressBar) {
   var isChrome = fetchGlobal("isChrome");
   var isFirefox = fetchGlobal("isFirefox");
 
+  const { edgeIeStyles, fireFoxStyles, chromeStyles } = progressStyles;
+
+  const { msTrack, msThumb, msFillLower } = edgeIeStyles;
+
+  const { mozInput, mozRangeTrack, mozRangeThumb, mozRangeProgress } =
+    fireFoxStyles;
+
+  const { inputRngI, inputRng, runTrack, slideThumb, inputFcs } = chromeStyles;
+
   var styles;
 
   if (isIE || isEdge) {
     var edgeIE = {
       ms_track: [
-        "#seekerBar::-ms-track {",
+        "#progressBar::-ms-track {",
         // Change styles below //
 
-        "background: transparent;",
-        "border-color: transparent;",
-        "color: transparent;",
+        msTrack.background,
+        msTrack.borderColor,
+        msTrack.color,
 
         // Change styles above //
         "}",
       ].join(""),
       ms_thumb: [
-        "#seekerBar::-ms-thumb {",
+        "#progressBar::-ms-thumb {",
         // Change styles below //
 
-        "height: 0px;",
-        "width: 0px;",
+        msThumb.height,
+        msThumb.width,
 
         // Change styles above //
         "}",
       ].join(""),
       ms_fill_lower: [
-        "#seekerBar::-ms-fill-lower {",
+        "#progressBar::-ms-fill-lower {",
         // Change styles below //
 
-        "border: none;",
-        "background: linear-gradient(to bottom, rgba(165,201,86,1) 38%,rgba(205,235,142,1) 76%);",
+        msFillLower.border,
+        msFillLower.background,
 
         // Change styles above //
         "}",
       ].join(""),
       ms_fill_upper: [
-        "#seekerBar::-ms-fill-upper {",
+        "#progressBar::-ms-fill-upper {",
         // Change styles below //
 
         // Change styles above //
@@ -102,41 +114,42 @@ function progressStyle($progressBar) {
   if (isFirefox) {
     var fireFox = {
       moz_input: [
-        "#seekerBar {",
+        "#progressBar {",
         // Change styles below //
 
-        "background-color: transparent;",
+        mozInput.backgroundColor,
 
         // Change styles above //
         "}",
       ].join(""),
       moz_range_track: [
-        "#seekerBar::-moz-range-track {",
+        "#progressBar::-moz-range-track {",
         // Change styles below //
 
-        "background-color: transparent;",
-        "border: none;",
+        mozRangeTrack.backgroundColor,
+        mozRangeTrack.border,
 
         // Change styles above //
         "}",
       ].join(""),
       moz_range_thumb: [
-        "#seekerBar::-moz-range-thumb {",
+        "#progressBar::-moz-range-thumb {",
         // Change styles below //
 
-        "height: 0px;",
-        "width: 0px;",
-        "border: none;",
+        mozRangeThumb.height,
+        mozRangeThumb.width,
+        mozRangeThumb.border,
 
         // Change styles above //
         "}",
       ].join(""),
       moz_range_progress: [
-        "#seekerBar::-moz-range-progress {",
+        "#progressBar::-moz-range-progress {",
         // Change styles below //
 
-        "border: none;",
-        "background: -moz-linear-gradient(-45deg, rgba(165,201,86,1) 22%, rgba(205,235,142,1) 91%);",
+        mozRangeProgress.border,
+        mozRangeProgress.background,
+        mozRangeProgress.height,
 
         // Change styles above //
         "}",
@@ -151,61 +164,62 @@ function progressStyle($progressBar) {
   }
   if (isChrome) {
     var chrome = {
-      inputRngI: [
+      input_rng_i: [
         'input[type="range" i]  {',
         // Change styles below //
 
-        "-webkit-appearance: none;",
-        "color: transparent;",
-        "cursor: default;",
-        "padding: initial;",
-        "border: none;",
-        "margin: 2px;",
+        inputRngI.appearance,
+        inputRngI.color,
+        inputRngI.cursor,
+        inputRngI.padding,
+        inputRngI.border,
+        inputRngI.margin,
 
         // Change styles above //
         "}",
       ].join(""),
 
-      inputRng: [
+      input_rng: [
         'input[type="range"] {',
         // Change styles below //
 
-        "overflow: hidden;",
-        "-webkit-appearance: none;",
-        "border: none;",
+        inputRng.overflow,
+        inputRng.appearance,
+        inputRng.border,
 
         // Change styles above //
         "}",
       ].join(""),
-      runTrack: [
+      run_track: [
         'input[type="range"]::-webkit-slider-runnable-track {',
         // Change styles below //
 
-        "height: 5px;",
-        "-webkit-appearance: none;",
-        "border: none;",
+        runTrack.height,
+        ,
+        runTrack.appearance,
+        runTrack.border,
 
         // Change styles above //
         "}",
       ].join(""),
-      slideThumb: [
+      slide_thumb: [
         'input[type="range"]::-webkit-slider-thumb {',
 
         // Change styles below //
 
-        "width: 0px;",
-        "-webkit-appearance: none;",
-        "box-shadow: -800px 0 0 800px #c0e07b;",
+        slideThumb.width,
+        slideThumb.appearance,
+        slideThumb.boxShadow,
 
         // Change styles above //
         "}",
       ].join(""),
-      inputFcs: [
+      input_fcs: [
         'input[type="range"]:focus {',
 
         // Change styles below //
 
-        "outline: none;",
+        inputFcs.outline,
 
         // Change styles above //
         "}",
@@ -213,27 +227,17 @@ function progressStyle($progressBar) {
     };
 
     styles =
-      chrome.inputRngI +
-      chrome.inputRng +
-      chrome.runTrack +
-      chrome.slideThumb +
-      chrome.inputFcs;
+      chrome.input_rng_i +
+      chrome.input_rng +
+      chrome.run_track +
+      chrome.slide_thumb +
+      chrome.input_fcs;
   }
 
   // Progress Bar style
   var $styleElm = document.createElement("style");
   document.head.appendChild($styleElm);
   $styleElm.innerHTML = styles;
-
-  // Positions Progress Bar
-  var progressPos = [
-    ["position", "absolute"],
-    ["top", "87%"],
-    ["left", "6%"],
-    ["width", "1123px"],
-    ["z-index", "1200"],
-    ["height", "5px"],
-  ];
 
   applyStyles(progressPos, $progressBar);
 }

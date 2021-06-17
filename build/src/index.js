@@ -1,21 +1,10 @@
-import {
-  setupGlobal,
-  fetchGlobal,
-  setGlobalValue,
-} from "./modules/global/global";
+import { setupGlobal } from "./modules/global/global";
 import { initialize } from "./modules/initialize/initialize";
-import { slideRest, getElement } from "./modules/controls/globalButton";
 import { getButtonsList } from "./modules/controls/globalButton";
-import {
-  ccFunc_auto,
-  ccToolTip_auto,
-  ccBoxOnEnter_auto,
-} from "./modules/controls/Close-Caption/closeCaption-auto";
 
-import {
-  ccFunc_manual,
-  ccBoxOnEnter_manuel,
-} from "./modules/components/Close-Caption/closeCaption-manuel";
+// Import Button Actions
+import { ccFunc_auto } from "./modules/controls/Close-Caption/closeCaption-auto";
+import { ccFunc_manual } from "./modules/components/Close-Caption/closeCaption-manuel";
 import { rewindFunc } from "./modules/controls/Rewind/rewindBtn";
 import { replayFunc } from "./modules/controls/Replay/replayBtn";
 import { playFunc } from "./modules/controls/Play/playBtn";
@@ -23,13 +12,6 @@ import { pauseFunc } from "./modules/controls/Pause/pauseBtn";
 import { menuFunc } from "./modules/controls/Menu/menuBtn";
 import { muteFunc } from "./modules/controls/Mute/muteBtn";
 import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
-import {
-  videoRest,
-  videoPlayBtn,
-  videoCompletion,
-} from "./modules/controls/Video/video";
-
-import { initializeProgressBar } from "./modules/components/Progress-Bar/progressBar";
 
 window.addEventListener("moduleReadyEvent", function (e) {
   setupGlobal();
@@ -42,48 +24,7 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
     $(document).ready(function () {
-      // Grabs the list of slides from the project and splits them into an array
-      var slides = cp.model.data.project_main.slides.split(",");
-
-      var currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
-
-      var slideLabel = currentSlide.lb;
-
-      var lastFrame = currentSlide.to;
-
-      var firstFrame = currentSlide.from;
-
-      var slideAudioName = currentSlide.audioName;
-
-      var propToSetList = [
-        "slides",
-        "currentSlide",
-        "lastFrame",
-        "firstFrame",
-        "slideAudioName",
-        "slideLabel",
-      ];
-
-      var valueToSetList = [
-        slides,
-        currentSlide,
-        lastFrame,
-        firstFrame,
-        slideAudioName,
-        slideLabel,
-      ];
-
-      setGlobalValue(propToSetList, valueToSetList);
-
       initialize();
-      slideRest();
-      // ccToolTip_auto();
-      // ccBoxOnEnter_auto();
-      ccBoxOnEnter_manuel();
-      videoRest();
-      videoPlayBtn();
-      videoCompletion();
-      initializeProgressBar();
 
       var $menuBtns = getButtonsList("Menu");
       var $glossaryBtns = getButtonsList("Glossary");
@@ -100,7 +41,7 @@ window.addEventListener("moduleReadyEvent", function (e) {
 
       $closeCaptionBtns.forEach(function (ccBtn) {
         // ccBtn.addEventListener("click", ccFunc_auto);
-        ccBtn.addEventListener("click", ccFunc_manual);
+        ccBtn.addEventListener("click", ccFunc_auto);
       });
 
       $playBtns.forEach(function (playBtn) {

@@ -1,8 +1,51 @@
-// import { isIE } from "../global/global";
-import { fetchGlobal } from "../global/global";
+import { fetchGlobal, setGlobalValue } from "../global/global";
+import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaption-manuel";
+import { ccBoxOnEnter_auto } from "../controls/Close-Caption/closeCaption-auto";
+import { initializeProgressBar } from "../components/Progress-Bar/progressBar";
+import { slideRest } from "../controls/globalButton";
+import {
+  videoRest,
+  videoPlayBtn,
+  videoCompletion,
+} from "../controls/Video/video";
+
+// import { initializeProgressBar } from "./modules/components/Progress-Bar/progressBar";
 
 export function initialize() {
-  /////////////////////// Tool tips, Elements, ID ///////////////////////////////////////
+  // Grabs the list of slides from the project and splits them into an array
+  var slides = cp.model.data.project_main.slides.split(",");
+
+  var currentSlide = cp.model.data[slides[window.cpInfoCurrentSlide - 1]];
+
+  var slideLabel = currentSlide.lb;
+
+  var lastFrame = currentSlide.to;
+
+  var firstFrame = currentSlide.from;
+
+  var slideAudioName = currentSlide.audioName;
+
+  var propToSetList = [
+    "slides",
+    "currentSlide",
+    "lastFrame",
+    "firstFrame",
+    "slideAudioName",
+    "slideLabel",
+  ];
+
+  var valueToSetList = [
+    slides,
+    currentSlide,
+    lastFrame,
+    firstFrame,
+    slideAudioName,
+    slideLabel,
+  ];
+
+  setGlobalValue(propToSetList, valueToSetList);
+
+  // Setsup
 
   var isIE = fetchGlobal("isIE");
 
@@ -39,6 +82,7 @@ export function initialize() {
     var setDataAttr;
 
     if (isIE) {
+      console.log(isIE);
       setDataAttr = $("p:contains(" + elm + ")")
         .parent()
         .parent();
@@ -49,4 +93,13 @@ export function initialize() {
     setDataAttr.attr("data-button", elm);
     return setDataAttr;
   }
+
+  slideRest();
+  // ccToolTip_auto();
+  ccBoxOnEnter_auto();
+  // ccBoxOnEnter_manuel();
+  videoRest();
+  videoPlayBtn();
+  videoCompletion();
+  // initializeProgressBar();
 }
