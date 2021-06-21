@@ -1,81 +1,47 @@
 import { hidePlayPause, getElement } from "../globalButton";
 import { fetchGlobal } from "../../global/global";
-// import { currentSlide } from "../../../index";
 import { isValueInArray } from "../../utility";
+import { projectVideos } from "./videoSettings";
 
 // Hides Nav Play button if video play button is clicked
 export function videoPlayBtn() {
-  var videoSlideLabels = ["Intro Video"];
-  var videoPlayBtnList = ["SmartShape_114"];
+  const { currentVideo } = findCurrentVideo();
 
-  var isVideo = videoSlideLabels.some(function (videoSlide) {
-    return cpInfoCurrentSlideLabel.indexOf(videoSlide) !== -1;
+  var $videoPlayBtn = document.getElementById(currentVideo.videoPlayBtn);
+
+  $videoPlayBtn.addEventListener("click", function () {
+    hidePlayPause("Play");
   });
-
-  if (isVideo) {
-    for (var i = 0; i < videoPlayBtnList.length; i++) {
-      if (cpInfoCurrentSlideLabel.indexOf(videoSlideLabels[i]) !== -1) {
-        var $videoBtn = document.getElementById(videoPlayBtnList[i]);
-
-        $videoBtn.addEventListener("click", function () {
-          hidePlayPause("Play");
-        });
-        break;
-      }
-    }
-  }
 }
 
 // Allows nav bar play button to play video on slides
 // Place inside of play button
 export function playVideo() {
-  var videoSlideLabels = ["Intro Video"];
-  var videoElmsHide = ["SmartShape_114", "Image_372", "Image_371", "Image_370"];
+  const { currentVideo } = findCurrentVideo();
 
-  var isVideo = videoSlideLabels.some(function (videoSlide) {
-    return cpInfoCurrentSlideLabel.indexOf(videoSlide) !== -1;
+  currentVideo.videoElmsHideShow.forEach(function (elmId) {
+    cp.hide(elmId);
   });
-
-  if (isVideo) {
-    videoElmsHide.forEach(function (elmId) {
-      cp.hide(elmId);
-    });
-  }
 }
 
 // Rests video on slide enter
 export function videoRest() {
-  var videoSlideLabels = ["Intro Video"];
-  var videoList = ["slidevid0"];
-  var videoElmsShow = ["SmartShape_114", "Image_372", "Image_371", "Image_370"];
-  var video;
+  const { currentVideo } = findCurrentVideo();
 
-  var isVideo = videoSlideLabels.some(function (videoSlide) {
-    return cpInfoCurrentSlideLabel.indexOf(videoSlide) !== -1;
+  const $video = document.getElementById(currentVideo.video);
+
+  $video.pause();
+
+  currentVideo.videoElmsHideShow.forEach(function (elmId) {
+    cp.show(elmId);
   });
 
-  if (isVideo) {
-    for (var i = 0; i < videoList.length; i++) {
-      if (cpInfoCurrentSlideLabel.indexOf(videoSlideLabels[i]) !== -1) {
-        video = document.getElementById(videoList[i]);
-        break;
-      }
-    }
-
-    video.pause();
-
-    videoElmsShow.forEach(function (elmId) {
-      cp.show(elmId);
-    });
-
-    cpCmndPause = 1;
-    hidePlayPause("Pause");
-  }
+  cpCmndPause = 1;
+  hidePlayPause("Pause");
 }
 
-export function videoUnlock(videoEndFrame) {
-  var currentSlide = fetchGlobal("currentSlide");
-  var unlockElms = ["Btn_Nxt1_hide_q4_241"];
+export function videoUnlock() {
+  const { currentVideo, currentSlide } = findCurrentVideo();
 
   if (!localStorage.getItem("viewedVidoes")) {
     localStorage.setItem("viewedVidoes", JSON.stringify([]));
@@ -88,7 +54,7 @@ export function videoUnlock(videoEndFrame) {
       (elm) => currentSlide.lb === elm
     )
   ) {
-    unlockElms.forEach(function (elms) {
+    currentVideo.unlockElms.forEach(function (elms) {
       cp.hide(elms);
     });
 
@@ -99,8 +65,7 @@ export function videoUnlock(videoEndFrame) {
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
     function () {
-      var currentSlide = fetchGlobal("currentSlide");
-      if (cpInfoCurrentFrame === videoEndFrame) {
+      if (cpInfoCurrentFrame === currentVideo.videoEndFrame) {
         var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
 
         if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
@@ -115,19 +80,26 @@ export function videoUnlock(videoEndFrame) {
   );
 }
 
-export function videoCompletion() {
+function isVideo() {
+  return findCurrentVideo();
+}
+
+function findCurrentVideo() {
   var currentSlide = fetchGlobal("currentSlide");
 
-  var projectVideos = [
-    {
-      videoLabel: "SlideVideo_8",
-      videoEnd: 10729,
-    },
-  ];
-
-  projectVideos.forEach(function (elm) {
-    if (currentSlide.videos && currentSlide.videos[0] === elm.videoLabel) {
-      videoUnlock(elm.videoEnd);
+  for (var i = 0; i < projectVideos.length; i++) {
+    if (projectVideos[i].videoSlideLabel === currentSlide.lb.trim()) {
+      return { currentVideo: projectVideos[i], currentSlide };
     }
-  });
+  }
+
+  return false;
+}
+
+export function videoInitialize() {
+  if (!isVideo()) return;
+
+  videoRest();
+  videoPlayBtn();
+  videoUnlock();
 }

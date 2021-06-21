@@ -3,11 +3,7 @@ import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaption-ma
 import { ccBoxOnEnter_auto } from "../controls/Close-Caption/closeCaption-auto";
 import { ProgressBarInitialize } from "../components/Progress-Bar/progressBar";
 import { slideRest } from "../controls/globalButton";
-import {
-  videoRest,
-  videoPlayBtn,
-  videoCompletion,
-} from "../controls/Video/video";
+import { videoInitialize } from "../controls/Video/video";
 
 export function initialize() {
   // Grabs the list of slides from the project and splits them into an array
@@ -97,8 +93,6 @@ export function initialize() {
   // ccToolTip_auto();
   // ccBoxOnEnter_auto();
   ccBoxOnEnter_manuel();
-  videoRest();
-  videoPlayBtn();
-  videoCompletion();
   ProgressBarInitialize();
+  videoInitialize();
 }

@@ -9,3 +9,4 @@
 9. SCORM stuff
 10. Disable menu items (play with canvas elements)
 11. Make it to where all elements will have a data attribute and use getElement function to get elements
+12. Make a function to clean up event listners

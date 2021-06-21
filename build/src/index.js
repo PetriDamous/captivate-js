@@ -15,6 +15,7 @@ import { muteFunc } from "./modules/controls/Mute/muteBtn";
 import { unmuteFunc } from "./modules/controls/Unmute/unmuteBtn";
 
 window.addEventListener("moduleReadyEvent", function (e) {
+  console.log(e.target);
   setupGlobal();
   createStyleTag();
   //evt.Data carries the interface object.
