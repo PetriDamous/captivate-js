@@ -17,6 +17,8 @@ export function videoPlayBtn() {
 // Allows nav bar play button to play video on slides
 // Place inside of play button
 export function playVideo() {
+  if (!isVideo()) return;
+
   const { currentVideo } = findCurrentVideo();
 
   currentVideo.videoElmsHideShow.forEach(function (elmId) {

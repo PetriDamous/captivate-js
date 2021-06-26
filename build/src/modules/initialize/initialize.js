@@ -81,7 +81,6 @@ export function initialize() {
         .parent()
         .parent();
     } else {
-      console.log("working");
       setDataAttr = $('div[aria-label="' + elm + " " + '"]');
     }
 
