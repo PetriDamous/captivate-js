@@ -1,16 +1,30 @@
 export var projectVideos = [
   {
-    videoSlideLabel: "Intro Video",
-    videoContainer: "SlideVideo_8",
+    videoSlideLabel: "Video_1",
+    videoContainer: "video_01_container",
     video: "slidevid0",
     videoEndFrame: 10729,
     videoElmsHideShow: [
-      "SmartShape_114",
-      "Image_372",
-      "Image_371",
-      "Image_370",
+      "video_01_playBtn",
+      "video_01_playBtnImage",
+      "video_01_imageMask",
+      "video_01_bgImage",
     ],
-    videoPlayBtn: ["SmartShape_114"],
-    unlockElms: ["Btn_Nxt1_hide_q4_241"],
+    videoPlayBtn: ["video_01_playBtn"],
+    unlockElms: ["video_01_btnNextHide"],
+  },
+  {
+    videoSlideLabel: "Video_2",
+    videoContainer: "video_02_container",
+    video: "slidevid0",
+    videoEndFrame: 10729,
+    videoElmsHideShow: [
+      "video_02_playBtn",
+      "video_02_playBtnImage",
+      "video_02_imageMask",
+      "video_02_bgImage",
+    ],
+    videoPlayBtn: ["video_02_playBtn"],
+    unlockElms: ["video_02_btnNextHide"],
   },
 ];

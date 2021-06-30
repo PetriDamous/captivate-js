@@ -53,6 +53,13 @@ export function initialize() {
     "Previous",
     "Next",
     "Rewind",
+    "Resources",
+    "Exit",
+    "Replay",
+    "Mute",
+    "Unmute",
+    "Closed Caption",
+    "Help",
   ];
 
   toolTipArray.forEach(function (elm) {
@@ -64,7 +71,7 @@ export function initialize() {
   });
 
   // Extra Elements
-  var extraElementArray = ["Closed Caption", "Next_hide"];
+  var extraElementArray = ["Next_hide"];
 
   extraElementArray.forEach(function (elm) {
     var setDataAttr = setDataButton(elm);

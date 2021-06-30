@@ -11,6 +11,12 @@ export function videoPlayBtn() {
 
   $videoPlayBtn.addEventListener("click", function () {
     hidePlayPause("Play");
+
+    currentVideo.videoElmsHideShow.forEach(function (elmId) {
+      cp.hide(elmId);
+    });
+
+    cpCmndResume = 1;
   });
 }
 
