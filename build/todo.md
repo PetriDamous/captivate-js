@@ -13,6 +13,7 @@
 11. Make it to where all elements will have a data attribute and use getElement function to get elements
 12. Make a function to clean up event listners
 13. Convert to ES6
+14. Replace slide info on global with reducer pattern
 
 #Futrue:
 

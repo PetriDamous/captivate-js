@@ -55,13 +55,11 @@ export function videoUnlock() {
     localStorage.setItem("viewedVidoes", JSON.stringify([]));
   }
 
+  var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
+
   cp.hide(getElement("Next", "id"));
 
-  if (
-    JSON.parse(localStorage.getItem("viewedVidoes")).some(
-      (elm) => currentSlide.lb === elm
-    )
-  ) {
+  if (isValueInArray(viewedVidoes, currentSlide.lb)) {
     currentVideo.unlockElms.forEach(function (elms) {
       cp.hide(elms);
     });
@@ -72,20 +70,22 @@ export function videoUnlock() {
 
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    function () {
-      if (cpInfoCurrentFrame === currentVideo.videoEndFrame) {
-        var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
-
-        if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
-          viewedVidoes.push(currentSlide.lb);
-          localStorage.setItem("viewedVidoes", JSON.stringify(viewedVidoes));
-        }
-
-        cp.show(getElement("Next", "id"));
-      }
-    },
+    addVideoToStorage,
     "cpInfoCurrentFrame"
   );
+}
+
+function addVideoToStorage() {
+  if (cpInfoCurrentFrame === currentVideo.videoEndFrame) {
+    var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
+
+    if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
+      viewedVidoes.push(currentSlide.lb);
+      localStorage.setItem("viewedVidoes", JSON.stringify(viewedVidoes));
+    }
+
+    cp.show(getElement("Next", "id"));
+  }
 }
 
 function isVideo() {
@@ -97,6 +97,7 @@ function findCurrentVideo() {
 
   for (var i = 0; i < projectVideos.length; i++) {
     if (projectVideos[i].videoSlideLabel === currentSlide.lb.trim()) {
+      console.log(projectVideos[i]);
       return { currentVideo: projectVideos[i], currentSlide };
     }
   }
