@@ -1,4 +1,4 @@
-import { setupGlobal } from "./global/globalSettings";
+import { setupGlobal, setContentMeta } from "./global/globalSettings";
 import { createStyleTag } from "./UI/components/Styles/styles";
 import { initialize } from "./UI/initialize/initialize";
 import { getButtonsList } from "./UI/uiFunctions";
@@ -14,16 +14,13 @@ import { menuFunc } from "./UI/controls/Menu/menuBtn";
 import { muteFunc } from "./UI/controls/Mute/muteBtn";
 import { unmuteFunc } from "./UI/controls/Unmute/unmuteBtn";
 
-window.addEventListener("moduleReadyEvent", function (e) {
+window.addEventListener("load", function () {
+  setContentMeta();
   setupGlobal();
   createStyleTag();
-  //evt.Data carries the interface object.
-  //It is same as window.cpAPIInterface
-  // var interfaceObj = e.Data;
-  // console.log(interfaceObj)
-  // var eventEmitterObj = interfaceObj.getEventEmitter();
-  // console.log(eventEmitterObj)
+});
 
+window.addEventListener("moduleReadyEvent", function (e) {
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
     $(document).ready(function () {
       initialize();

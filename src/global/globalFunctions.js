@@ -54,6 +54,8 @@ export function applyStyles(cssStyleList, elmToApply) {
   });
 }
 
+// Removes event lisenters from single elements
+// or multiple ones
 export function removeEvents(targets, types, listeners) {
   // Used if all params are an array
   // If you need multiple different events removed from different objects
