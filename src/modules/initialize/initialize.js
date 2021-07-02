@@ -1,4 +1,6 @@
 import { fetchGlobal, setGlobalValue } from "../global/global";
+import { setToolTips } from "../data-buttons/toolTips";
+import { setExtraDataBtn } from "../data-buttons/extraDataBtns";
 import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaption-manuel";
 import { ccBoxOnEnter_auto } from "../controls/Close-Caption/closeCaption-auto";
 import { ProgressBarInitialize } from "../components/Progress-Bar/progressBar";
@@ -39,61 +41,8 @@ export function initialize() {
 
   setGlobalValue(propToSetList, valueToSetList);
 
-  // Setsup
-
-  var isIE = fetchGlobal("isIE");
-
-  var toolTipArray = [
-    "Menu",
-    "Glossary",
-    "Referneces",
-    "Exit",
-    "Play",
-    "Pause",
-    "Previous",
-    "Next",
-    "Rewind",
-    "Resources",
-    "Exit",
-    "Replay",
-    "Mute",
-    "Unmute",
-    "Closed Caption",
-    "Help",
-  ];
-
-  toolTipArray.forEach(function (elm) {
-    var setDataAttr = setDataButton(elm);
-
-    setDataAttr.attr("data-button", elm);
-    setDataAttr.attr("title", elm);
-    setDataAttr.css("cursor", "pointer");
-  });
-
-  // Extra Elements
-  var extraElementArray = ["Next_hide"];
-
-  extraElementArray.forEach(function (elm) {
-    var setDataAttr = setDataButton(elm);
-    setDataAttr.attr("data-button", elm);
-  });
-
-  // Finds Element to set attributes on
-  function setDataButton(elm) {
-    var setDataAttr;
-
-    if (isIE) {
-      console.log(isIE);
-      setDataAttr = $("p:contains(" + elm + ")")
-        .parent()
-        .parent();
-    } else {
-      setDataAttr = $('div[aria-label="' + elm + " " + '"]');
-    }
-
-    setDataAttr.attr("data-button", elm);
-    return setDataAttr;
-  }
+  setToolTips();
+  setExtraDataBtn();
 
   slideRest();
   // ccToolTip_auto();
