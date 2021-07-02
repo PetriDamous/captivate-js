@@ -25,7 +25,6 @@ window.addEventListener("moduleReadyEvent", function (e) {
   // console.log(eventEmitterObj)
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", function (e) {
-    console.log(e);
     $(document).ready(function () {
       initialize();
 
