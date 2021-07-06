@@ -61,6 +61,4 @@ export function setContentMeta() {
   var $metaContentNodeList = document.querySelectorAll("meta");
 
   $metaContentNodeList[2].setAttribute("content", "IE=11");
-
-  console.log($metaContentNodeList[2].getAttribute("content"));
 }

@@ -29,20 +29,20 @@ export function isValueInArray(array, value) {
 // Fetches the element or ID
 export function getElement(name, property, elm = "div", type = "button") {
   return property === "obj"
-    ? document.querySelector(elm + "[data-" + type + '="' + name + '"]')
+    ? document.querySelector(`${elm}[data-${type}="${name}"]`)
     : document
-        .querySelector(elm + "[data-" + type + '="' + name + '"]')
+        .querySelector(`${elm}[data-${type}="${name}"]`)
         .getAttribute("id");
 }
 
-export function getElementAttr(elm, attr) {
+export function getElementAttr(name, attr, elm = div) {
   return document
-    .querySelector('div[data-button="' + elm + '"]')
+    .querySelector(`${elm}[data-button="${name}"]`)
     .getAttribute(attr);
 }
 
+// Clears local storage when window is closed
 export function clearStorageUnload() {
-  // Clears local storage when window is closed
   window.addEventListener("beforeunload", function () {
     localStorage.clear();
   });
@@ -54,72 +54,62 @@ export function applyStyles(cssStyleList, elmToApply) {
   });
 }
 
-// Removes event lisenters from single elements
-// or multiple ones
-export function removeEvents(targets, types, listeners) {
-  // Used if all params are an array
-  // If you need multiple different events removed from different objects
-  // you can pass them as an array
-
+// Adds event lisenters from single elements
+// or multiple elements
+export function addEvents(target, type, listener) {
+  // Adds different events to different functions and different elements
+  // All function params must be an array
   if (
-    typeof targets === "object" &&
-    typeof types === "object" &&
-    listeners == "object"
+    typeof target === "object" &&
+    typeof type === "object" &&
+    typeof listener === "object"
   ) {
-    targets.forEach(function (target, idx) {
-      target.removeEventListener(types[idx], listeners[idx]);
+    target.forEach(function (elm, idx) {
+      elm.addEventListener(type[idx], listener[idx]);
     });
 
     return;
   }
 
-  // Used if target and types are an array
-  // If you need to remove the same function from
-  // Different events and objects
-
-  if (typeof targets === "object" && typeof types === "object") {
-    targets.forEach(function (target, idx) {
-      target.removeEventListener(types[idx], listeners);
+  // Adds same event and function to multiple elements
+  // target must be an array of elements
+  if (typeof target === "object") {
+    target.forEach(function (elm) {
+      elm.addEventListener(type, listener);
     });
 
     return;
   }
 
-  // Used if types and listeners are an array
-  // If you need to remove different event listeners and functions
-  // from a single object
+  target.addEventListener(type, listener);
+}
 
-  if (typeof types === "object" && typeof listeners === "object") {
-    types.forEach(function (type, idx) {
-      target.removeEventListener(type, listeners[idx]);
+// Removes event lisenters from single elements
+// or multiple elements
+export function removeEvents(target, type, listener) {
+  // Removes different events from different functions and different elements
+  // All function params must be an array
+  if (
+    typeof target === "object" &&
+    typeof type === "object" &&
+    typeof listener === "object"
+  ) {
+    target.forEach(function (elm, idx) {
+      elm.removeEventListener(type[idx], listener[idx]);
     });
 
     return;
   }
 
-  // Used if targets and listeners is an array
-  // If you need to remove different functions from different
-  // objects from a single event listener (not sure if there is point to this one but I will leave it in)
-
-  if (typeof targets === "object" && typeof listeners === "object") {
-    targets.forEach(function (target, idx) {
-      target.removeEventListener(type, listeners[idx]);
+  // Removes same event and function to multiple elements
+  // target must be an array of elements
+  if (typeof target === "object") {
+    target.forEach(function (target) {
+      target.removeEventListener(type, listener);
     });
 
     return;
   }
 
-  // Used if target is an array
-  // If you need to remove the same eventListener and event
-  // from different objects
-
-  if (typeof targets === "object") {
-    targets.forEach(function (target) {
-      target.removeEventListener(types, listeners);
-    });
-
-    return;
-  }
-
-  target.removeEventListener(types, listeners);
+  target.removeEventListener(type, listener);
 }
