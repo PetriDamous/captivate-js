@@ -17,7 +17,7 @@ export function disableMenuAction() {
   var slideLabels = ["Pre-Test"];
 
   return slideLabels.some(function (slideLabel) {
-    return cpInfoCurrentSlideLabel.indexOf(slideLabel) !== -1;
+    return cpInfoCurrentSlideLabel.indexOf() !== -1;
   });
 }
 

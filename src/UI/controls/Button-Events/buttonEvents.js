@@ -24,7 +24,7 @@ export function setBtnEvents() {
   var $rewindBtns = getButtonsList("Rewind");
   var $closeCaptionBtns = getButtonsList("Closed Caption");
 
-  addEvents($closeCaptionBtns, "click", ccFunc_manual);
+  addEvents($closeCaptionBtns, "click", ccFunc_auto);
   addEvents($playBtns, "click", playFunc);
   addEvents($pauseBtns, "click", pauseFunc);
   addEvents($rewindBtns, "click", rewindFunc);

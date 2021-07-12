@@ -31,6 +31,7 @@ export function setupGlobal() {
     firstFrame: null,
     slideAudioName: null,
     slideLabel: "",
+    prevSlide: null,
   };
 }
 
@@ -61,4 +62,10 @@ export function setContentMeta() {
   var $metaContentNodeList = document.querySelectorAll("meta");
 
   $metaContentNodeList[2].setAttribute("content", "IE=11");
+}
+
+export function setPrevSlideData() {
+  window.cpGlobalSetup.prevSlide = {
+    ...cpGlobalSetup.currentSlide,
+  };
 }

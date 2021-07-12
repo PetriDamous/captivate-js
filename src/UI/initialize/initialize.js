@@ -47,9 +47,8 @@ export function initialize() {
   setBtnEvents();
 
   slideRest();
-  // ccToolTip_auto();
-  // ccBoxOnEnter_auto();
-  ccBoxOnEnter_manuel();
+  ccBoxOnEnter_auto();
+  // ccBoxOnEnter_manuel();
   ProgressBarInitialize();
   videoInitialize();
 }
