@@ -14,6 +14,7 @@
 12. Make a function to clean up event listners
 13. Convert to ES6
 14. Replace slide info on global with reducer pattern
+15. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
 
 #Futrue:
 
@@ -36,3 +37,9 @@
 6. FST
 7. WQP (locking menu items on pre-test)
 8. WQP (random question pre-test)
+
+#Resources
+
+1. https://captivate101.wordpress.com/javascript/
+2. https://static.carahsoft.com/concrete/files/1014/9314/4287/Steven_Warwick_Part_2_-_A_Deeper_Dive_into_Developing_Custom_Interactions_in_Adobe_Captivate_Using_JavaScript.pdf
+3.
