@@ -3,7 +3,7 @@ import { fetchGlobal } from "../../../global/globalSettings";
 
 // Pause
 export function pauseFunc() {
-  var lastFrame = fetchGlobal("lastFrame");
+  const { to: lastFrame } = fetchGlobal("currentSlide");
 
   if (cpInfoCurrentFrame < lastFrame - 1) {
     cpCmndPause = 1;

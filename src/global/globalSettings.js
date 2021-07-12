@@ -7,11 +7,9 @@ var propList = [
   "isCcDisplay_manual",
   "isCcOnEnter_auto",
   "slides",
+  "slideIdList",
   "currentSlide",
-  "lastFrame",
-  "firstFrame",
-  "slideAudioName",
-  "slideLabel",
+  "prevSlide",
 ];
 
 export function setupGlobal() {
@@ -26,11 +24,8 @@ export function setupGlobal() {
     isCcDisplay_manual: true,
     isCcOnEnter_auto: false,
     slides: null,
+    slideIdList: null,
     currentSlide: null,
-    lastFrame: null,
-    firstFrame: null,
-    slideAudioName: null,
-    slideLabel: "",
     prevSlide: null,
   };
 }
@@ -67,6 +62,20 @@ export function setContentMeta() {
       return;
     }
   }
+}
+
+export function setSlideData() {
+  const slideIdList = cp.model.data.project_main.slides.split(",");
+
+  const slides = slideIdList.map((slideId) => {
+    return cp.model.data[slideId];
+  });
+
+  const propToSetList = ["slides", "slideIdList"];
+
+  const valueToSetList = [slides, slideIdList];
+
+  setGlobalValue(propToSetList, valueToSetList);
 }
 
 export function setPrevSlideData() {

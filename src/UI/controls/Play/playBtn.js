@@ -4,7 +4,7 @@ import { fetchGlobal } from "../../../global/globalSettings";
 
 // Play
 export function playFunc() {
-  var lastFrame = fetchGlobal("lastFrame");
+  const { to: lastFrame } = fetchGlobal("currentSlide");
 
   playVideo();
 

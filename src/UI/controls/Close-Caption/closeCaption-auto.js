@@ -26,9 +26,11 @@ function ccToolTip_auto() {
 }
 
 export function ccBoxOnEnter_auto() {
-  var currentSlide = fetchGlobal("currentSlide");
-  var lastFrame = fetchGlobal("lastFrame");
-  var firstFrame = fetchGlobal("firstFrame");
+  const {
+    from: firstFrame,
+    to: lastFrame,
+    audCC,
+  } = fetchGlobal("currentSlide");
 
   ccToolTip_auto();
 
@@ -40,9 +42,8 @@ export function ccBoxOnEnter_auto() {
   );
 
   // Prevents final cc text caption from closing cc text box
-  if (currentSlide.audCC.length) {
-    currentSlide.audCC[0].sf = 1;
-    currentSlide.audCC[currentSlide.audCC.length - 1].ef =
-      lastFrame - firstFrame;
+  if (audCC.length) {
+    audCC[0].sf = 1;
+    audCC[audCC.length - 1].ef = lastFrame - firstFrame;
   }
 }

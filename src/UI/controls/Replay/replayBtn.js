@@ -3,7 +3,7 @@ import { fetchGlobal } from "../../../global/globalSettings";
 // import { firstFrame } from "../../../index";
 
 export function replayFunc() {
-  var firstFrame = fetchGlobal("firstFrame");
+  const { from: firstFrame } = fetchGlobal("currentSlide");
 
   cpCmndGotoFrame = firstFrame;
 
