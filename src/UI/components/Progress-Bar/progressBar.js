@@ -19,7 +19,10 @@ function hideProgress() {
   var isProgressHide = false;
 
   for (var i = 0; i < noProgressSlides.length; i++) {
-    if (noProgressSlides[i] === fetchGlobal("slideLabel")) {
+    if (
+      noProgressSlides[i].trim().toLowerCase() ===
+      cpInfoCurrentSlideLabel.trim().toLowerCase()
+    ) {
       isProgressHide = true;
       break;
     }
