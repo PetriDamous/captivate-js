@@ -1,6 +1,10 @@
 import { hidePlayPause } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalSettings";
-import { isValueInArray, getElement } from "../../../global/globalFunctions";
+import {
+  isValueInArray,
+  getElement,
+  removeEvents,
+} from "../../../global/globalFunctions";
 import { projectVideos } from "./videoSettings";
 
 // Hides Nav Play button if video play button is clicked
@@ -49,6 +53,8 @@ export function videoRest() {
 }
 
 export function videoUnlock() {
+  if (!isVideo()) return;
+
   const { currentVideo, currentSlide } = findCurrentVideo();
 
   if (!localStorage.getItem("viewedVidoes")) {
@@ -56,8 +62,6 @@ export function videoUnlock() {
   }
 
   var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
-
-  cp.hide(getElement("Next", "id"));
 
   if (isValueInArray(viewedVidoes, currentSlide.lb)) {
     currentVideo.unlockElms.forEach(function (elms) {
@@ -75,21 +79,25 @@ export function videoUnlock() {
   );
 }
 
-function addVideoToStorage() {
-  if (cpInfoCurrentFrame === currentVideo.videoEndFrame) {
+export function addVideoToStorage() {
+  if (!isVideo()) return;
+
+  const { currentVideo, currentSlide } = findCurrentVideo();
+
+  if (cpInfoCurrentFrame >= currentVideo.videoEndFrame) {
     var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
 
     if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
       viewedVidoes.push(currentSlide.lb);
       localStorage.setItem("viewedVidoes", JSON.stringify(viewedVidoes));
     }
-
-    cp.show(getElement("Next", "id"));
   }
 }
 
 function isVideo() {
-  return findCurrentVideo();
+  const { currentVideo } = findCurrentVideo();
+
+  return currentVideo;
 }
 
 function findCurrentVideo() {
@@ -97,12 +105,25 @@ function findCurrentVideo() {
 
   for (var i = 0; i < projectVideos.length; i++) {
     if (projectVideos[i].videoSlideLabel === currentSlide.lb.trim()) {
-      console.log(projectVideos[i]);
       return { currentVideo: projectVideos[i], currentSlide };
     }
   }
 
-  return false;
+  return {
+    currentVideo: null,
+    currentSlide,
+  };
+}
+
+// Put on slide exit
+export function removeVideoEvent() {
+  if (!isVideo) return;
+
+  cpAPIEventEmitter.removeEventListener(
+    "CPAPI_VARIABLEVALUECHANGED",
+    addVideoToStorage,
+    "cpInfoCurrentFrame"
+  );
 }
 
 export function videoInitialize() {
