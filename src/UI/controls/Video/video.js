@@ -1,10 +1,6 @@
 import { hidePlayPause } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalSettings";
-import {
-  isValueInArray,
-  getElement,
-  removeEvents,
-} from "../../../global/globalFunctions";
+import { isValueInArray, getElement } from "../../../global/globalFunctions";
 import { projectVideos } from "./videoSettings";
 
 // Hides Nav Play button if video play button is clicked

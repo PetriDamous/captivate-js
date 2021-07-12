@@ -61,7 +61,12 @@ export function setGlobalValue(prop, value) {
 export function setContentMeta() {
   var $metaContentNodeList = document.querySelectorAll("meta");
 
-  $metaContentNodeList[2].setAttribute("content", "IE=11");
+  for (let i = 0; i < $metaContentNodeList.length; i++) {
+    if ($metaContentNodeList[i].getAttribute("content") === "IE=10") {
+      $metaContentNodeList[i].setAttribute("content", "IE=11");
+      return;
+    }
+  }
 }
 
 export function setPrevSlideData() {
