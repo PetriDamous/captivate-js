@@ -24,10 +24,10 @@ export function hidePlayPause(hideElm) {
 }
 
 // Toggle between hiding and showing mute and unmute
-export function hideMuteUnmute(hideElm) {
-  const showElm = hideElm.toLowerCase() === "mute" ? "Unmute" : "Mute";
-  cp.hide(getElement(hideElm, "id"));
-  cp.show(getElement(showElm, "id"));
+export function hideMuteUnmute($hideElm) {
+  const $showElm = $hideElm.toLowerCase() === "mute" ? "Unmute" : "Mute";
+  cp.hide(getElement($hideElm, "id"));
+  cp.show(getElement($showElm, "id"));
 }
 
 // Gets a list of button elements
