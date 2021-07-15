@@ -1,5 +1,7 @@
 <script src="../public/app.bundle.js" defer></script>
 
+cd ../GitHub/captivate-js/git-hub
+
 1. initialize file should have all functions and settings that setup project inside of it
 2. index file will contain initialize and DOM event handlers for buttons
 3. Remove all jQuery (find away to do p:contains)
@@ -15,6 +17,13 @@
 13. Convert to ES6
 14. Replace slide info on global with reducer pattern
 15. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
+16. Consider making custom array methods (ex: .find(), .filter())
+17. Consider making components classes
+18. make toggle function for hiding and showing buttons
+19. make custom hide show element function to handle an array of instances of key elements
+20. Update rewind function
+21. Look into Babel pollyfill
+22. Look to see if Redux is worth it
 
 #Futrue:
 

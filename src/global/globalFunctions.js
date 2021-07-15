@@ -21,9 +21,7 @@ export function customSettings() {
 }
 
 export function isValueInArray(array, value) {
-  return array.some(function (elm) {
-    return elm === value;
-  });
+  return array.some((elm) => elm === value);
 }
 
 // Fetches the element or ID
@@ -43,13 +41,13 @@ export function getElementAttr(name, attr, elm = div) {
 
 // Clears local storage when window is closed
 export function clearStorageUnload() {
-  window.addEventListener("beforeunload", function () {
+  window.addEventListener("beforeunload", (e) => {
     localStorage.clear();
   });
 }
 
 export function applyStyles(cssStyleList, elmToApply) {
-  cssStyleList.forEach(function (style) {
+  cssStyleList.forEach((style) => {
     elmToApply.style[style[0]] = style[1];
   });
 }
@@ -64,7 +62,7 @@ export function addEvents(target, type, listener) {
     typeof type === "object" &&
     typeof listener === "object"
   ) {
-    target.forEach(function (elm, idx) {
+    target.forEach((elm, idx) => {
       elm.addEventListener(type[idx], listener[idx]);
     });
 
@@ -74,7 +72,7 @@ export function addEvents(target, type, listener) {
   // Adds same event and function to multiple elements
   // target must be an array of elements
   if (typeof target === "object") {
-    target.forEach(function (elm) {
+    target.forEach((elm) => {
       elm.addEventListener(type, listener);
     });
 
@@ -94,7 +92,7 @@ export function removeEvents(target, type, listener) {
     typeof type === "object" &&
     typeof listener === "object"
   ) {
-    target.forEach(function (elm, idx) {
+    target.forEach((elm, idx) => {
       elm.removeEventListener(type[idx], listener[idx]);
     });
 
@@ -104,7 +102,7 @@ export function removeEvents(target, type, listener) {
   // Removes same event and function to multiple elements
   // target must be an array of elements
   if (typeof target === "object") {
-    target.forEach(function (target) {
+    target.forEach((target) => {
       target.removeEventListener(type, listener);
     });
 

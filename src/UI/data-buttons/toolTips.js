@@ -1,7 +1,7 @@
 import { setDataButton } from "./data-btn-utility";
 
 export function setToolTips() {
-  var toolTipArray = [
+  const toolTipArray = [
     "Menu",
     "Glossary",
     "Referneces",
@@ -21,10 +21,10 @@ export function setToolTips() {
   ];
 
   toolTipArray.forEach(function (elm) {
-    var setDataAttr = setDataButton(elm);
+    const $setDataAttr = setDataButton(elm);
 
-    setDataAttr.attr("data-button", elm);
-    setDataAttr.attr("title", elm);
-    setDataAttr.css("cursor", "pointer");
+    $setDataAttr.attr("data-button", elm);
+    $setDataAttr.attr("title", elm);
+    $setDataAttr.css("cursor", "pointer");
   });
 }

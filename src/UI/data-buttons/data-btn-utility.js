@@ -1,18 +1,16 @@
 import { fetchGlobal } from "../../global/globalSettings";
 
 export function setDataButton(elm) {
-  var isIE = fetchGlobal("isIE");
+  const isIE = fetchGlobal("isIE");
 
-  var setDataAttr;
+  let $setDataAttr;
 
   if (isIE) {
-    setDataAttr = $("p:contains(" + elm + ")")
-      .parent()
-      .parent();
+    $setDataAttr = $(`p:contains(${elm})`).parent().parent();
   } else {
-    setDataAttr = $('div[aria-label="' + elm + " " + '"]');
+    $setDataAttr = $(`div[aria-label="${elm} "]`);
   }
 
-  setDataAttr.attr("data-button", elm);
-  return setDataAttr;
+  $setDataAttr.attr("data-button", elm);
+  return $setDataAttr;
 }

@@ -18,22 +18,22 @@ export function stayMute() {
 
 // Toggle between hiding and showing play and pause
 export function hidePlayPause(hideElm) {
-  var showElm = hideElm.toLowerCase() === "play" ? "Pause" : "Play";
+  const showElm = hideElm.toLowerCase() === "play" ? "Pause" : "Play";
   cp.hide(getElement(hideElm, "id"));
   cp.show(getElement(showElm, "id"));
 }
 
 // Toggle between hiding and showing mute and unmute
 export function hideMuteUnmute(hideElm) {
-  var showElm = hideElm.toLowerCase() === "mute" ? "Unmute" : "Mute";
+  const showElm = hideElm.toLowerCase() === "mute" ? "Unmute" : "Mute";
   cp.hide(getElement(hideElm, "id"));
   cp.show(getElement(showElm, "id"));
 }
 
 // Gets a list of button elements
-export function getButtonsList(name) {
+export function getButtonsArray(name) {
   // Grabs multiple instances of button layers
-  var $btnsList = document.querySelectorAll(`div[data-button="${name}"]`);
+  const $btnsArray = document.querySelectorAll(`div[data-button="${name}"]`);
 
-  return Array.prototype.slice.call($btnsList);
+  return Array.prototype.slice.call($btnsArray);
 }

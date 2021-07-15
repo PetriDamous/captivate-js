@@ -1,4 +1,4 @@
-import { getButtonsList } from "../../uiFunctions";
+import { getButtonsArray } from "../../uiFunctions";
 import { setGlobalValue, fetchGlobal } from "../../../global/globalSettings";
 
 export function ccFunc_auto() {
@@ -16,7 +16,7 @@ export function ccFunc_auto() {
 }
 
 function ccToolTip_auto() {
-  var ccBtnsList = getButtonsList("Closed Caption");
+  var ccBtnsList = getButtonsArray("Closed Caption");
 
   ccBtnsList.forEach(function (ccBtn) {
     cpCmndCC === 0

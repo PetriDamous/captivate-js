@@ -1,5 +1,5 @@
 import { addEvents, removeEvents } from "../../../global/globalFunctions";
-import { getButtonsList } from "../../uiFunctions";
+import { getButtonsArray } from "../../uiFunctions";
 
 // Import Button Actions
 import { ccFunc_auto } from "../Close-Caption/closeCaption-auto";
@@ -13,16 +13,16 @@ import { muteFunc } from "../Mute/muteBtn";
 import { unmuteFunc } from "../Unmute/unmuteBtn";
 
 export function setBtnEvents() {
-  var $menuBtns = getButtonsList("Menu");
-  var $glossaryBtns = getButtonsList("Glossary");
-  var $referneceBtns = getButtonsList("Referneces");
-  var $exitBtns = getButtonsList("Exit");
-  var $playBtns = getButtonsList("Play");
-  var $pauseBtns = getButtonsList("Pause");
-  var $previousBtns = getButtonsList("Previous");
-  var $nextBtns = getButtonsList("Next");
-  var $rewindBtns = getButtonsList("Rewind");
-  var $closeCaptionBtns = getButtonsList("Closed Caption");
+  const $menuBtns = getButtonsArray("Menu");
+  const $glossaryBtns = getButtonsArray("Glossary");
+  const $referneceBtns = getButtonsArray("Referneces");
+  const $exitBtns = getButtonsArray("Exit");
+  const $playBtns = getButtonsArray("Play");
+  const $pauseBtns = getButtonsArray("Pause");
+  const $previousBtns = getButtonsArray("Previous");
+  const $nextBtns = getButtonsArray("Next");
+  const $rewindBtns = getButtonsArray("Rewind");
+  const $closeCaptionBtns = getButtonsArray("Closed Caption");
 
   addEvents($closeCaptionBtns, "click", ccFunc_auto);
   addEvents($playBtns, "click", playFunc);

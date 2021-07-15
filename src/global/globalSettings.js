@@ -1,4 +1,4 @@
-var propList = [
+const propList = [
   "isFirefox",
   "isIE",
   "isEdge",
@@ -7,13 +7,13 @@ var propList = [
   "isCcDisplay_manual",
   "isCcOnEnter_auto",
   "slides",
-  "slideIdList",
+  "slidesArray",
   "currentSlide",
   "prevSlide",
 ];
 
 export function setupGlobal() {
-  var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+  const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
   window.cpGlobalSetup = {
     isFirefox: typeof InstallTrigger !== "undefined",
@@ -24,7 +24,7 @@ export function setupGlobal() {
     isCcDisplay_manual: true,
     isCcOnEnter_auto: false,
     slides: null,
-    slideIdList: null,
+    slidesArray: null,
     currentSlide: null,
     prevSlide: null,
   };
@@ -38,7 +38,7 @@ export function fetchGlobal(prop) {
 
 export function setGlobalValue(prop, value) {
   if (typeof prop === "object" && typeof value === "object") {
-    prop.forEach(function (propObj, idx) {
+    prop.forEach((propObj, idx) => {
       if (propList.indexOf(propObj) !== -1) {
         window.cpGlobalSetup[propObj] = value[idx];
       }
@@ -54,7 +54,7 @@ export function setGlobalValue(prop, value) {
 }
 
 export function setContentMeta() {
-  var $metaContentNodeList = document.querySelectorAll("meta");
+  const $metaContentNodeList = document.querySelectorAll("meta");
 
   for (let i = 0; i < $metaContentNodeList.length; i++) {
     if ($metaContentNodeList[i].getAttribute("content") === "IE=10") {
@@ -65,17 +65,17 @@ export function setContentMeta() {
 }
 
 export function setSlideData() {
-  const slideIdList = cp.model.data.project_main.slides.split(",");
+  const slidesArray = cp.model.data.project_main.slides.split(",");
 
-  const slides = slideIdList.map((slideId) => {
+  const slides = slidesArray.map((slideId) => {
     return cp.model.data[slideId];
   });
 
-  const propToSetList = ["slides", "slideIdList"];
+  const propToSetArray = ["slides", "slidesArray"];
 
-  const valueToSetList = [slides, slideIdList];
+  const valueToSetArray = [slides, slidesArray];
 
-  setGlobalValue(propToSetList, valueToSetList);
+  setGlobalValue(propToSetArray, valueToSetArray);
 }
 
 export function setPrevSlideData() {

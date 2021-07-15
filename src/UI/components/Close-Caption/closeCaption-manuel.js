@@ -1,5 +1,5 @@
 import { ccTextArray } from "../../../ccText/ccText";
-import { getButtonsList } from "../../uiFunctions";
+import { getButtonsArray } from "../../uiFunctions";
 import { fetchGlobal, setGlobalValue } from "../../../global/globalSettings";
 import { applyStyles } from "../../../global/globalFunctions";
 import { ccTextBoxCss, ccParagraphCss } from "./closeCaptionSettings";
@@ -41,7 +41,7 @@ function appendCCText() {
 }
 
 function ccToolTip_manuel() {
-  var $closeCaptionBtns = getButtonsList("Closed Caption");
+  var $closeCaptionBtns = getButtonsArray("Closed Caption");
 
   if (fetchGlobal("isCcOnEnter_manual")) {
     $closeCaptionBtns.forEach(function (ccBtn) {
