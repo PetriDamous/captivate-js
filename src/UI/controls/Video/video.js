@@ -1,24 +1,14 @@
+// Developer imports
 import { hidePlayPause } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalSettings";
 import { isValueInArray, getElement } from "../../../global/globalFunctions";
 import { projectVideos } from "./videoSettings";
 
-// Hides Nav Play button if video play button is clicked
-export function videoPlayBtn() {
-  const { currentVideo } = findCurrentVideo();
-
-  var $videoPlayBtn = document.getElementById(currentVideo.videoPlayBtn);
-
-  $videoPlayBtn.addEventListener("click", function () {
-    hidePlayPause("Play");
-
-    currentVideo.videoElmsHideShow.forEach(function (elmId) {
-      cp.hide(elmId);
-    });
-
-    cpCmndResume = 1;
-  });
-}
+/*
+/////////////////////////////
+Exported Functions
+////////////////////////////
+*/
 
 // Allows nav bar play button to play video on slides
 // Place inside of play button
@@ -27,73 +17,120 @@ export function playVideo() {
 
   const { currentVideo } = findCurrentVideo();
 
-  currentVideo.videoElmsHideShow.forEach(function (elmId) {
-    cp.hide(elmId);
-  });
+  currentVideo.videoElmsHideShow.forEach((elmId) => cp.hide(elmId));
+}
+
+// Used in initialize() function
+export function videoInitialize() {
+  if (!isVideo()) return;
+  videoRest();
+  createVideoStorage();
+  videoPlayBtn();
+
+  if (isVideoUnlocked()) return;
+  addVideoEvent();
+}
+
+/*
+/////////////////////////////
+Internal Functions
+////////////////////////////
+*/
+
+function isVideo() {
+  const { currentVideo } = findCurrentVideo();
+
+  return currentVideo;
+}
+
+function isVideoUnlocked() {
+  const { currentVideo, currentSlide } = findCurrentVideo();
+
+  const viewedVidoesArray = JSON.parse(
+    localStorage.getItem("viewedVidoesArray")
+  );
+
+  if (viewedVidoesArray.length) {
+    for (let i = 0; i < viewedVidoesArray.length; i++) {
+      if (
+        viewedVidoesArray[i].trim().toLowerCase() ===
+        currentSlide.lb.trim().toLowerCase()
+      ) {
+        currentVideo.unlockElms.forEach((elms) => cp.hide(elms));
+
+        cp.show(getElement("Next", "id"));
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 // Rests video on slide enter
-export function videoRest() {
+function videoRest() {
   const { currentVideo } = findCurrentVideo();
 
   const $video = document.getElementById(currentVideo.video);
 
   $video.pause();
 
-  currentVideo.videoElmsHideShow.forEach(function (elmId) {
-    cp.show(elmId);
-  });
+  currentVideo.videoElmsHideShow.forEach((elmId) => cp.show(elmId));
 
   cpCmndPause = 1;
   hidePlayPause("Pause");
 }
 
-export function videoUnlock() {
-  if (!isVideo()) return;
-
-  const { currentVideo, currentSlide } = findCurrentVideo();
-
-  if (!localStorage.getItem("viewedVidoes")) {
-    localStorage.setItem("viewedVidoes", JSON.stringify([]));
+function createVideoStorage() {
+  if (!localStorage.getItem("viewedVidoesArray")) {
+    localStorage.setItem("viewedVidoesArray", JSON.stringify([]));
   }
+}
 
-  var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
-
-  if (isValueInArray(viewedVidoes, currentSlide.lb)) {
-    currentVideo.unlockElms.forEach(function (elms) {
-      cp.hide(elms);
-    });
-
-    cp.show(getElement("Next", "id"));
-    return;
-  }
-
+function addVideoEvent() {
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    addVideoToStorage,
+    checkVideoComplete,
     "cpInfoCurrentFrame"
   );
 }
 
-export function addVideoToStorage() {
-  if (!isVideo()) return;
+function checkVideoComplete() {
+  const { currentVideo } = findCurrentVideo();
 
-  const { currentVideo, currentSlide } = findCurrentVideo();
+  // console.log(cpInfoCurrentFrame, currentVideo.videoEndFrame);
 
   if (cpInfoCurrentFrame >= currentVideo.videoEndFrame) {
-    var viewedVidoes = JSON.parse(localStorage.getItem("viewedVidoes"));
-
-    if (!isValueInArray(viewedVidoes, currentSlide.lb)) {
-      viewedVidoes.push(currentSlide.lb);
-      localStorage.setItem("viewedVidoes", JSON.stringify(viewedVidoes));
-    }
+    addVideoToStorage();
+    removeVideoEvent();
   }
 }
 
-function isVideo() {
-  const { currentVideo } = findCurrentVideo();
+function addVideoToStorage() {
+  const { currentSlide } = findCurrentVideo();
 
-  return currentVideo;
+  const viewedVidoesArray = JSON.parse(
+    localStorage.getItem("viewedVidoesArray")
+  );
+
+  if (
+    !isValueInArray(viewedVidoesArray, currentSlide.lb.trim().toLowerCase())
+  ) {
+    updateVideoStorage();
+    return;
+  }
+}
+
+function updateVideoStorage() {
+  const { currentSlide } = findCurrentVideo();
+
+  const viewedVidoesArray = JSON.parse(
+    localStorage.getItem("viewedVidoesArray")
+  );
+
+  const updatedArray = [...viewedVidoesArray, currentSlide.lb];
+
+  localStorage.setItem("viewedVidoesArray", JSON.stringify(updatedArray));
 }
 
 function findCurrentVideo() {
@@ -111,21 +148,33 @@ function findCurrentVideo() {
   };
 }
 
-// Put on slide exit
+// Hides Nav Play button if video play button is clicked
+function videoPlayBtn() {
+  const { currentVideo } = findCurrentVideo();
+
+  const $videoPlayBtn = document.getElementById(currentVideo.videoPlayBtn);
+
+  $videoPlayBtn.addEventListener("click", () => {
+    hidePlayPause("Play");
+
+    currentVideo.videoElmsHideShow.forEach((elmId) => cp.hide(elmId));
+
+    cpCmndResume = 1;
+  });
+}
+
+/*
+/////////////////////////////
+Internal/External Functions
+////////////////////////////
+*/
+
 export function removeVideoEvent() {
   if (!isVideo) return;
 
   cpAPIEventEmitter.removeEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    addVideoToStorage,
+    checkVideoComplete,
     "cpInfoCurrentFrame"
   );
-}
-
-export function videoInitialize() {
-  if (!isVideo()) return;
-
-  videoRest();
-  videoPlayBtn();
-  videoUnlock();
 }

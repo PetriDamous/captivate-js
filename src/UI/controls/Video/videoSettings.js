@@ -1,4 +1,4 @@
-export var projectVideos = [
+export const projectVideos = [
   {
     videoSlideLabel: "Video_1",
     videoContainer: "video_01_container",
