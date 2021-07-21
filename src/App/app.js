@@ -3,7 +3,7 @@ import {
   setupGlobal,
   setPrevSlideData,
 } from "../global/globalSettings";
-import { createStyleTag } from "../UI/components/Styles/styles";
+import { createStyleTag } from "../UI/css/styles";
 import { initialize } from "../UI/initialize/initialize";
 import { removeVideoEvent } from "../UI/controls/Video/video";
 

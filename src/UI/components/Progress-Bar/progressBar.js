@@ -5,7 +5,7 @@ import {
   progressStyles,
   noProgressSlides,
 } from "./progressBarSettings";
-import { addCssRules } from "../Styles/styles";
+import { addCssRules } from "../../css/styles";
 
 export function ProgressBarInitialize() {
   if (hideProgress()) return;

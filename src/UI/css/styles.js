@@ -1,4 +1,4 @@
-import { getElement } from "../../../global/globalFunctions";
+import { getElement } from "../../global/globalFunctions";
 
 export function createStyleTag() {
   const $styleElm = document.createElement("style");
