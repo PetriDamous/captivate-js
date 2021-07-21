@@ -8,6 +8,7 @@ import { ProgressBarInitialize } from "../components/Progress-Bar/progressBar";
 import { slideRest } from "../uiFunctions";
 import { videoInitialize } from "../controls/Video/video";
 import { SCORM_2004_completion } from "../../SCORM/SCORM";
+import { disableMenuStyle } from "../controls/Menu/menuBtn";
 
 export function initialize(cpEvent) {
   setGlobalValue("currentSlide", cpEvent.cpData);
@@ -22,4 +23,5 @@ export function initialize(cpEvent) {
   ProgressBarInitialize();
   videoInitialize();
   // SCORM_2004_completion();
+  disableMenuStyle();
 }

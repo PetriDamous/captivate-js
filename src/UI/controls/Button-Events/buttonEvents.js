@@ -2,30 +2,39 @@ import { addEvents, removeEvents } from "../../../global/globalFunctions";
 import { getButtonsArray } from "../../uiFunctions";
 
 // Import Button Actions
+import { menuFunc } from "../Menu/menuBtn";
 import { ccFunc_auto } from "../Close-Caption/closeCaption-auto";
 import { ccFunc_manual } from "../../components/Close-Caption/closeCaption-manuel";
 import { rewindFunc } from "../Rewind/rewindBtn";
 import { replayFunc } from "../Replay/replayBtn";
 import { playFunc } from "../Play/playBtn";
 import { pauseFunc } from "../Pause/pauseBtn";
-import { menuFunc } from "../Menu/menuBtn";
+
 import { muteFunc } from "../Mute/muteBtn";
 import { unmuteFunc } from "../Unmute/unmuteBtn";
 
 export function setBtnEvents() {
   const $menuBtns = getButtonsArray("Menu");
-  const $glossaryBtns = getButtonsArray("Glossary");
-  const $referneceBtns = getButtonsArray("Referneces");
-  const $exitBtns = getButtonsArray("Exit");
+  const $closeCaptionBtns = getButtonsArray("Closed Caption");
+  const $rewindBtns = getButtonsArray("Rewind");
+  const $replayBtns = getButtonsArray("Replay");
   const $playBtns = getButtonsArray("Play");
   const $pauseBtns = getButtonsArray("Pause");
-  const $previousBtns = getButtonsArray("Previous");
-  const $nextBtns = getButtonsArray("Next");
-  const $rewindBtns = getButtonsArray("Rewind");
-  const $closeCaptionBtns = getButtonsArray("Closed Caption");
+  const $muteBtns = getButtonsArray("Mute");
+  const $unmuteBtns = getButtonsArray("Unmute");
 
+  // const $glossaryBtns = getButtonsArray("Glossary");
+  // const $referneceBtns = getButtonsArray("Referneces");
+  // const $exitBtns = getButtonsArray("Exit");
+  // const $previousBtns = getButtonsArray("Previous");
+  // const $nextBtns = getButtonsArray("Next");
+
+  addEvents($menuBtns, "click", menuFunc);
   addEvents($closeCaptionBtns, "click", ccFunc_auto);
+  addEvents($rewindBtns, "click", rewindFunc);
+  addEvents($replayBtns, "click", replayFunc);
   addEvents($playBtns, "click", playFunc);
   addEvents($pauseBtns, "click", pauseFunc);
-  addEvents($rewindBtns, "click", rewindFunc);
+  addEvents($muteBtns, "click", muteFunc);
+  addEvents($unmuteBtns, "click", unmuteFunc);
 }

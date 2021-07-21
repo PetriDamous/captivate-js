@@ -1,45 +1,41 @@
+import { disableSlidesArray } from "./menuSettings";
 import { getButtonsArray } from "../../uiFunctions";
 
 // Function for Menu button
 export function menuFunc() {
-  if (disableMenuAction()) return;
+  if (disableMenu()) return;
 
   tocCss();
 
-  if (cpCmndTOCVisible === 0) {
-    cpCmndTOCVisible = 1;
+  if (cpCmndTOCVisible === false) {
+    cpCmndTOCVisible = true;
   } else {
-    cpCmndTOCVisible = 0;
+    cpCmndTOCVisible = false;
   }
 }
 
 // Disables menu actions
 // Put on menu function
-export function disableMenuAction() {
-  const slideLabels = ["Pre-Test"];
-
-  return slideLabels.some(
-    (slideLabel) => cpInfoCurrentSlideLabel.indexOf() === slideLabel
+export function disableMenu() {
+  return disableSlidesArray.some(
+    (slideLabel) => cpInfoCurrentSlideLabel === slideLabel
   );
 }
 
 // Adds visual styling for disabled button
 // Put on main JS file to read on slide enter
 export function disableMenuStyle() {
-  // const menuBtn = document.querySelectorAll('div[title="Menu"]');
-
-  // for (let i = 0; i < menuBtn.length; i++) {
-  //   const menuItemCanvas = document.getElementById(menuBtn[i].id + "c");
-  //   menuItemCanvas.style.opacity = ".5";
-  //   menuBtn[i].style.cursor = "not-allowed";
-  // }
+  if (!disableMenu()) return;
 
   const $menuBtns = getButtonsArray("Menu");
 
-  $menuBtns.forEach((menuBtn, idx) => {
-    const menuItemCanvas = document.getElementById(menuBtn.id + "c");
-    menuItemCanvas.style.opacity = ".5";
+  $menuBtns.forEach((menuBtn) => {
+    const $menuCanvas = document.getElementById(`${menuBtn.id}c`);
+    const $menuCanvasParent = document.getElementById(`re-${menuBtn.id}c`);
+    $menuCanvas.style.opacity = ".5";
     menuBtn.style.cursor = "not-allowed";
+    $menuCanvas.style.cursor = "not-allowed";
+    $menuCanvasParent.style.cursor = "not-allowed";
   });
 }
 
