@@ -3,7 +3,7 @@ import { fetchGlobal } from "../../../global/globalSettings";
 
 // Rewind
 export function rewindFunc() {
-  var rewindTime = 90;
+  const rewindTime = 90;
 
   const { from: firstFrame } = fetchGlobal("currentSlide");
 

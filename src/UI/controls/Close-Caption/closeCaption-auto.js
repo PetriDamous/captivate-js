@@ -4,7 +4,6 @@ import { setGlobalValue, fetchGlobal } from "../../../global/globalSettings";
 export function ccFunc_auto() {
   if (cpCmndCC === 0) {
     setGlobalValue("isCcOnEnter_auto", true);
-    // window.ccOpen = true;
     cpCmndCC = 1;
     cp.hide("ccClose");
     ccToolTip_auto();
@@ -16,7 +15,7 @@ export function ccFunc_auto() {
 }
 
 function ccToolTip_auto() {
-  var ccBtnsList = getButtonsArray("Closed Caption");
+  const ccBtnsList = getButtonsArray("Closed Caption");
 
   ccBtnsList.forEach(function (ccBtn) {
     cpCmndCC === 0

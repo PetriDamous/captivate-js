@@ -1,4 +1,4 @@
-export var ccTextArray = [
+export const ccTextArray = [
   {
     slide: "Welcome",
     text: "Welcome to Lesson 1: Introduction to the Family Advocacy Staff Training Course",

@@ -10,13 +10,13 @@ import { addCssRules } from "../Styles/styles";
 export function ProgressBarInitialize() {
   if (hideProgress()) return;
 
-  var $progressBar = createProgressBar();
+  const $progressBar = createProgressBar();
   progressStyle($progressBar);
   progressEventEmitter($progressBar);
 }
 
 function hideProgress() {
-  var isProgressHide = false;
+  let isProgressHide = false;
 
   for (var i = 0; i < noProgressSlides.length; i++) {
     if (
@@ -35,7 +35,7 @@ export function createProgressBar() {
   const { from: firstFrame, to: lastFrame } = fetchGlobal("currentSlide");
 
   // Creates Progress Bar
-  var $progressBar = document.createElement("input");
+  const $progressBar = document.createElement("input");
 
   $progressBar.id = "progressBar";
   $progressBar.type = "range";
@@ -55,10 +55,7 @@ export function createProgressBar() {
 
 // Progress Bar styles
 function progressStyle($progressBar) {
-  var isIE = fetchGlobal("isIE");
-  var isEdge = fetchGlobal("isEdge");
-  var isChrome = fetchGlobal("isChrome");
-  var isFirefox = fetchGlobal("isFirefox");
+  const { isIE, isEdge, isChrome, isFirefox } = window.cpGlobalSetup;
 
   const { edgeIeStyles, fireFoxStyles, chromeStyles } = progressStyles;
 
@@ -69,10 +66,10 @@ function progressStyle($progressBar) {
 
   const { inputRngI, inputRng, runTrack, slideThumb, inputFcs } = chromeStyles;
 
-  var styles;
+  let styles;
 
   if (isIE || isEdge) {
-    var edgeIE = {
+    const edgeIE = {
       ms_track: [
         "#progressBar::-ms-track {",
         // Change styles below //
@@ -115,7 +112,7 @@ function progressStyle($progressBar) {
     styles = edgeIE.ms_track + edgeIE.ms_thumb + edgeIE.ms_fill_lower;
   }
   if (isFirefox) {
-    var fireFox = {
+    const fireFox = {
       moz_input: [
         "#progressBar {",
         // Change styles below //
@@ -166,7 +163,7 @@ function progressStyle($progressBar) {
       fireFox.moz_range_progress;
   }
   if (isChrome) {
-    var chrome = {
+    const chrome = {
       input_rng_i: [
         'input[type="range" i]  {',
         // Change styles below //
@@ -245,9 +242,7 @@ function progressStyle($progressBar) {
 function progressEventEmitter($progressBar) {
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    function () {
-      progressUpdate($progressBar);
-    },
+    () => progressUpdate($progressBar),
     "cpInfoCurrentFrame"
   );
 }

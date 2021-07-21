@@ -2,6 +2,8 @@
 
 cd ../GitHub/captivate-js/git-hub
 
+es6 convert: next Unmute on up
+
 1. initialize file should have all functions and settings that setup project inside of it
 2. index file will contain initialize and DOM event handlers for buttons
 3. Remove all jQuery (find away to do p:contains)
@@ -24,6 +26,7 @@ cd ../GitHub/captivate-js/git-hub
 20. Update rewind function
 21. Look into Babel pollyfill
 22. Look to see if Redux is worth it
+23. Implement new over arch (enter, exit, onExit)
 
 #Futrue:
 

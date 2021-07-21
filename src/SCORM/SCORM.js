@@ -1,9 +1,7 @@
-import { fetchGlobal } from "../global/global";
-import { clearStorageUnload } from "../utility";
+import { clearStorageUnload } from "../global/globalFunctions";
 
 export function SCORM_2004_completion() {
-  var currentSlide = fetchGlobal("currentSlide");
-  var lastSlide = fetchGlobal("lastSlide");
+  const { currentSlide, lastSlide } = window.cpGlobalSetup;
 
   // SCORM completion once final slide is reached
   if (currentSlide === lastSlide) {

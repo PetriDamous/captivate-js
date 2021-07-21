@@ -4,12 +4,13 @@ import { fetchGlobal } from "../../../global/globalSettings";
 // Pause
 export function pauseFunc() {
   const { to: lastFrame } = fetchGlobal("currentSlide");
+  const isTogglePausePlay = fetchGlobal("isTogglePausePlay");
 
-  if (cpInfoCurrentFrame < lastFrame - 1) {
-    cpCmndPause = 1;
-    hidePlayPause("Pause");
-  } else {
-    cpCmndPause = 1;
-    hidePlayPause("Play");
+  cpCmndPause = 1;
+
+  if (isTogglePausePlay) {
+    cpInfoCurrentFrame < lastFrame - 1
+      ? hidePlayPause("Pause")
+      : hidePlayPause("Play");
   }
 }

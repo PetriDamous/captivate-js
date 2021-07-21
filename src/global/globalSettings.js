@@ -6,10 +6,14 @@ const propList = [
   "isCcOnEnter_manual",
   "isCcDisplay_manual",
   "isCcOnEnter_auto",
-  "slides",
-  "slidesArray",
+  "slidesObjArray",
+  "slidesIdArray",
   "currentSlide",
   "prevSlide",
+  "firstSlide",
+  "lastSlide",
+  "isToggleMuteUnmute ",
+  "isTogglePausePlay",
 ];
 
 export function setupGlobal() {
@@ -23,10 +27,11 @@ export function setupGlobal() {
     isCcOnEnter_manual: false,
     isCcDisplay_manual: true,
     isCcOnEnter_auto: false,
-    slides: null,
-    slidesArray: null,
+    slidesObjArray: null,
     currentSlide: null,
     prevSlide: null,
+    isToggleMuteUnmute: true,
+    isTogglePausePlay: true,
   };
 }
 
@@ -65,15 +70,29 @@ export function setContentMeta() {
 }
 
 export function setSlideData() {
-  const slidesArray = cp.model.data.project_main.slides.split(",");
+  const slidesIdArray = cp.model.data.project_main.slides.split(",");
 
-  const slides = slidesArray.map((slideId) => {
+  const slidesObjArray = slidesIdArray.map((slideId) => {
     return cp.model.data[slideId];
   });
 
-  const propToSetArray = ["slides", "slidesArray"];
+  const firstSlide = slidesObjArray[0];
 
-  const valueToSetArray = [slides, slidesArray];
+  const lastSlide = slidesObjArray[slidesObjArray.length - 1];
+
+  const propToSetArray = [
+    "slidesIdArray",
+    "slidesObjArray",
+    "firstSlide",
+    "lastSlide",
+  ];
+
+  const valueToSetArray = [
+    slidesIdArray,
+    slidesObjArray,
+    firstSlide,
+    lastSlide,
+  ];
 
   setGlobalValue(propToSetArray, valueToSetArray);
 }

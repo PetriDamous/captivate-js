@@ -5,16 +5,16 @@ import { applyStyles } from "../../../global/globalFunctions";
 import { ccTextBoxCss, ccParagraphCss } from "./closeCaptionSettings";
 
 function createCCElements() {
-  var $ccBox = document.createElement("div");
-  var $ccPara = document.createElement("p");
+  const $ccBox = document.createElement("div");
+  const $ccPara = document.createElement("p");
   $ccBox.id = "ccTextBox";
   $ccPara.id = "ccParagraph";
 
   document.querySelector("#div_Slide").appendChild($ccBox);
   document.querySelector("#ccTextBox").appendChild($ccPara);
 
-  var $ccTextBox = document.getElementById("ccTextBox");
-  var $ccParagraph = document.getElementById("ccParagraph");
+  const $ccTextBox = document.getElementById("ccTextBox");
+  const $ccParagraph = document.getElementById("ccParagraph");
 
   applyStyles(ccTextBoxCss, $ccTextBox);
 
@@ -27,13 +27,13 @@ function createCCElements() {
 }
 
 function appendCCText() {
-  var slideLabel = cpInfoCurrentSlideLabel.trim().toLowerCase();
-  var $ccParagraph = document.getElementById("ccParagraph");
+  const slideLabel = cpInfoCurrentSlideLabel.trim().toLowerCase();
+  const $ccParagraph = document.getElementById("ccParagraph");
 
-  for (var i = 0; i < ccTextArray.length; i++) {
+  for (let i = 0; i < ccTextArray.length; i++) {
     if (ccTextArray[i].slide.trim().toLowerCase() === slideLabel) {
       $ccParagraph.textContent = ccTextArray[i].text;
-      break;
+      return;
     } else {
       $ccParagraph.textContent = "No Audio";
     }
@@ -41,15 +41,15 @@ function appendCCText() {
 }
 
 function ccToolTip_manuel() {
-  var $closeCaptionBtns = getButtonsArray("Closed Caption");
+  const $closeCaptionBtns = getButtonsArray("Closed Caption");
 
   if (fetchGlobal("isCcOnEnter_manual")) {
-    $closeCaptionBtns.forEach(function (ccBtn) {
+    $closeCaptionBtns.forEach((ccBtn) => {
       ccBtn.setAttribute("title", "Closed Caption Close");
     });
     return;
   } else {
-    $closeCaptionBtns.forEach(function (ccBtn) {
+    $closeCaptionBtns.forEach((ccBtn) => {
       ccBtn.setAttribute("title", "Closed Caption Open");
     });
     return;
@@ -57,7 +57,7 @@ function ccToolTip_manuel() {
 }
 
 export function ccFunc_manual() {
-  var $ccTextBox = document.getElementById("ccTextBox");
+  const $ccTextBox = document.getElementById("ccTextBox");
 
   if (fetchGlobal("isCcDisplay_manual")) {
     $ccTextBox.style.visibility = "visible";
@@ -74,11 +74,11 @@ export function ccFunc_manual() {
 }
 
 export function ccBoxOnEnter_manuel() {
-  var ccElements = createCCElements();
+  const ccElements = createCCElements();
   appendCCText();
   ccToolTip_manuel();
 
-  var $ccTextBox = ccElements.textBoxElm;
+  const $ccTextBox = ccElements.textBoxElm;
 
   if (fetchGlobal("isCcOnEnter_manual")) {
     $ccTextBox.style.visibility = "visible";
