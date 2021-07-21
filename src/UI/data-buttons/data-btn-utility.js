@@ -1,7 +1,5 @@
-import { fetchGlobal } from "../../global/globalSettings";
-
 export function setDataButton(elm) {
-  const isIE = fetchGlobal("isIE");
+  const { isIE } = window.cpGlobalSetup;
 
   let $setDataAttr;
 

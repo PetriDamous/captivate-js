@@ -1,4 +1,4 @@
-import { fetchGlobal, setGlobalValue } from "../../global/globalSettings";
+import { setGlobalValue } from "../../global/globalSettings";
 import { setToolTips } from "../data-buttons/toolTips";
 import { setExtraDataBtn } from "../data-buttons/extraDataBtns";
 import { setBtnEvents } from "../controls/Button-Events/buttonEvents";
