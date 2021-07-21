@@ -5,8 +5,6 @@ import { getButtonsArray } from "../../uiFunctions";
 export function menuFunc() {
   if (disableMenu()) return;
 
-  tocCss();
-
   if (cpCmndTOCVisible === false) {
     cpCmndTOCVisible = true;
   } else {
@@ -37,11 +35,4 @@ export function disableMenuStyle() {
     $menuCanvas.style.cursor = "not-allowed";
     $menuCanvasParent.style.cursor = "not-allowed";
   });
-}
-
-// Controls Height of TOC when opened
-export function tocCss() {
-  document.querySelector("#tocFooter").style.top = "585px";
-  document.querySelector("#tocContent").style.height = "509px";
-  document.querySelector("#toc").style.height = "605px";
 }
