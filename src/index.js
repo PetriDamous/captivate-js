@@ -1,34 +1,26 @@
-import {
-  setupGlobal,
-  setContentMeta,
-  setPrevSlideData,
-  setSlideData,
-} from "./global/globalSettings";
-import { createStyleTag } from "./UI/components/Styles/styles";
-import { initialize } from "./UI/initialize/initialize";
-import { removeVideoEvent } from "./UI/controls/Video/video";
+import { onLoad, slideEnter, slideExit, movieStop, unLoad } from "./App/app";
+import { setSlideData } from "./global/globalSettings";
 
-window.addEventListener("load", () => {
-  setContentMeta();
-  setupGlobal();
-  createStyleTag();
+window.addEventListener("load", (e) => {
+  onLoad(e);
 });
 
 window.addEventListener("moduleReadyEvent", (e) => {
   setSlideData();
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", (e) => {
-    $(document).ready(() => {
-      initialize(e);
-    });
+    slideEnter(e);
   });
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEEXIT", (e) => {
-    setPrevSlideData();
-    removeVideoEvent();
+    slideExit(e);
   });
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_MOVIESTOP", (e) => {
-    console.log("stop");
+    movieStop(e);
   });
+});
+
+window.addEventListener("beforeunload", (e) => {
+  unLoad(e);
 });

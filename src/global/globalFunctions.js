@@ -39,13 +39,6 @@ export function getElementAttr(name, attr, elm = div) {
     .getAttribute(attr);
 }
 
-// Clears local storage when window is closed
-export function clearStorageUnload() {
-  window.addEventListener("beforeunload", (e) => {
-    localStorage.clear();
-  });
-}
-
 export function applyStyles(cssStyleList, elmToApply) {
   cssStyleList.forEach((style) => {
     elmToApply.style[style[0]] = style[1];
