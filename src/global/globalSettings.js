@@ -12,7 +12,7 @@ const propList = [
   "prevSlide",
   "firstSlide",
   "lastSlide",
-  "isToggleMuteUnmute ",
+  "isToggleMuteUnmute",
   "isTogglePausePlay",
   "nextSlide",
 ];

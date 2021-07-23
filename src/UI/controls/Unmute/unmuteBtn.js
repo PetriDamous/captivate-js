@@ -4,7 +4,7 @@ import { fetchGlobal } from "../../../global/globalSettings";
 export function unmuteFunc() {
   cpCmndMute = 0;
 
-  if (fetchGlobal("isToggleMuteUnmute ")) {
+  if (fetchGlobal("isToggleMuteUnmute")) {
     hideMuteUnmute("Unmute");
   }
 }
