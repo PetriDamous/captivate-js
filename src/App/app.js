@@ -3,10 +3,12 @@ import {
   setupGlobal,
   setPrevSlideData,
   setNextSlideData,
+  setSlideData,
 } from "../global/globalSettings";
 import { createStyleTag } from "../UI/css/styles";
 import { initialize } from "../UI/initialize/initialize";
 import { removeVideoEvent } from "../UI/controls/Video/video";
+import { setTocHeight } from "../UI/controls/TOC/toc";
 
 export function onLoad(e) {
   setContentMeta();
@@ -20,6 +22,11 @@ export function unLoad(e) {
   if (currentSlide === lastSlide) {
     localStorage.clear();
   }
+}
+
+export function moduleReady(e) {
+  setSlideData();
+  setTocHeight();
 }
 
 export function slideEnter(e) {

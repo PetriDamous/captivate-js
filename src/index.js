@@ -1,14 +1,18 @@
-import { onLoad, slideEnter, slideExit, movieStop, unLoad } from "./App/app";
-import { setSlideData } from "./global/globalSettings";
-import { setTocHeight } from "./UI/controls/TOC/toc";
+import {
+  onLoad,
+  slideEnter,
+  slideExit,
+  movieStop,
+  unLoad,
+  moduleReady,
+} from "./App/app";
 
 window.addEventListener("load", (e) => {
   onLoad(e);
 });
 
 window.addEventListener("moduleReadyEvent", (e) => {
-  setSlideData();
-  setTocHeight();
+  moduleReady(e);
 
   window.cpAPIEventEmitter.addEventListener("CPAPI_SLIDEENTER", (e) => {
     slideEnter(e);
