@@ -14,6 +14,7 @@ const propList = [
   "lastSlide",
   "isToggleMuteUnmute ",
   "isTogglePausePlay",
+  "nextSlide",
 ];
 
 export function setupGlobal() {
@@ -32,6 +33,7 @@ export function setupGlobal() {
     prevSlide: null,
     isToggleMuteUnmute: true,
     isTogglePausePlay: true,
+    nextSlide: null,
   };
 }
 
@@ -100,5 +102,11 @@ export function setSlideData() {
 export function setPrevSlideData() {
   window.cpGlobalSetup.prevSlide = {
     ...cpGlobalSetup.currentSlide,
+  };
+}
+
+export function setNextSlideData() {
+  window.cpGlobalSetup.nextSlide = {
+    ...cpGlobalSetup.slidesObjArray[cpInfoCurrentSlide],
   };
 }
