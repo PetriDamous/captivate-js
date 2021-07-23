@@ -2,29 +2,28 @@
 
 cd ../GitHub/captivate-js/git-hub
 
-1. initialize file should have all functions and settings that setup project inside of it
-2. index file will contain initialize and DOM event handlers for buttons
-3. Remove all jQuery (find away to do p:contains)
 4. Setup position algo for positioning elements
 5. CC manuel get better way to pass element to other functions
 6. Complete settings file for CC manuel
 7. Create Lottie player for Captivate
 8. Random Question
 9. SCORM stuff
-10. Disable menu items (play with canvas elements)
+10. Disable menu items (play with canvas elements) (make it to disable any button based on slide and what buttons to disable)
 11. Make it to where all elements will have a data attribute and use getElement function to get elements
 12. Make a function to clean up event listners
-13. Convert to ES6
-14. Replace slide info on global with reducer pattern
-15. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
-16. Consider making custom array methods (ex: .find(), .filter())
-17. Consider making components classes
-18. make toggle function for hiding and showing buttons
-19. make custom hide show element function to handle an array of instances of key elements
-20. Update rewind function
-21. Look into Babel pollyfill
-22. Look to see if Redux is worth it
-23. Implement new over arch (enter, exit, onExit)
+13. Replace slide info on global with reducer pattern
+14. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
+15. Consider making custom array methods (ex: .find(), .filter())
+16. Consider making components classes
+17. make toggle function for hiding and showing buttons
+18. make custom hide show element function to handle an array of instances of key elements
+19. Update rewind function
+20. Look into Babel pollyfill
+21. Look to see if Redux is worth it
+22. Implement new over arch (enter, exit, onExit)
+23. Improve and fix browser detection
+24. restructure global object for settings
+25. Make file that handles styling for input range component
 
 #Futrue:
 
