@@ -1,4 +1,4 @@
-import { ccTextArray } from "../../../ccText/ccText";
+import { ccTextArray } from "./ccText/ccText";
 import { getButtonsArray } from "../../uiFunctions";
 import { fetchGlobal, setGlobalValue } from "../../../global/globalSettings";
 import { applyStyles } from "../../../global/globalFunctions";
