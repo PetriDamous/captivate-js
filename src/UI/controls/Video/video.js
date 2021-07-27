@@ -134,7 +134,7 @@ function updateVideoStorage() {
 }
 
 function findCurrentVideo() {
-  var currentSlide = fetchGlobal("currentSlide");
+  const { currentSlide } = fetchGlobal("slideData");
 
   for (var i = 0; i < projectVideos.length; i++) {
     if (projectVideos[i].videoSlideLabel === currentSlide.lb.trim()) {

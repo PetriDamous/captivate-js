@@ -3,7 +3,9 @@ import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 // Pause
 export function pauseFunc() {
-  const { to: lastFrame } = fetchGlobal("currentSlide");
+  const {
+    currentSlide: { to: lastFrame },
+  } = fetchGlobal("slideData");
 
   cpCmndPause = 1;
 

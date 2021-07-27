@@ -4,7 +4,7 @@ import {
   setPrevSlideData,
   setNextSlideData,
   setSlideData,
-  setBrowserTypes,
+  fetchGlobal,
 } from "../global/globalObjFunctions";
 import { createStyleTag } from "../UI/css/styles";
 import { initialize } from "../UI/initialize/initialize";
@@ -18,7 +18,7 @@ export function onLoad(e) {
 }
 
 export function unLoad(e) {
-  const { currentSlide, lastSlide } = window.cpGlobalObj;
+  const { currentSlide, lastSlide } = fetchGlobal("slideData");
 
   if (currentSlide === lastSlide) {
     localStorage.clear();

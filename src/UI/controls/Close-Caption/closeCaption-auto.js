@@ -29,10 +29,8 @@ function ccToolTip_auto() {
 
 export function ccBoxOnEnter_auto() {
   const {
-    from: firstFrame,
-    to: lastFrame,
-    audCC,
-  } = fetchGlobal("currentSlide");
+    currentSlide: { from: firstFrame, to: lastFrame, audCC },
+  } = fetchGlobal("slideData");
 
   ccToolTip_auto();
 

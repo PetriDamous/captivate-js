@@ -11,7 +11,10 @@ import { SCORM_2004_completion } from "../../SCORM/SCORM";
 import { disableMenuStyle } from "../controls/Menu/menuBtn";
 
 export function initialize(cpEvent) {
-  setGlobalValue("currentSlide", cpEvent.cpData);
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    currentSlide: { ...cpEvent.cpData },
+  });
 
   setToolTips();
   setExtraDataBtn();

@@ -36,20 +36,41 @@ export function setSlideData() {
 
   const lastSlide = slidesObjArray[slidesObjArray.length - 1];
 
-  setGlobalValue("slidesIdArray", [...slidesIdArray]);
-  setGlobalValue("slidesObjArray", [...slidesObjArray]);
-  setGlobalValue("firstSlide", { ...firstSlide });
-  setGlobalValue("lastSlide", { ...lastSlide });
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    slidesIdArray: [...slidesIdArray],
+  });
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    slidesObjArray: [...slidesObjArray],
+  });
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    firstSlide: { ...firstSlide },
+  });
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    lastSlide: { ...lastSlide },
+  });
 }
 
 export function setPrevSlideData() {
-  window.cpGlobalObj.prevSlide = {
-    ...cpGlobalObj.currentSlide,
-  };
+  // window.cpGlobalObj.prevSlide = {
+  //   ...cpGlobalObj.currentSlide,
+  // };
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    prevSlide: { ...cpGlobalObj.slideData.currentSlide },
+  });
 }
 
 export function setNextSlideData() {
-  window.cpGlobalObj.nextSlide = {
-    ...cpGlobalObj.slidesObjArray[cpInfoCurrentSlide],
-  };
+  // window.cpGlobalObj.nextSlide = {
+  //   ...cpGlobalObj.slidesObjArray[cpInfoCurrentSlide],
+  // };
+
+  setGlobalValue("slideData", {
+    ...cpGlobalObj.slideData,
+    nextSlide: { ...cpGlobalObj.slideData.slidesObjArray[cpInfoCurrentSlide] },
+  });
 }

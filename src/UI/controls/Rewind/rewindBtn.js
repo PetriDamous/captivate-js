@@ -5,7 +5,9 @@ import { fetchGlobal } from "../../../global/globalObjFunctions";
 export function rewindFunc() {
   const rewindTime = 90;
 
-  const { from: firstFrame } = fetchGlobal("currentSlide");
+  const {
+    currentSlide: { from: firstFrame },
+  } = fetchGlobal("slideData");
 
   if (
     cpInfoCurrentFrame != firstFrame &&

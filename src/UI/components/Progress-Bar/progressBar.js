@@ -32,7 +32,9 @@ function hideProgress() {
 }
 
 export function createProgressBar() {
-  const { from: firstFrame, to: lastFrame } = fetchGlobal("currentSlide");
+  const {
+    currentSlide: { from: firstFrame, to: lastFrame },
+  } = fetchGlobal("slideData");
 
   // Creates Progress Bar
   const $progressBar = document.createElement("input");
