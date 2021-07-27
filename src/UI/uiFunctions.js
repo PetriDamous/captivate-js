@@ -1,4 +1,4 @@
-import { getElement } from "../global/globalFunctions";
+import { getElement } from "../utilities/utilities";
 
 // Rests UI controls when entering new slide
 export function slideRest() {

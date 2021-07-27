@@ -1,5 +1,8 @@
 import { getButtonsArray } from "../../uiFunctions";
-import { setGlobalValue, fetchGlobal } from "../../../global/globalSettings";
+import {
+  setGlobalValue,
+  fetchGlobal,
+} from "../../../global/globalObjFunctions";
 
 export function ccFunc_auto() {
   if (cpCmndCC === 0) {

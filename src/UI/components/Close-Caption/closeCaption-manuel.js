@@ -1,7 +1,10 @@
 import { ccTextArray } from "./ccText/ccText";
 import { getButtonsArray } from "../../uiFunctions";
-import { fetchGlobal, setGlobalValue } from "../../../global/globalSettings";
-import { applyStyles } from "../../../global/globalFunctions";
+import {
+  fetchGlobal,
+  setGlobalValue,
+} from "../../../global/globalObjFunctions";
+import { applyStyles } from "../../../utilities/utilities";
 import { ccTextBoxCss, ccParagraphCss } from "./closeCaptionSettings";
 
 function createCCElements() {

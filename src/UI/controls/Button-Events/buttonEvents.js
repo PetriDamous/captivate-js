@@ -1,4 +1,4 @@
-import { addEvents, removeEvents } from "../../../global/globalFunctions";
+import { addEvents, removeEvents } from "../../../utilities/utilities";
 import { getButtonsArray } from "../../uiFunctions";
 
 // Import Button Actions

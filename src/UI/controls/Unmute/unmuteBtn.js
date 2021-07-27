@@ -1,5 +1,5 @@
 import { hideMuteUnmute } from "../../uiFunctions";
-import { fetchGlobal } from "../../../global/globalSettings";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 export function unmuteFunc() {
   cpCmndMute = 0;

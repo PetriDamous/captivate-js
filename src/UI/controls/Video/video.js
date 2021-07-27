@@ -1,7 +1,7 @@
 // Developer imports
 import { hidePlayPause } from "../../uiFunctions";
-import { fetchGlobal } from "../../../global/globalSettings";
-import { isValueInArray, getElement } from "../../../global/globalFunctions";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
+import { isValueInArray, getElement } from "../../../utilities/utilities";
 import { projectVideos } from "./videoSettings";
 
 /*

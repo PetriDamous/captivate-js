@@ -1,5 +1,7 @@
 export function setDataButton(elm) {
-  const { isIE } = window.cpGlobalSetup;
+  const {
+    browserType: { isIE },
+  } = window.cpGlobalObj;
 
   let $setDataAttr;
 

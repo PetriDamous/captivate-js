@@ -1,5 +1,5 @@
 import { hidePlayPause, stayMute } from "../../uiFunctions";
-import { fetchGlobal } from "../../../global/globalSettings";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 // Rewind
 export function rewindFunc() {

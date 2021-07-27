@@ -1,5 +1,5 @@
 export function SCORM_2004_completion() {
-  const { currentSlide, lastSlide } = window.cpGlobalSetup;
+  const { currentSlide, lastSlide } = window.cpGlobalObj;
 
   // SCORM completion once final slide is reached
   if (currentSlide === lastSlide) {

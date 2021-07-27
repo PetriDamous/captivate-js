@@ -1,10 +1,11 @@
+import { setupGlobalObj } from "../global/globalObject";
 import {
   setContentMeta,
-  setupGlobal,
   setPrevSlideData,
   setNextSlideData,
   setSlideData,
-} from "../global/globalSettings";
+  setBrowserTypes,
+} from "../global/globalObjFunctions";
 import { createStyleTag } from "../UI/css/styles";
 import { initialize } from "../UI/initialize/initialize";
 import { removeVideoEvent } from "../UI/controls/Video/video";
@@ -12,12 +13,12 @@ import { setTocHeight } from "../UI/controls/TOC/toc";
 
 export function onLoad(e) {
   setContentMeta();
-  setupGlobal();
+  setupGlobalObj();
   createStyleTag();
 }
 
 export function unLoad(e) {
-  const { currentSlide, lastSlide } = window.cpGlobalSetup;
+  const { currentSlide, lastSlide } = window.cpGlobalObj;
 
   if (currentSlide === lastSlide) {
     localStorage.clear();

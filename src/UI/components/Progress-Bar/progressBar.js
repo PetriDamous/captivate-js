@@ -1,5 +1,5 @@
-import { applyStyles } from "../../../global/globalFunctions";
-import { fetchGlobal } from "../../../global/globalSettings";
+import { applyStyles } from "../../../utilities/utilities";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 import {
   progressPos,
   progressStyles,
@@ -55,7 +55,9 @@ export function createProgressBar() {
 
 // Progress Bar styles
 function progressStyle($progressBar) {
-  const { isIE, isEdge, isChrome, isFirefox } = window.cpGlobalSetup;
+  const {
+    browserType: { isIE, isEdge, isChrome, isFirefox },
+  } = window.cpGlobalObj;
 
   const { edgeIeStyles, fireFoxStyles, chromeStyles } = progressStyles;
 

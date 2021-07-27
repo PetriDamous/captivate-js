@@ -1,6 +1,6 @@
 import { hidePlayPause, stayMute } from "../../uiFunctions";
 import { playVideo } from "../Video/video";
-import { fetchGlobal } from "../../../global/globalSettings";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 // Play
 export function playFunc() {
