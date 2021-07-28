@@ -8,11 +8,13 @@ export function playFunc() {
     currentSlide: { to: lastFrame },
   } = fetchGlobal("slideData");
 
+  const { isTogglePausePlay } = fetchGlobal("buttonOptions");
+
   playVideo();
 
   cpCmndResume = 1;
 
-  if (fetchGlobal("isTogglePausePlay")) {
+  if (isTogglePausePlay) {
     hidePlayPause("Play");
   }
 

@@ -15,10 +15,14 @@ export function setupGlobalObj() {
       prevSlide: {},
       nextSlide: {},
     },
-    isCcOnEnter_manual: false,
-    isCcDisplay_manual: true,
-    isCcOnEnter_auto: false,
-    isToggleMuteUnmute: true,
-    isTogglePausePlay: true,
+    ccOptions: {
+      isCcOnEnter_manual: false,
+      isCcDisplay_manual: true,
+      isCcOnEnter_auto: false,
+    },
+    buttonOptions: {
+      isToggleMuteUnmute: true,
+      isTogglePausePlay: true,
+    },
   };
 }

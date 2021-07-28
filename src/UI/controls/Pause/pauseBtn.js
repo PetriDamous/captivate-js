@@ -7,9 +7,11 @@ export function pauseFunc() {
     currentSlide: { to: lastFrame },
   } = fetchGlobal("slideData");
 
+  const { isTogglePausePlay } = fetchGlobal("buttonOptions");
+
   cpCmndPause = 1;
 
-  if (fetchGlobal("isTogglePausePlay")) {
+  if (isTogglePausePlay) {
     cpInfoCurrentFrame < lastFrame - 1
       ? hidePlayPause("Pause")
       : hidePlayPause("Play");

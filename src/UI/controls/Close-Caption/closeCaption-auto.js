@@ -6,14 +6,20 @@ import {
 
 export function ccFunc_auto() {
   if (cpCmndCC === 0) {
-    setGlobalValue("isCcOnEnter_auto", true);
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcOnEnter_auto: true,
+    });
     cpCmndCC = 1;
     cp.hide("ccClose");
     ccToolTip_auto();
   } else {
     cpCmndCC = 0;
     ccToolTip_auto();
-    setGlobalValue("isCcOnEnter_auto", true);
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcOnEnter_auto: true,
+    });
   }
 }
 
@@ -43,7 +49,7 @@ export function ccBoxOnEnter_auto() {
 
   // Prevents final cc text caption from closing cc text box
   if (audCC.length) {
-    audCC[0].sf = 1;
-    audCC[audCC.length - 1].ef = lastFrame - firstFrame;
+    audCC[0].sf = 0;
+    audCC[audCC.length - 1].ef = lastFrame + 300;
   }
 }

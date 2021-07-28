@@ -44,9 +44,11 @@ function appendCCText() {
 }
 
 function ccToolTip_manuel() {
+  const { isCcOnEnter_manual } = fetchGlobal("ccOptions");
+
   const $closeCaptionBtns = getButtonsArray("Closed Caption");
 
-  if (fetchGlobal("isCcOnEnter_manual")) {
+  if (isCcOnEnter_manual) {
     $closeCaptionBtns.forEach((ccBtn) => {
       ccBtn.setAttribute("title", "Closed Caption Close");
     });
@@ -60,30 +62,52 @@ function ccToolTip_manuel() {
 }
 
 export function ccFunc_manual() {
+  const { isCcDisplay_manual } = fetchGlobal("ccOptions");
+
   const $ccTextBox = document.getElementById("ccTextBox");
 
-  if (fetchGlobal("isCcDisplay_manual")) {
+  if (isCcDisplay_manual) {
     $ccTextBox.style.visibility = "visible";
 
-    setGlobalValue("isCcOnEnter_manual", true);
-    setGlobalValue("isCcDisplay_manual", !true);
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcOnEnter_manual: true,
+    });
+
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcDisplay_manual: !true,
+    });
+
     ccToolTip_manuel();
   } else {
     $ccTextBox.style.visibility = "hidden";
-    setGlobalValue("isCcOnEnter_manual", !true);
-    setGlobalValue("isCcDisplay_manual", true);
+
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcOnEnter_manual: !true,
+    });
+
+    setGlobalValue("ccOptions", {
+      ...cpGlobalObj.ccOptions,
+      isCcDisplay_manual: true,
+    });
+
     ccToolTip_manuel();
   }
 }
 
 export function ccBoxOnEnter_manuel() {
   const ccElements = createCCElements();
+
+  const { isCcOnEnter_manual } = fetchGlobal("ccOptions");
+
   appendCCText();
   ccToolTip_manuel();
 
   const $ccTextBox = ccElements.textBoxElm;
 
-  if (fetchGlobal("isCcOnEnter_manual")) {
+  if (isCcOnEnter_manual) {
     $ccTextBox.style.visibility = "visible";
   } else {
     $ccTextBox.style.visibility = "hidden";
