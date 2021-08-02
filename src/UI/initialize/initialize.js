@@ -21,8 +21,8 @@ export function initialize(cpEvent) {
   setBtnEvents();
 
   slideRest();
-  ccBoxOnEnter_auto();
-  // ccBoxOnEnter_manuel();
+  // ccBoxOnEnter_auto();
+  ccBoxOnEnter_manuel();
   ProgressBarInitialize();
   videoInitialize();
   // SCORM_2004_completion();

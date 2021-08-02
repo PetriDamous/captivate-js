@@ -1,5 +1,5 @@
 // Styles for CC text box
-export var ccTextBoxCss = [
+export const ccTextBoxCss = [
   ["position", "absolute"],
   ["top", null],
   ["right", null],
@@ -23,7 +23,7 @@ export var ccTextBoxCss = [
 ];
 
 // Styles for CC text
-export var ccParagraphCss = [
+export const ccParagraphCss = [
   ["position", "static"],
   ["top", null],
   ["right", null],

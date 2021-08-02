@@ -1,6 +1,6 @@
-export function setupGlobalObj() {
-  const isIE = /*@cc_on!@*/ false || !!document.documentMode;
+const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
+export function setupGlobalObj() {
   window.cpGlobalObj = {
     browserType: {
       isFirefox: typeof InstallTrigger !== "undefined",
@@ -14,6 +14,8 @@ export function setupGlobalObj() {
       currentSlide: {},
       prevSlide: {},
       nextSlide: {},
+      videoSlides: [],
+      viewedVideoSlides: [],
     },
     ccOptions: {
       isCcOnEnter_manual: false,
@@ -23,6 +25,11 @@ export function setupGlobalObj() {
     buttonOptions: {
       isToggleMuteUnmute: true,
       isTogglePausePlay: true,
+    },
+    timerOptions: {
+      isTimer: true,
+      isDurationTime: true,
+      isCurrentTime: true,
     },
   };
 }

@@ -30,7 +30,7 @@ export function setBtnEvents() {
   // const $nextBtns = getButtonsArray("Next");
 
   addEvents($menuBtns, "click", menuFunc);
-  addEvents($closeCaptionBtns, "click", ccFunc_auto);
+  addEvents($closeCaptionBtns, "click", ccFunc_manual);
   addEvents($rewindBtns, "click", rewindFunc);
   addEvents($replayBtns, "click", replayFunc);
   addEvents($playBtns, "click", playFunc);

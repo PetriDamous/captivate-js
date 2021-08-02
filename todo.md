@@ -2,7 +2,7 @@
 
 cd ../GitHub/captivate-js/git-hub
 
-4. Setup position algo for positioning elements
+4. Setup position algo for positioning elements (also have element to append to and the child we want to append)
 5. CC manuel get better way to pass element to other functions
 6. Complete settings file for CC manuel
 7. Create Lottie player for Captivate
@@ -20,10 +20,8 @@ cd ../GitHub/captivate-js/git-hub
 19. Update rewind function
 20. Look into Babel pollyfill
 21. Look to see if Redux is worth it
-22. Implement new over arch (enter, exit, onExit)
-23. Improve and fix browser detection
-24. restructure global object for settings
-25. Make file that handles styling for input range component
+22. restructure global object for settings
+23. Make file that handles styling for input range component
 
 #Futrue:
 
