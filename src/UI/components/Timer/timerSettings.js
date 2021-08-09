@@ -1,24 +1,43 @@
-export const hideCurrentTimeArray = [];
-export const hideDurationTimeArray = [];
+export const noTimerSlidesArray = [];
 
-export const durationTimeSettings = {
-  apendToElement: "#div_Slide",
-  durTimePos: "absolute",
-  durTimeTop: "95%",
-  durTimeLeft: "85%",
-  durTimeColor: "white",
-  durTimeFontWeight: "inherit",
-  durTimeFontFam: "inherit",
-  durTimeFontSize: "inherit",
-};
+export const durationTimeCss = [
+  ["position", "absolute"],
+  ["top", "95%"],
+  ["right", null],
+  ["bottom", null],
+  ["left", "85%"],
+  ["margin-top", null],
+  ["margin-right", null],
+  ["margin-bottom", null],
+  ["margin-left", null],
+  ["padding-top", null],
+  ["padding-right", null],
+  ["padding-bottom", null],
+  ["padding-left", null],
+  ["color", "white"],
+  ["font-weight", "inherit"],
+  ["font-family", "inherit"],
+  ["font-size", "inherit"],
+  ["z-index", 2000],
+];
 
-export const currentTimeSettings = {
-  apendToElement: "#div_Slide",
-  curTimePos: "absolute",
-  curTimeTop: "95%",
-  curTimeLeft: "9%",
-  curTimeColor: "white",
-  curTimeFontWeight: "inherit",
-  curTimeFontFam: "inherit",
-  curTimeFontSize: "inherit",
-};
+export const currentTimeCss = [
+  ["position", "absolute"],
+  ["top", "95%"],
+  ["right", null],
+  ["bottom", null],
+  ["left", "9%"],
+  ["margin-top", null],
+  ["margin-right", null],
+  ["margin-bottom", null],
+  ["margin-left", null],
+  ["padding-top", null],
+  ["padding-right", null],
+  ["padding-bottom", null],
+  ["padding-left", null],
+  ["color", "white"],
+  ["font-weight", "inherit"],
+  ["font-family", "inherit"],
+  ["font-size", "inherit"],
+  ["z-index", 2000],
+];

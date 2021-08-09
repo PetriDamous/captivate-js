@@ -22,6 +22,7 @@ cd ../GitHub/captivate-js/git-hub
 21. Look to see if Redux is worth it
 22. restructure global object for settings
 23. Make file that handles styling for input range component
+24. Animate CC manuel text box
 
 #Futrue:
 

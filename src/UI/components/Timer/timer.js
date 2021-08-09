@@ -1,47 +1,46 @@
-/////////////////////// Timer //////////////////////////////////////////////
+import {
+  noTimerSlidesArray,
+  durationTimeCss,
+  currentTimeCss,
+} from "./timerSettings";
 
-if (isTimer) {
-  ///////////// Duration Time ///////////////////
+import {
+  fetchGlobal,
+  setGlobalValue,
+} from "../../../global/globalObjFunctions";
 
-  // Creates Duration time
-  var durationTime = document.createElement("div");
+import { applyStyles } from "../../../utilities/utilities";
 
-  durationTime.id = "duration-time";
-  durationTime.style.position = durationTimePos;
-  durationTime.style.top = durationTimeTop;
-  durationTime.style.left = durationTimeLeft;
-  durationTime.style.color = durationTimeColor;
-  durationTime.style.zIndex = 3000;
+import { currentTimeEventEmitter, setDurationTime } from "./timerFunctions";
 
-  $("#div_Slide").append(durationTime);
+export function timerInitialize() {
+  const $currentTime = createCurrent();
+  const $durationTime = createDuration();
 
-  setDuration();
+  currentTimeEventEmitter($currentTime);
+  setDurationTime($durationTime);
+}
 
-  ///////////// Current Time ///////////////////
+function createCurrent() {
+  const $currentTime = document.createElement("div");
 
-  // Current time variables
-  var timeInSeconds;
-  var fps = cpInfoFPS;
-  var timeHrs = 0;
-  var timeMin = 0;
-  var timeSec = 0;
+  $currentTime.id = "current-time";
 
-  // Creates Current time
-  var currentTime = document.createElement("div");
+  applyStyles(currentTimeCss, $currentTime);
 
-  currentTime.id = "current-time";
-  currentTime.style.position = currentTimePos;
-  currentTime.style.top = currentTimeTop;
-  currentTime.style.left = currentTimeLeft;
-  currentTime.style.color = currentTimeColor;
-  currentTime.style.zIndex = 3000;
+  document.querySelector("#div_Slide").appendChild($currentTime);
 
-  $("#div_Slide").append(currentTime);
+  return $currentTime;
+}
 
-  // Event and functions that control current time timer
-  cpAPIEventEmitter.addEventListener(
-    "CPAPI_VARIABLEVALUECHANGED",
-    getTimeStamp,
-    "cpInfoCurrentFrame"
-  );
+function createDuration() {
+  const $durationTime = document.createElement("div");
+
+  $durationTime.id = "duration-time";
+
+  applyStyles(durationTimeCss, $durationTime);
+
+  document.querySelector("#div_Slide").appendChild($durationTime);
+
+  return $durationTime;
 }

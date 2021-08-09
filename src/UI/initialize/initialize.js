@@ -9,6 +9,7 @@ import { slideRest } from "../uiFunctions";
 import { videoInitialize } from "../controls/Video/video";
 import { SCORM_2004_completion } from "../../SCORM/SCORM";
 import { disableMenuStyle } from "../controls/Menu/menuBtn";
+import { timerInitialize } from "../components/Timer/timer";
 
 export function initialize(cpEvent) {
   setGlobalValue("slideData", {
@@ -27,4 +28,5 @@ export function initialize(cpEvent) {
   videoInitialize();
   // SCORM_2004_completion();
   disableMenuStyle();
+  timerInitialize();
 }

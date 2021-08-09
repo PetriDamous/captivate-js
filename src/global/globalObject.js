@@ -6,7 +6,10 @@ export function setupGlobalObj() {
       isFirefox: typeof InstallTrigger !== "undefined",
       isIE,
       isEdge: !isIE && !!window.StyleMedia,
-      isChrome: navigator.userAgent.toLocaleLowerCase().indexOf("chrome"),
+      isChrome:
+        navigator.userAgent.toLocaleLowerCase().indexOf("chrome") !== -1
+          ? true
+          : false,
     },
     slideData: {
       slidesIdArray: [],

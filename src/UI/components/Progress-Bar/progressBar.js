@@ -18,7 +18,7 @@ export function ProgressBarInitialize() {
 function hideProgress() {
   let isProgressHide = false;
 
-  for (var i = 0; i < noProgressSlides.length; i++) {
+  for (let i = 0; i < noProgressSlides.length; i++) {
     if (
       noProgressSlides[i].trim().toLowerCase() ===
       cpInfoCurrentSlideLabel.trim().toLowerCase()

@@ -13,8 +13,8 @@ import { setTocHeight } from "../UI/controls/TOC/toc";
 
 export function onLoad(e) {
   setContentMeta();
-  setupGlobalObj();
   createStyleTag();
+  setupGlobalObj();
 }
 
 export function unLoad(e) {
