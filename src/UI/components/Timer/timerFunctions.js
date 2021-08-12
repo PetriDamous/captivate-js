@@ -9,18 +9,24 @@ function hideTimer() {
   isTimer = slideLabel !== "Learning Check" || slideAudioName;
 }
 
-export function currentTimeEventEmitter($currentTime) {
+/*******************
+  Event Listners
+********************/
+
+export function currentTimeEvent($currentTime) {
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    () => setCurrentTime($currentTime),
+    function startTimer() {
+      setCurrentTime($currentTime);
+    },
     "cpInfoCurrentFrame"
   );
 }
 
-export function removeCurrentTimeEmitter() {
+export function removeCurrentTimeEvent() {
   cpAPIEventEmitter.removeEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
-    checkVideoComplete,
+    startTimer,
     "cpInfoCurrentFrame"
   );
 }
@@ -38,19 +44,19 @@ export function setDurationTime($durationTime) {
   durationSec = "0" + durationSec;
 
   // Takes out extra zero when counter hits 10
-  if (durationHrs.length === 3) {
+  if (durationHrs.length >= 3) {
     durationHrs = durationHrs.slice(1);
   }
 
-  if (durationMin.length === 3) {
+  if (durationMin.length >= 3) {
     durationMin = durationMin.slice(1);
   }
 
-  if (durationSec.length === 3) {
+  if (durationSec.length >= 3) {
     durationSec = durationSec.slice(1);
   }
 
-  // Include hour if slide duration is an hour
+  // Include hour if slide duration is an hour+
   if (durationSeconds >= 3600) {
     $durationTime.textContent = `${durationHrs}:${durationMin}:${durationSec}`;
 
@@ -109,32 +115,31 @@ export function setCurrentTime($currentTime) {
   currentMin = "0" + currentMin;
   currentSec = "0" + currentSec;
 
-  // Takes out extra zero when counter hits 10
-  if (currentHrs.length === 3) {
-    currentHrs = currentHrs.slice(1);
-  }
-
-  if (currentMin.length === 3) {
-    console.log(currentMin.length);
-    currentMin = currentMin.slice(1);
-  }
-
-  if (currentSec.length === 3) {
-    currentSec = currentSec.slice(1);
-  }
-
   // Takes out 60 on change
-  if (currentMin === "60") {
-    currentHrs = "0" + (+currentMin + 1).toString();
+  if (currentMin === "060") {
+    currentHrs = "0" + (+currentHrs + 1).toString();
     currentMin = "00";
   }
 
-  if (currentSec === "60") {
+  if (currentSec === "060") {
     currentMin = "0" + (+currentMin + 1).toString();
     currentSec = "00";
   }
 
-  // Include hour if slide duration is an hour
+  // Takes out extra zero when counter hits 10
+  if (currentHrs.length >= 3) {
+    currentHrs = currentHrs.slice(1);
+  }
+
+  if (currentMin.length >= 3) {
+    currentMin = currentMin.slice(1);
+  }
+
+  if (currentSec.length >= 3) {
+    currentSec = currentSec.slice(1);
+  }
+
+  // Include hour if slide duration is an hour+
   if (currentSeconds >= 3600) {
     $currentTime.textContent = `${currentHrs}:${currentMin}:${currentSec}`;
 

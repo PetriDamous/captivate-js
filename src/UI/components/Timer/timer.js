@@ -11,13 +11,14 @@ import {
 
 import { applyStyles } from "../../../utilities/utilities";
 
-import { currentTimeEventEmitter, setDurationTime } from "./timerFunctions";
+import { currentTimeEvent, setDurationTime } from "./timerFunctions";
 
 export function timerInitialize() {
   const $currentTime = createCurrent();
   const $durationTime = createDuration();
 
-  currentTimeEventEmitter($currentTime);
+  currentTimeEvent($currentTime);
+
   setDurationTime($durationTime);
 }
 

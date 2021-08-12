@@ -10,6 +10,7 @@ import { createStyleTag } from "../UI/css/styles";
 import { initialize } from "../UI/initialize/initialize";
 import { removeVideoEvent } from "../UI/controls/Video/video";
 import { setTocHeight } from "../UI/controls/TOC/toc";
+import { removeCurrentTimeEvent } from "../UI/components/Timer/timerFunctions";
 
 export function onLoad(e) {
   setContentMeta();
@@ -40,7 +41,8 @@ export function slideEnter(e) {
 
 export function slideExit(e) {
   setPrevSlideData();
-  removeVideoEvent();
+  // removeVideoEvent();
+  // removeCurrentTimeEvent();
 }
 
 export function movieStop(e) {
