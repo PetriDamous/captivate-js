@@ -1,35 +1,4 @@
-import {
-  fetchGlobal,
-  setGlobalValue,
-} from "../../../global/globalObjFunctions";
-
-function hideTimer() {
-  var slideLabel = cpInfoCurrentSlideLabel.slice(0, 14);
-
-  isTimer = slideLabel !== "Learning Check" || slideAudioName;
-}
-
-/*******************
-  Event Listners
-********************/
-
-export function currentTimeEvent($currentTime) {
-  cpAPIEventEmitter.addEventListener(
-    "CPAPI_VARIABLEVALUECHANGED",
-    function startTimer() {
-      setCurrentTime($currentTime);
-    },
-    "cpInfoCurrentFrame"
-  );
-}
-
-export function removeCurrentTimeEvent() {
-  cpAPIEventEmitter.removeEventListener(
-    "CPAPI_VARIABLEVALUECHANGED",
-    startTimer,
-    "cpInfoCurrentFrame"
-  );
-}
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 /*******************
   Duration Time
