@@ -2,6 +2,11 @@ import {
   noTimerSlidesArray,
   durationTimeCss,
   currentTimeCss,
+  currentTimePos,
+  durationTimePos,
+  combinedTimePos,
+  dividerCss,
+  timerSettingObj,
 } from "./timerSettings";
 
 import { applyStyles } from "../../../utilities/utilities";
@@ -9,13 +14,7 @@ import { applyStyles } from "../../../utilities/utilities";
 import { setCurrentTime, setDurationTime } from "./timerFunctions";
 
 export function timerInitialize() {
-  const $durationTime = createDuration();
-
-  createCurrent();
-
-  currentTimeEvent();
-
-  setDurationTime($durationTime);
+  setTimer();
 }
 
 function hideTimer() {
@@ -24,13 +23,53 @@ function hideTimer() {
   isTimer = slideLabel !== "Learning Check" || slideAudioName;
 }
 
-function setTimer() {}
+function setTimer() {
+  const { isCombined, isCurrentOn, isDurationOn } = timerSettingObj;
+
+  if (isCombined) {
+    createCombined();
+    return;
+  }
+
+  if (isCurrentOn) {
+    const $currentTime = createCurrent();
+    applyStyles(currentTimePos, $currentTime);
+    currentTimeEvent();
+  }
+
+  if (isDurationOn) {
+    const $durationTime = createDuration();
+    applyStyles(durationTimePos, $durationTime);
+    setDurationTime($durationTime);
+  }
+}
 
 /**************************
   Create Timer Elements
 **************************/
 
-function createCombined() {}
+function createCombined() {
+  const $currentTime = createCurrent();
+  const $durationTime = createDuration();
+
+  const $combinedTime = document.createElement("div");
+  $combinedTime.id = "combinded-time";
+  document.querySelector("#div_Slide").appendChild($combinedTime);
+
+  const $timeDivider = document.createElement("span");
+  $timeDivider.textContent = "/";
+  applyStyles(dividerCss, $timeDivider);
+
+  const timeElmArray = [$currentTime, $timeDivider, $durationTime];
+  timeElmArray.forEach((elm) => $combinedTime.appendChild(elm));
+
+  applyStyles(combinedTimePos, $combinedTime);
+
+  setCurrentTime($currentTime);
+  setDurationTime($durationTime);
+
+  currentTimeEvent();
+}
 
 function createCurrent() {
   const $currentTime = document.createElement("span");

@@ -1,27 +1,24 @@
 export const noTimerSlidesArray = [];
 
-// 1. Combine currentTime/durationTime (wrap in parent div)
-// a. Both timers are automatically on
-// b. Both timers are combined like youtube
-// c. Has own positioning array
-// d. Uses both currentTimeCss and durationTimeCss arrays
-// e. create combine time function
-
-// 2. turn off/on currentTime
-// a. Has own positioning array
-// b. Uses currentTimeCss
-
-// 3. turn off/on durationTime
-// a. Has own positioning array
-// b. Uses durationTimeCss
-
 export const timerSettingObj = {
   isCombined: true,
-  isCurrentOn: false,
+  isCurrentOn: true,
   isDurationOn: false,
 };
 
+/*******************
+  Current Time
+********************/
+
 export const currentTimeCss = [
+  ["color", "white"],
+  ["font-weight", "inherit"],
+  ["font-family", "inherit"],
+  ["font-size", "inherit"],
+  ["z-index", 2000],
+];
+
+export const currentTimePos = [
   ["position", "absolute"],
   ["top", "95%"],
   ["right", null],
@@ -35,6 +32,13 @@ export const currentTimeCss = [
   ["padding-right", null],
   ["padding-bottom", null],
   ["padding-left", null],
+];
+
+/*******************
+  Duration Time
+********************/
+
+export const durationTimeCss = [
   ["color", "white"],
   ["font-weight", "inherit"],
   ["font-family", "inherit"],
@@ -42,7 +46,7 @@ export const currentTimeCss = [
   ["z-index", 2000],
 ];
 
-export const durationTimeCss = [
+export const durationTimePos = [
   ["position", "absolute"],
   ["top", "95%"],
   ["right", null],
@@ -56,13 +60,40 @@ export const durationTimeCss = [
   ["padding-right", null],
   ["padding-bottom", null],
   ["padding-left", null],
+];
+
+/*******************
+  Combinded Time
+********************/
+
+export const combinedTimePos = [
+  ["position", "absolute"],
+  ["top", "95%"],
+  ["right", null],
+  ["bottom", null],
+  ["left", "9%"],
+  ["margin-top", null],
+  ["margin-right", null],
+  ["margin-bottom", null],
+  ["margin-left", null],
+  ["padding-top", null],
+  ["padding-right", null],
+  ["padding-bottom", null],
+  ["padding-left", null],
+];
+
+export const dividerCss = [
   ["color", "white"],
   ["font-weight", "inherit"],
   ["font-family", "inherit"],
   ["font-size", "inherit"],
+  ["margin-top", null],
+  ["margin-right", "3px"],
+  ["margin-bottom", null],
+  ["margin-left", "3px"],
+  ["padding-top", null],
+  ["padding-right", null],
+  ["padding-bottom", null],
+  ["padding-left", null],
   ["z-index", 2000],
 ];
-
-export const currentTimePos = [];
-
-export const durationTimePos = [];
