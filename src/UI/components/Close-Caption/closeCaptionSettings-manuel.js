@@ -1,4 +1,6 @@
-// Styles for CC text box
+/************************
+  Styles for CC text box
+*************************/
 export const ccTextBoxCss = [
   ["position", "absolute"],
   ["top", null],
@@ -22,7 +24,9 @@ export const ccTextBoxCss = [
   ["z-index", 2000],
 ];
 
-// Styles for CC text
+/********************
+  Styles for CC text
+*********************/
 export const ccParagraphCss = [
   ["position", "static"],
   ["top", null],

@@ -1,7 +1,13 @@
-// List of slides that the progress bar is hidden on
+/***************************************
+  Array of slides to hide progress bar
+****************************************/
+
 export const noProgressSlides = [];
 
-// Progress Bar Styles
+/**********************
+  Progress Bar Styles
+***********************/
+
 export const progressStyles = {
   edgeIeStyles: {
     msTrack: {
@@ -70,7 +76,10 @@ export const progressStyles = {
   },
 };
 
-// Progress Bar Position
+/************************
+  Progress Bar Position
+*************************/
+
 export const progressPos = [
   ["position", "absolute"],
   ["top", "87%"],

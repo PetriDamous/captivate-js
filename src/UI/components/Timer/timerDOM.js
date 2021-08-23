@@ -1,54 +1,35 @@
 import {
-  noTimerSlidesArray,
   durationTimeCss,
   currentTimeCss,
-  currentTimePos,
-  durationTimePos,
   combinedTimePos,
   dividerCss,
-  timerSettingObj,
 } from "./timerSettings";
 
 import { applyStyles } from "../../../utilities/utilities";
 
-import { setCurrentTime, setDurationTime } from "./timerFunctions";
+import {
+  setCurrentTime,
+  setDurationTime,
+  startTimer,
+  hideTimer,
+  setTimer,
+} from "./timerFunctions";
+
+/*********************
+  Initialize Timer
+**********************/
 
 export function timerInitialize() {
+  if (hideTimer()) return;
+
   setTimer();
-}
-
-function hideTimer() {
-  var slideLabel = cpInfoCurrentSlideLabel.slice(0, 14);
-
-  isTimer = slideLabel !== "Learning Check" || slideAudioName;
-}
-
-function setTimer() {
-  const { isCombined, isCurrentOn, isDurationOn } = timerSettingObj;
-
-  if (isCombined) {
-    createCombined();
-    return;
-  }
-
-  if (isCurrentOn) {
-    const $currentTime = createCurrent();
-    applyStyles(currentTimePos, $currentTime);
-    currentTimeEvent();
-  }
-
-  if (isDurationOn) {
-    const $durationTime = createDuration();
-    applyStyles(durationTimePos, $durationTime);
-    setDurationTime($durationTime);
-  }
 }
 
 /**************************
   Create Timer Elements
 **************************/
 
-function createCombined() {
+export function createCombined() {
   const $currentTime = createCurrent();
   const $durationTime = createDuration();
 
@@ -68,10 +49,10 @@ function createCombined() {
   setCurrentTime($currentTime);
   setDurationTime($durationTime);
 
-  currentTimeEvent();
+  addCurrentTimeEvent();
 }
 
-function createCurrent() {
+export function createCurrent() {
   const $currentTime = document.createElement("span");
 
   $currentTime.id = "current-time";
@@ -83,7 +64,7 @@ function createCurrent() {
   return $currentTime;
 }
 
-function createDuration() {
+export function createDuration() {
   const $durationTime = document.createElement("span");
 
   $durationTime.id = "duration-time";
@@ -96,20 +77,10 @@ function createDuration() {
 }
 
 /*******************
-  Event Functions
-********************/
-
-function startTimer() {
-  const $currentTime = document.getElementById("current-time");
-
-  setCurrentTime($currentTime);
-}
-
-/*******************
   Event Listners
 ********************/
 
-function currentTimeEvent() {
+function addCurrentTimeEvent() {
   cpAPIEventEmitter.addEventListener(
     "CPAPI_VARIABLEVALUECHANGED",
     startTimer,

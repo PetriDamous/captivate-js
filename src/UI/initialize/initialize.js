@@ -2,14 +2,14 @@ import { setGlobalValue } from "../../global/globalObjFunctions";
 import { setToolTips } from "../data-buttons/toolTips";
 import { setExtraDataBtn } from "../data-buttons/extraDataBtns";
 import { setBtnEvents } from "../controls/Button-Events/buttonEvents";
-import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaption-manuel";
+import { ccBoxOnEnter_manuel } from "../components/Close-Caption/closeCaptionDOM-manuel";
 import { ccBoxOnEnter_auto } from "../controls/Close-Caption/closeCaption-auto";
-import { ProgressBarInitialize } from "../components/Progress-Bar/progressBar";
+import { ProgressBarInitialize } from "../components/Progress-Bar/progressBarDOM";
 import { slideRest } from "../uiFunctions";
 import { videoInitialize } from "../controls/Video/video";
 import { SCORM_2004_completion } from "../../SCORM/SCORM";
 import { disableMenuStyle } from "../controls/Menu/menuBtn";
-import { timerInitialize } from "../components/Timer/timer";
+import { timerInitialize } from "../components/Timer/timerDOM";
 
 export function initialize(cpEvent) {
   setGlobalValue("slideData", {

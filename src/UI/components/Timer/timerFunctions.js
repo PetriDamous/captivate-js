@@ -1,4 +1,56 @@
 import { fetchGlobal } from "../../../global/globalObjFunctions";
+import { noTimerSlidesArray } from "./timerSettings";
+import {
+  currentTimePos,
+  durationTimePos,
+  timerSettingObj,
+} from "./timerSettings";
+import { createCombined, createCurrent, createDuration } from "./timerDOM";
+
+/*******************
+  Hide Timer
+********************/
+
+export function hideTimer() {
+  let isTimerHide = false;
+
+  for (let i = 0; i < noTimerSlidesArray.length; i++) {
+    if (
+      noTimerSlidesArray[i].trim().toLowerCase() ===
+      cpInfoCurrentSlideLabel.trim().toLowerCase()
+    ) {
+      isTimerHide = true;
+      break;
+    }
+  }
+
+  return isTimerHide;
+}
+
+/**************************
+  Type of timer to use
+***************************/
+
+export function setTimer() {
+  const { isCombined, isCurrentOn, isDurationOn } = timerSettingObj;
+
+  if (isCombined) {
+    createCombined();
+    return;
+  }
+
+  if (isCurrentOn) {
+    const $currentTime = createCurrent();
+    applyStyles(currentTimePos, $currentTime);
+    currentTimeEvent();
+  }
+
+  if (isDurationOn) {
+    const $durationTime = createDuration();
+    applyStyles(durationTimePos, $durationTime);
+    setDurationTime($durationTime);
+  }
+}
 
 /*******************
   Duration Time
@@ -154,4 +206,14 @@ function getCurrentTime() {
     currentSec,
     currentSeconds,
   };
+}
+
+/*******************
+  Event Functions
+********************/
+
+export function startTimer() {
+  const $currentTime = document.getElementById("current-time");
+
+  setCurrentTime($currentTime);
 }

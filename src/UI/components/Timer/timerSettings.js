@@ -1,4 +1,12 @@
+/**********************************
+  Array of slides to hide timer
+**********************************/
+
 export const noTimerSlidesArray = [];
+
+/**********************************************
+  On/Off duration, current, or combined time
+**********************************************/
 
 export const timerSettingObj = {
   isCombined: true,
@@ -7,7 +15,7 @@ export const timerSettingObj = {
 };
 
 /*******************
-  Current Time
+  Current Time CSS
 ********************/
 
 export const currentTimeCss = [
@@ -35,7 +43,7 @@ export const currentTimePos = [
 ];
 
 /*******************
-  Duration Time
+  Duration Time CSS
 ********************/
 
 export const durationTimeCss = [
@@ -63,7 +71,7 @@ export const durationTimePos = [
 ];
 
 /*******************
-  Combinded Time
+  Combinded Time CSS
 ********************/
 
 export const combinedTimePos = [

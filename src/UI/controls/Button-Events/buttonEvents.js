@@ -4,7 +4,7 @@ import { getButtonsArray } from "../../uiFunctions";
 // Import Button Actions
 import { menuFunc } from "../Menu/menuBtn";
 import { ccFunc_auto } from "../Close-Caption/closeCaption-auto";
-import { ccFunc_manual } from "../../components/Close-Caption/closeCaption-manuel";
+import { ccFunc_manual } from "../../components/Close-Caption/closeCaptionFunctions-manuel";
 import { rewindFunc } from "../Rewind/rewindBtn";
 import { replayFunc } from "../Replay/replayBtn";
 import { playFunc } from "../Play/playBtn";

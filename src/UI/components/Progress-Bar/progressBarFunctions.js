@@ -1,21 +1,16 @@
-import { applyStyles } from "../../../utilities/utilities";
-import { fetchGlobal } from "../../../global/globalObjFunctions";
 import {
   progressPos,
   progressStyles,
   noProgressSlides,
 } from "./progressBarSettings";
+import { applyStyles } from "../../../utilities/utilities";
 import { addCssRules } from "../../css/styles";
 
-export function ProgressBarInitialize() {
-  if (hideProgress()) return;
+/*******************************
+  Hides Progress Bar
+*******************************/
 
-  const $progressBar = createProgressBar();
-  progressStyle($progressBar);
-  progressEventEmitter($progressBar);
-}
-
-function hideProgress() {
+export function hideProgress() {
   let isProgressHide = false;
 
   for (let i = 0; i < noProgressSlides.length; i++) {
@@ -31,32 +26,11 @@ function hideProgress() {
   return isProgressHide;
 }
 
-export function createProgressBar() {
-  const {
-    currentSlide: { from: firstFrame, to: lastFrame },
-  } = fetchGlobal("slideData");
+/*******************************
+  Applies Progress Bar styles
+*******************************/
 
-  // Creates Progress Bar
-  const $progressBar = document.createElement("input");
-
-  $progressBar.id = "progressBar";
-  $progressBar.type = "range";
-  $progressBar.value = "0";
-  $progressBar.step = "1";
-  $progressBar.min = firstFrame;
-  $progressBar.max = lastFrame;
-
-  // Places Progress Bar on slide
-  document.querySelector("#div_Slide").appendChild($progressBar);
-
-  // Disables playBar Control
-  $progressBar.disabled = true;
-
-  return $progressBar;
-}
-
-// Progress Bar styles
-function progressStyle($progressBar) {
+export function progressStyle($progressBar) {
   const {
     browserType: { isIE, isEdge, isChrome, isFirefox },
   } = window.cpGlobalObj;
@@ -243,12 +217,14 @@ function progressStyle($progressBar) {
   applyStyles(progressPos, $progressBar);
 }
 
-function progressEventEmitter($progressBar) {
-  cpAPIEventEmitter.addEventListener(
-    "CPAPI_VARIABLEVALUECHANGED",
-    () => progressUpdate($progressBar),
-    "cpInfoCurrentFrame"
-  );
+/**********************************
+  Event functions
+**********************************/
+
+export function progressBarStart() {
+  const $progressBar = document.getElementById("progressBar");
+
+  progressUpdate($progressBar);
 }
 
 function progressUpdate($progressBar) {
