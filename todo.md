@@ -2,6 +2,8 @@
 
 cd ../GitHub/captivate-js/git-hub
 
+\*\* Important!!!!! Fix web pack dev and build setup
+
 4. Setup position algo for positioning elements (also have element to append to and the child we want to append)
 5. CC manuel get better way to pass element to other functions
 6. Complete settings file for CC manuel
@@ -19,10 +21,9 @@ cd ../GitHub/captivate-js/git-hub
 18. make custom hide show element function to handle an array of instances of key elements
 19. Update rewind function
 20. Look into Babel pollyfill
-21. Look to see if Redux is worth it
-22. restructure global object for settings
-23. Make file that handles styling for input range component
-24. Animate CC manuel text box
+21. restructure global object for settings
+22. Make file that handles styling for input range component
+23. Animate CC manuel text box
 
 #Futrue:
 
