@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const projectPath = "./WQP_L1_Gold_v4";
+const projectPath = "./BOLC_QF_A1_Identity, Climate, and Culture";
+const courseName = "BOLC";
 
 module.exports = {
   entry: {
@@ -23,15 +24,16 @@ module.exports = {
   devServer: {
     hot: true,
     compress: true,
-    contentBase: path.join(__dirname, `${projectPath}`),
+    static: {
+      directory: path.join(__dirname, `${projectPath}`),
+    },
     port: 3000,
-    open: "Edge",
   },
   devtool: "source-map",
   target: "es5",
   output: {
-    path: path.resolve(__dirname, `./public/`),
-    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, `${projectPath}/JS`),
+    filename: `${courseName}.bundle.js`,
     clean: true,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
