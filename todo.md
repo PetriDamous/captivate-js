@@ -13,17 +13,16 @@ cd ../GitHub/captivate-js/git-hub
 10. Disable menu items (play with canvas elements) (make it to disable any button based on slide and what buttons to disable)
 11. Make it to where all elements will have a data attribute and use getElement function to get elements
 12. Make a function to clean up event listners
-13. Replace slide info on global with reducer pattern
-14. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
-15. Consider making custom array methods (ex: .find(), .filter())
-16. Consider making components classes
-17. make toggle function for hiding and showing buttons
-18. make custom hide show element function to handle an array of instances of key elements
-19. Update rewind function
-20. Look into Babel pollyfill
-21. restructure global object for settings
-22. Make file that handles styling for input range component
-23. Animate CC manuel text box
+13. Hide progress bar when CC is on screen or have it move up and down depending on if CC is open
+14. Consider making custom array methods (ex: .find(), .filter())
+15. Consider making components classes
+16. make toggle function for hiding and showing buttons
+17. make custom hide show element function to handle an array of instances of key elements
+18. Update rewind function
+19. Look into Babel pollyfill
+20. restructure global object for settings
+21. Make file that handles styling for input range component
+22. Animate CC manuel text box
 
 #Futrue:
 
