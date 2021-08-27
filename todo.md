@@ -23,6 +23,8 @@ cd ../GitHub/captivate-js/git-hub
 20. restructure global object for settings
 21. Make file that handles styling for input range component
 22. Animate CC manuel text box
+23. Take out magic numbers
+24. Add Captivate version to global object
 
 #Futrue:
 
