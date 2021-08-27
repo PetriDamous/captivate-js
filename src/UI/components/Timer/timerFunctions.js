@@ -7,6 +7,12 @@ import {
 } from "./timerSettings";
 import { createCombined, createCurrent, createDuration } from "./timerDOM";
 
+/*************************
+  Timer Global Variables
+**************************/
+const secondsInHour = 3600;
+const secondsInMinutes = 60;
+
 /*******************
   Hide Timer
 ********************/
@@ -78,7 +84,7 @@ export function setDurationTime($durationTime) {
   }
 
   // Include hour if slide duration is an hour+
-  if (durationSeconds >= 3600) {
+  if (durationSeconds >= secondsInHour) {
     $durationTime.textContent = `${durationHrs}:${durationMin}:${durationSec}`;
 
     return;
@@ -98,23 +104,28 @@ function getDurationTime() {
 
   /*hour*/
 
-  const durationHrs = Math.floor(durationSeconds / 3600).toFixed(0);
+  const durationHrs = Math.floor(durationSeconds / secondsInHour).toFixed(0);
 
   /*minutes*/
 
   const durationMin = Math.floor(
-    (durationSeconds / 3600 - Math.floor(durationSeconds / 3600).toFixed(0)) *
-      60
+    (durationSeconds / secondsInHour -
+      Math.floor(durationSeconds / secondsInHour).toFixed(0)) *
+      secondsInMinutes
   ).toFixed(0);
 
   /*seconds*/
 
   const durationSec = (
-    ((durationSeconds / 3600 - Math.floor(durationSeconds / 3600)) * 60 -
+    ((durationSeconds / secondsInHour -
+      Math.floor(durationSeconds / secondsInHour)) *
+      secondsInMinutes -
       Math.floor(
-        (durationSeconds / 3600 - Math.floor(durationSeconds / 3600)) * 60
+        (durationSeconds / secondsInHour -
+          Math.floor(durationSeconds / secondsInHour)) *
+          secondsInMinutes
       )) *
-    60
+    secondsInMinutes
   ).toFixed(0);
 
   return {
@@ -132,17 +143,19 @@ function getDurationTime() {
 export function setCurrentTime($currentTime) {
   let { currentHrs, currentMin, currentSec, currentSeconds } = getCurrentTime();
 
+  const leadingZeroSixity = "060";
+
   currentHrs = "0" + currentHrs;
   currentMin = "0" + currentMin;
   currentSec = "0" + currentSec;
 
   // Takes out 60 on change
-  if (currentMin === "060") {
+  if (currentMin === leadingZeroSixity) {
     currentHrs = "0" + (+currentHrs + 1).toString();
     currentMin = "00";
   }
 
-  if (currentSec === "060") {
+  if (currentSec === leadingZeroSixity) {
     currentMin = "0" + (+currentMin + 1).toString();
     currentSec = "00";
   }
@@ -161,7 +174,7 @@ export function setCurrentTime($currentTime) {
   }
 
   // Include hour if slide duration is an hour+
-  if (currentSeconds >= 3600) {
+  if (currentSeconds >= secondsInHour) {
     $currentTime.textContent = `${currentHrs}:${currentMin}:${currentSec}`;
 
     return;
@@ -182,22 +195,28 @@ function getCurrentTime() {
 
   /*hour*/
 
-  const currentHrs = Math.floor(currentSeconds / 3600).toFixed(0);
+  const currentHrs = Math.floor(currentSeconds / secondsInHour).toFixed(0);
 
   /*minutes*/
 
   const currentMin = Math.floor(
-    (currentSeconds / 3600 - Math.floor(currentSeconds / 3600).toFixed(0)) * 60
+    (currentSeconds / secondsInHour -
+      Math.floor(currentSeconds / secondsInHour).toFixed(0)) *
+      secondsInMinutes
   ).toFixed(0);
 
   /*seconds*/
 
   const currentSec = (
-    ((currentSeconds / 3600 - Math.floor(currentSeconds / 3600)) * 60 -
+    ((currentSeconds / secondsInHour -
+      Math.floor(currentSeconds / secondsInHour)) *
+      secondsInMinutes -
       Math.floor(
-        (currentSeconds / 3600 - Math.floor(currentSeconds / 3600)) * 60
+        (currentSeconds / secondsInHour -
+          Math.floor(currentSeconds / secondsInHour)) *
+          secondsInMinutes
       )) *
-    60
+    secondsInMinutes
   ).toFixed(0);
 
   return {

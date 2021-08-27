@@ -12,20 +12,32 @@ import { disableMenuStyle } from "../controls/Menu/menuBtn";
 import { timerInitialize } from "../components/Timer/timerDOM";
 
 export function initialize(cpEvent) {
+  /**********************************
+    Update values in global object
+  ***********************************/
+
   setGlobalValue("slideData", {
     ...cpGlobalObj.slideData,
     currentSlide: { ...cpEvent.cpData },
   });
 
+  /***********************************
+    Core UI button related functions
+  ************************************/
+
   setToolTips();
   setExtraDataBtn();
   setBtnEvents();
 
+  /*************************************
+    All other Document ready functions
+  *************************************/
+
   slideRest();
-  // ccBoxOnEnter_auto();
-  ccBoxOnEnter_manuel();
+  ccBoxOnEnter_auto();
+  // ccBoxOnEnter_manuel();
   ProgressBarInitialize();
-  videoInitialize();
+  // videoInitialize();
   // SCORM_2004_completion();
   disableMenuStyle();
   timerInitialize();
