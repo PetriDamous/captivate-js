@@ -29,12 +29,44 @@ export function setBtnEvents() {
   // const $previousBtns = getButtonsArray("Previous");
   // const $nextBtns = getButtonsArray("Next");
 
+  /******************
+    Menu actions
+  *******************/
   addEvents($menuBtns, "click", menuFunc);
+
+  /******************
+    CC text actions
+  *******************/
+  // addEvents($closeCaptionBtns, "click", ccFunc_auto);
   addEvents($closeCaptionBtns, "click", ccFunc_manual);
+
+  /******************
+    Rewind actions
+  *******************/
   addEvents($rewindBtns, "click", rewindFunc);
+
+  /******************
+    Replay actions
+  *******************/
   addEvents($replayBtns, "click", replayFunc);
+
+  /******************
+    Play actions
+  *******************/
   addEvents($playBtns, "click", playFunc);
+
+  /******************
+    Pause actions
+  *******************/
   addEvents($pauseBtns, "click", pauseFunc);
+
+  /******************
+    Mute actions
+  *******************/
   addEvents($muteBtns, "click", muteFunc);
+
+  /******************
+    Unmute actions
+  *******************/
   addEvents($unmuteBtns, "click", unmuteFunc);
 }

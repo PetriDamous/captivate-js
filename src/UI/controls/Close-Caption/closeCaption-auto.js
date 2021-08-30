@@ -7,20 +7,12 @@ import {
 // Opens and closes CC box
 export function ccFunc_auto() {
   if (cpCmndCC === 0) {
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
-      isCcOnEnter_auto: true,
-    });
     cpCmndCC = 1;
     cp.hide("ccClose");
     ccToolTip_auto();
   } else {
     cpCmndCC = 0;
     ccToolTip_auto();
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
-      isCcOnEnter_auto: true,
-    });
   }
 }
 
