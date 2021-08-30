@@ -11,7 +11,7 @@ import { ccToolTip_manuel } from "./closeCaptionFunctions-manuel";
 export function ccBoxOnEnter_manuel() {
   const ccElements = createCCElements();
 
-  const { isCcOnEnter_manual } = fetchGlobal("ccOptions");
+  const { isCcOnEnter_manual } = fetchGlobal("ccOptions_manual");
 
   appendCCText(ccElements);
   ccToolTip_manuel();

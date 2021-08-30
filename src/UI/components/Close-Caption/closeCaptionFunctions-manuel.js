@@ -9,7 +9,7 @@ import { getButtonsArray } from "../../uiFunctions";
 *********************/
 
 export function ccToolTip_manuel() {
-  const { isCcOnEnter_manual } = fetchGlobal("ccOptions");
+  const { isCcOnEnter_manual } = fetchGlobal("ccOptions_manual");
 
   const $closeCaptionBtns = getButtonsArray("Closed Caption");
 
@@ -31,20 +31,20 @@ export function ccToolTip_manuel() {
 ***********************/
 
 export function ccFunc_manual() {
-  const { isCcDisplay_manual } = fetchGlobal("ccOptions");
+  const { isCcDisplay_manual } = fetchGlobal("ccOptions_manual");
 
   const $ccTextBox = document.getElementById("ccTextBox");
 
   if (isCcDisplay_manual) {
     $ccTextBox.style.visibility = "visible";
 
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
+    setGlobalValue("ccOptions_manual", {
+      ...cpGlobalObj.ccOptions_manual,
       isCcOnEnter_manual: true,
     });
 
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
+    setGlobalValue("ccOptions_manual", {
+      ...cpGlobalObj.ccOptions_manual,
       isCcDisplay_manual: !true,
     });
 
@@ -52,13 +52,13 @@ export function ccFunc_manual() {
   } else {
     $ccTextBox.style.visibility = "hidden";
 
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
+    setGlobalValue("ccOptions_manual", {
+      ...cpGlobalObj.ccOptions_manual,
       isCcOnEnter_manual: !true,
     });
 
-    setGlobalValue("ccOptions", {
-      ...cpGlobalObj.ccOptions,
+    setGlobalValue("ccOptions_manual", {
+      ...cpGlobalObj.ccOptions_manual,
       isCcDisplay_manual: true,
     });
 

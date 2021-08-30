@@ -1,18 +1,22 @@
-////////////////////
-// Fetch Functions
-///////////////////
+/****************************
+  Fetch Functions
+****************************/
 
 export function fetchGlobal(prop) {
   return window.cpGlobalObj[prop];
 }
 
-////////////////////
-// Set Functions
-///////////////////
+/****************************
+  Set Functions
+****************************/
 
 export function setGlobalValue(prop, value) {
   window.cpGlobalObj[prop] = value;
 }
+
+/****************************
+  Set Meta Data
+****************************/
 
 export function setContentMeta() {
   const $metaContentNodeList = document.querySelectorAll("meta");
@@ -24,6 +28,10 @@ export function setContentMeta() {
     }
   }
 }
+
+/****************************
+  Slide Data Functions
+****************************/
 
 export function setSlideData() {
   const slidesIdArray = cp.model.data.project_main.slides.split(",");
@@ -55,9 +63,6 @@ export function setSlideData() {
 }
 
 export function setPrevSlideData() {
-  // window.cpGlobalObj.prevSlide = {
-  //   ...cpGlobalObj.currentSlide,
-  // };
   setGlobalValue("slideData", {
     ...cpGlobalObj.slideData,
     prevSlide: { ...cpGlobalObj.slideData.currentSlide },
@@ -65,10 +70,6 @@ export function setPrevSlideData() {
 }
 
 export function setNextSlideData() {
-  // window.cpGlobalObj.nextSlide = {
-  //   ...cpGlobalObj.slidesObjArray[cpInfoCurrentSlide],
-  // };
-
   setGlobalValue("slideData", {
     ...cpGlobalObj.slideData,
     nextSlide: { ...cpGlobalObj.slideData.slidesObjArray[cpInfoCurrentSlide] },

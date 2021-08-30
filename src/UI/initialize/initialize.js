@@ -29,16 +29,46 @@ export function initialize(cpEvent) {
   setExtraDataBtn();
   setBtnEvents();
 
-  /*************************************
-    All other Document ready functions
-  *************************************/
+  /***************
+    Rest slide
+  ****************/
 
   slideRest();
-  ccBoxOnEnter_auto();
-  // ccBoxOnEnter_manuel();
+
+  /****************
+    CC text
+  *****************/
+
+  // ccBoxOnEnter_auto();
+  ccBoxOnEnter_manuel();
+
+  /***************
+    Progress Bar 
+  ****************/
+
   ProgressBarInitialize();
+
+  /**********
+    Video 
+  ***********/
+
   // videoInitialize();
+
+  /**********
+    SCORM
+  ***********/
+
   // SCORM_2004_completion();
+
+  /***************
+    Disables UI
+  ****************/
+
   disableMenuStyle();
+
+  /**********
+    Timer
+  ***********/
+
   timerInitialize();
 }
