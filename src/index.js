@@ -7,8 +7,6 @@ import {
   moduleReady,
 } from "./App/app";
 
-import { developerMode } from "./developer/developer";
-
 window.addEventListener("load", (e) => {
   onLoad(e);
 });
@@ -32,11 +30,3 @@ window.addEventListener("moduleReadyEvent", (e) => {
 window.addEventListener("beforeunload", (e) => {
   unLoad(e);
 });
-
-/////////////////////
-// Developer Mode
-////////////////////
-
-const isDeveloper = true;
-
-developerMode(isDeveloper);

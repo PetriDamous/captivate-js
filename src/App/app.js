@@ -12,11 +12,25 @@ import { removeVideoEvent } from "../UI/controls/Video/video";
 import { setTocHeight } from "../UI/controls/TOC/toc";
 import { removeCurrentTimeEvent } from "../UI/components/Timer/timerDOM";
 import { removeProgressBarEvent } from "../UI/components/Progress-Bar/progressBarDOM";
+import { developerMode } from "../developer/developer";
 
 export function onLoad(e) {
+  /******************
+    Onload setup
+  *******************/
+
   setContentMeta();
   createStyleTag();
   setupGlobalObj();
+
+  /******************
+    Developer Mode
+  *******************/
+  const { isDeveloper } = fetchGlobal("developerMode");
+
+  if (isDeveloper) {
+    developerMode();
+  }
 }
 
 export function unLoad(e) {

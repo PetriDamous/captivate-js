@@ -1,4 +1,10 @@
+// Checks for Internet Explorer browser type
 const isIE = /*@cc_on!@*/ false || !!document.documentMode;
+
+/*************************************************
+  Property on window obj that holds application
+  data
+**************************************************/
 
 export function setupGlobalObj() {
   window.cpGlobalObj = {
@@ -20,19 +26,20 @@ export function setupGlobalObj() {
       videoSlides: [],
       viewedVideoSlides: [],
     },
-    ccOptions: {
+    ccOptions_manual: {
       isCcOnEnter_manual: false,
       isCcDisplay_manual: true,
-      isCcOnEnter_auto: false,
     },
     buttonOptions: {
       isToggleMuteUnmute: true,
       isTogglePausePlay: true,
     },
-    timerOptions: {
-      isTimer: true,
-      isDurationTime: true,
-      isCurrentTime: true,
+    developerMode: {
+      isDeveloper: true,
+      frameSkip: {
+        framesRewind: 90,
+        framesForward: 600,
+      },
     },
   };
 }
