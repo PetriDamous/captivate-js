@@ -82,9 +82,19 @@ export const progressStyles = {
 
 export const progressPos = [
   ["position", "absolute"],
-  ["top", "87%"],
-  ["left", "6%"],
-  ["width", "1123px"],
-  ["z-index", "1200"],
+  ["top", null],
+  ["right", null],
+  ["bottom", "6%"],
+  ["left", null],
+  ["margin-top", null],
+  ["margin-right", null],
+  ["margin-bottom", null],
+  ["margin-left", null],
+  ["padding-top", null],
+  ["padding-right", null],
+  ["padding-bottom", null],
+  ["padding-left", null],
+  ["width", "100%"],
   ["height", "5px"],
+  ["z-index", "1200"],
 ];
