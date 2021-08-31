@@ -26,8 +26,7 @@ cd ../GitHub/captivate-js/git-hub
 23. Take out magic numbers
 24. Add Captivate version to global object
 25. Email Dave about lotie and svgs in captivate
-26. finish ccText_auto fixes and refactor global object to have seperate ccText options
-27. Test on LMS and check performance
+26. Test on LMS and check performance
 
 #Futrue:
 
