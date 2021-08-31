@@ -30,6 +30,9 @@ export function setupGlobalObj() {
       isCcOnEnter_manual: false,
       isCcDisplay_manual: true,
     },
+    ccOptions_auto: {
+      isCCRepostion: true,
+    },
     buttonOptions: {
       isToggleMuteUnmute: true,
       isTogglePausePlay: true,

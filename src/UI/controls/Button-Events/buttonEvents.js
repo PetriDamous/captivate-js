@@ -37,8 +37,8 @@ export function setBtnEvents() {
   /******************
     CC text actions
   *******************/
-  // addEvents($closeCaptionBtns, "click", ccFunc_auto);
-  addEvents($closeCaptionBtns, "click", ccFunc_manual);
+  addEvents($closeCaptionBtns, "click", ccFunc_auto);
+  // addEvents($closeCaptionBtns, "click", ccFunc_manual);
 
   /******************
     Rewind actions

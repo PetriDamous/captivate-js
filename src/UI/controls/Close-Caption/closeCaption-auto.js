@@ -3,6 +3,7 @@ import {
   setGlobalValue,
   fetchGlobal,
 } from "../../../global/globalObjFunctions";
+import { ccSetBoxPos_auto } from "./closeCaptionSettings-auto";
 
 // Opens and closes CC box
 export function ccFunc_auto() {
@@ -36,6 +37,8 @@ export function ccBoxOnEnter_auto() {
     currentSlide: { to: lastFrame, audCC },
   } = fetchGlobal("slideData");
 
+  const { isCCRepostion } = fetchGlobal("ccOptions_auto");
+
   // Added frames to help keep CC text box open
   // on slide completion
   const framesAdded = 300;
@@ -43,6 +46,11 @@ export function ccBoxOnEnter_auto() {
   // Subtracts frames to help keep CC text box open
   // when slide transition occurs
   const framesSubtracted = -10;
+
+  // Repositions CC Box
+  if (isCCRepostion) {
+    ccSetBoxPos_auto();
+  }
 
   ccToolTip_auto();
 

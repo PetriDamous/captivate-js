@@ -39,8 +39,8 @@ export function initialize(cpEvent) {
     CC text
   *****************/
 
-  // ccBoxOnEnter_auto();
-  ccBoxOnEnter_manuel();
+  ccBoxOnEnter_auto();
+  // ccBoxOnEnter_manuel();
 
   /***************
     Progress Bar 
