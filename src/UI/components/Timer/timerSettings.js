@@ -76,9 +76,9 @@ export const durationTimePos = [
 
 export const combinedTimePos = [
   ["position", "absolute"],
-  ["top", "95%"],
+  ["top", null],
   ["right", null],
-  ["bottom", null],
+  ["bottom", "2%"],
   ["left", "9%"],
   ["margin-top", null],
   ["margin-right", null],
