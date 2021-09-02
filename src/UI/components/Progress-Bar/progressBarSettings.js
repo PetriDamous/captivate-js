@@ -98,3 +98,22 @@ export const progressPos = [
   ["height", "5px"],
   ["z-index", "1200"],
 ];
+
+export const progressPosIE = [
+  ["position", "absolute"],
+  ["top", null],
+  ["right", null],
+  ["bottom", "6%"],
+  ["left", null],
+  ["margin-top", null],
+  ["margin-right", null],
+  ["margin-bottom", null],
+  ["margin-left", null],
+  ["padding-top", "0px"],
+  ["padding-right", null],
+  ["padding-bottom", "0px"],
+  ["padding-left", null],
+  ["width", "100%"],
+  ["height", null],
+  ["z-index", "1200"],
+];

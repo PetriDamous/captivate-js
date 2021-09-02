@@ -1,5 +1,6 @@
 import {
   progressPos,
+  progressPosIE,
   progressStyles,
   noProgressSlides,
 } from "./progressBarSettings";
@@ -214,7 +215,11 @@ export function progressStyle($progressBar) {
 
   addCssRules(styles);
 
-  applyStyles(progressPos, $progressBar);
+  if (isIE) {
+    applyStyles(progressPosIE, $progressBar);
+  } else {
+    applyStyles(progressPos, $progressBar);
+  }
 }
 
 /**********************************

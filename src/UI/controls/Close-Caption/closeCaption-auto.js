@@ -1,8 +1,5 @@
 import { getButtonsArray } from "../../uiFunctions";
-import {
-  setGlobalValue,
-  fetchGlobal,
-} from "../../../global/globalObjFunctions";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 import { ccSetBoxPos_auto } from "./closeCaptionSettings-auto";
 
 // Opens and closes CC box

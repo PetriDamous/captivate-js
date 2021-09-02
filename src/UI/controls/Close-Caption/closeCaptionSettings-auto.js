@@ -1,20 +1,32 @@
 import { applyStyles } from "../../../utilities/utilities";
+import { fetchGlobal } from "../../../global/globalObjFunctions";
 
 /************************
   CC Box set Postion
 *************************/
 
 export function ccSetBoxPos_auto() {
+  const { isIE } = fetchGlobal("browserType");
+
   const $ccTextBox = document.getElementById("cc");
 
-  applyStyles(ccBoxPos, $ccTextBox);
+  if (isIE) {
+    applyStyles(ccBoxPosIE, $ccTextBox);
+  } else {
+    applyStyles(ccBoxPos, $ccTextBox);
+  }
 }
 
-/************************
-  CC Box Position
-*************************/
+/****************************
+  CC Box Position Settings
+****************************/
 
 const ccBoxPos = [
-  ["top", "88%"],
-  ["padding-bottom", "4px"],
+  ["top", "87%"],
+  ["padding-bottom", "9px"],
+];
+
+const ccBoxPosIE = [
+  ["top", "87%"],
+  ["padding-bottom", "9px"],
 ];
