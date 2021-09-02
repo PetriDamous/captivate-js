@@ -14,6 +14,10 @@ import { muteFunc } from "../Mute/muteBtn";
 import { unmuteFunc } from "../Unmute/unmuteBtn";
 
 export function setBtnEvents() {
+  /******************
+    UI Buttons
+  *******************/
+
   const $menuBtns = getButtonsArray("Menu");
   const $closeCaptionBtns = getButtonsArray("Closed Caption");
   const $rewindBtns = getButtonsArray("Rewind");

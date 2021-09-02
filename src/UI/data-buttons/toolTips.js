@@ -23,8 +23,17 @@ export function setToolTips() {
   toolTipArray.forEach(function (elm) {
     const $setDataAttr = setDataButton(elm);
 
+    /******************
+      Set Attributes
+    *******************/
+
     $setDataAttr.attr("data-button", elm);
     $setDataAttr.attr("title", elm);
+
+    /************
+      Set CSS
+    *************/
+
     $setDataAttr.css("cursor", "pointer");
   });
 }
