@@ -55,3 +55,12 @@ cd ../GitHub/captivate-js/git-hub
 1. https://captivate101.wordpress.com/javascript/
 2. https://static.carahsoft.com/concrete/files/1014/9314/4287/Steven_Warwick_Part_2_-_A_Deeper_Dive_into_Developing_Custom_Interactions_in_Adobe_Captivate_Using_JavaScript.pdf
 3.
+
+<!-- Class of parent elements -->
+<!-- RuntimeDialogCheckBoxAndTextHolder -->
+<!-- RuntimeDialogButtonsHolder -->
+
+<!-- IDs of child elements -->
+<!-- dont_ask_me_chk -->
+<!-- cpRTMBFirstBtn -->
+<!-- cpRTMBSecondBtn -->
