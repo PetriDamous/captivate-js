@@ -4,6 +4,7 @@ import {
   setPrevSlideData,
   setNextSlideData,
   setSlideData,
+  setProjectInfo,
   fetchGlobal,
 } from "../global/globalObjFunctions";
 import { createStyleTag } from "../UI/css/styles";
@@ -42,6 +43,7 @@ export function unLoad(e) {
 }
 
 export function moduleReady(e) {
+  setProjectInfo();
   setSlideData();
   setTocHeight();
 }

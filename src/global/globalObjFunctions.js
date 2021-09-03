@@ -15,6 +15,27 @@ export function setGlobalValue(prop, value) {
 }
 
 /****************************
+  Set Project Info
+****************************/
+export function setProjectInfo() {
+  const cpInfoVariableArray = [
+    ["CaptivateVersion", CaptivateVersion],
+    ["cpInfoAuthor", cpInfoAuthor],
+    ["cpInfoCompany", cpInfoCompany],
+    ["cpInfoCopyright", cpInfoCopyright],
+    ["cpInfoCourseID", cpInfoCourseID],
+    ["cpInfoCourseID", cpInfoCourseName],
+  ];
+
+  cpInfoVariableArray.forEach((variable) =>
+    setGlobalValue("project_info", {
+      ...cpGlobalObj.project_info,
+      [variable[0]]: variable[1],
+    })
+  );
+}
+
+/****************************
   Set Meta Data
 ****************************/
 

@@ -17,6 +17,14 @@ export function setupGlobalObj() {
           ? true
           : false,
     },
+    project_info: {
+      CaptivateVersion: null,
+      cpInfoAuthor: null,
+      cpInfoCompany: null,
+      cpInfoCopyright: null,
+      cpInfoCourseID: null,
+      cpInfoCourseName: null,
+    },
     slideData: {
       slidesIdArray: [],
       slidesObjArray: [],
