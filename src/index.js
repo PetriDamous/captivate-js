@@ -1,5 +1,6 @@
 import {
   onLoad,
+  DOMContentLoaded,
   slideEnter,
   slideExit,
   movieStop,
@@ -9,6 +10,10 @@ import {
 
 window.addEventListener("load", (e) => {
   onLoad(e);
+});
+
+window.addEventListener("DOMContentLoaded", (e) => {
+  DOMContentLoaded(e);
 });
 
 window.addEventListener("moduleReadyEvent", (e) => {
