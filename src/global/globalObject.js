@@ -41,10 +41,6 @@ export function setupGlobalObj() {
     ccOptions_auto: {
       isCCRepostion: true,
     },
-    buttonOptions: {
-      isToggleMuteUnmute: true,
-      isTogglePausePlay: true,
-    },
     developerMode: {
       isDeveloper: true,
       frameSkip: {
