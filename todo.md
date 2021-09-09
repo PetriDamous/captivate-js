@@ -27,6 +27,7 @@ cd ../GitHub/captivate-js/git-hub
 24. Add Captivate version to global object
 25. Email Dave about lotie and svgs in captivate
 26. Test on LMS and check performance
+27. Add Error handling
 
 #Futrue:
 
@@ -56,11 +57,9 @@ cd ../GitHub/captivate-js/git-hub
 2. https://static.carahsoft.com/concrete/files/1014/9314/4287/Steven_Warwick_Part_2_-_A_Deeper_Dive_into_Developing_Custom_Interactions_in_Adobe_Captivate_Using_JavaScript.pdf
 3.
 
-<!-- Class of parent elements -->
-<!-- RuntimeDialogCheckBoxAndTextHolder -->
-<!-- RuntimeDialogButtonsHolder -->
+Today todos
 
-<!-- IDs of child elements -->
-<!-- dont_ask_me_chk -->
-<!-- cpRTMBFirstBtn -->
-<!-- cpRTMBSecondBtn -->
+1. Make simple mute function for development mode (expand on it later)
+2. Remove magic numbers
+3. start volume slider
+4. Look into import performance
