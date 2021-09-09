@@ -1,5 +1,6 @@
-import { keyPress } from "./developerFunctions";
+import { keyPress, onEnterMute } from "./developerFunctions";
 
-export function developerMode() {
+export function developerOnEnter() {
   document.addEventListener("keydown", keyPress);
+  onEnterMute();
 }

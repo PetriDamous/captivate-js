@@ -10,6 +10,8 @@ import { videoInitialize } from "../controls/Video/video";
 import { SCORM_2004_completion } from "../../SCORM/SCORM";
 import { disableMenuStyle } from "../controls/Menu/menuBtn";
 import { timerInitialize } from "../components/Timer/timerDOM";
+import { fetchGlobal } from "../../global/globalObjFunctions";
+import { developerOnEnter } from "../../developer/developer";
 
 export function initialize(cpEvent) {
   /**********************************
@@ -71,4 +73,13 @@ export function initialize(cpEvent) {
   ***********/
 
   timerInitialize();
+
+  /***************************
+    Developer Mode On Enter
+  ****************************/
+  const { isDeveloper } = fetchGlobal("developerMode");
+
+  if (isDeveloper) {
+    developerOnEnter();
+  }
 }

@@ -48,13 +48,15 @@ function slideSkip(e) {
   }
 }
 
-/*******************************
-  Developer mute functions
-*******************************/
+/******************
+  Mute functions
+*******************/
 export function keyPressMute(e) {
   if (e.keyCode !== 77) return;
 
   cpCmndMute === 1 || cpCmndMute === true ? unmuteFunc() : muteFunc();
 }
 
-export function onEnterMute() {}
+export function onEnterMute() {
+  muteFunc();
+}

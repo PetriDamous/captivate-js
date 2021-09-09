@@ -13,7 +13,6 @@ import { removeVideoEvent } from "../UI/controls/Video/video";
 import { setTocHeight } from "../UI/controls/TOC/toc";
 import { removeCurrentTimeEvent } from "../UI/components/Timer/timerDOM";
 import { removeProgressBarEvent } from "../UI/components/Progress-Bar/progressBarDOM";
-import { developerMode } from "../developer/developer";
 import { onloadAlert } from "../UI/controls/alert-box/onload/onloadAlert";
 
 export function onLoad(e) {
@@ -25,15 +24,6 @@ export function onLoad(e) {
   setupGlobalObj();
   createStyleTag();
   onloadAlert();
-
-  /******************
-    Developer Mode
-  *******************/
-  const { isDeveloper } = fetchGlobal("developerMode");
-
-  if (isDeveloper) {
-    developerMode();
-  }
 }
 
 export function DOMContentLoaded(e) {}
