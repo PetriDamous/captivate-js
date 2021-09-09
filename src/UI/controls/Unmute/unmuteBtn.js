@@ -1,9 +1,7 @@
 import { hideMuteUnmute } from "../../uiFunctions";
-import { fetchGlobal } from "../../../global/globalObjFunctions";
+import { isToggleMuteUnmute } from "../MuteUnmute/muteUnmuteSettings";
 
 export function unmuteFunc() {
-  const { isToggleMuteUnmute } = fetchGlobal("buttonOptions");
-
   cpCmndMute = 0;
 
   if (isToggleMuteUnmute) {

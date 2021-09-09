@@ -1,6 +1,6 @@
 import { hidePlayPause } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalObjFunctions";
-import { isTogglePausePlay } from "../pausePlay/pausePlaySettings";
+import { isTogglePausePlay } from "../PausePlay/pausePlaySettings";
 
 // Pause
 export function pauseFunc() {

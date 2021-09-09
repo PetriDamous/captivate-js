@@ -1,4 +1,6 @@
 import { fetchGlobal } from "../global/globalObjFunctions";
+import { muteFunc } from "../UI/controls/Mute/muteBtn";
+import { unmuteFunc } from "../UI/controls/Unmute/unmuteBtn";
 
 /****************************
     Key Press events go here
@@ -7,6 +9,7 @@ import { fetchGlobal } from "../global/globalObjFunctions";
 export function keyPress(e) {
   frameSkip(e);
   slideSkip(e);
+  keyPressMute(e);
 }
 
 /****************************
@@ -44,3 +47,14 @@ function slideSkip(e) {
     cpCmndPrevious = true;
   }
 }
+
+/*******************************
+  Developer mute functions
+*******************************/
+export function keyPressMute(e) {
+  if (e.keyCode !== 77) return;
+
+  cpCmndMute === 1 || cpCmndMute === true ? unmuteFunc() : muteFunc();
+}
+
+export function onEnterMute() {}

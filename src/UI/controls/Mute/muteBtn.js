@@ -1,5 +1,5 @@
 import { hideMuteUnmute } from "../../uiFunctions";
-import { isToggleMuteUnmute } from "./muteBtnSettings";
+import { isToggleMuteUnmute } from "../MuteUnmute/muteUnmuteSettings";
 
 export function muteFunc() {
   cpCmndMute = 1;
