@@ -28,6 +28,7 @@ cd ../GitHub/captivate-js/git-hub
 25. Email Dave about lotie and svgs in captivate
 26. Test on LMS and check performance
 27. Add Error handling
+28. have manuel CC box element be rendered on module load
 
 #Futrue:
 
