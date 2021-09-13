@@ -1,13 +1,16 @@
 import { fetchGlobal } from "../../../global/globalObjFunctions";
 import { replayDelayProgressBar, closeTocOnReplay } from "./replayBtnFunctions";
-import { isProgressBar, isTocCloseOnReplay } from "./replayBtnSettings";
+import replaySettings from "./replayBtnSettings";
+import { gotoFrame } from "../../../Custom-Captivate/customFunctions";
 
 export function replayFunc() {
   const {
     currentSlide: { from: firstFrame },
   } = fetchGlobal("slideData");
 
-  cpCmndGotoFrame = firstFrame;
+  const { isProgressBar, isTocCloseOnReplay } = replaySettings;
+
+  gotoFrame(firstFrame);
 
   if (isProgressBar) {
     replayDelayProgressBar();

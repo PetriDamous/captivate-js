@@ -1,3 +1,6 @@
-export const isTocCloseOnReplay = true;
+const replaySettings = {
+  isTocCloseOnReplay: true,
+  isProgressBar: true,
+};
 
-export const isProgressBar = true;
+export default replaySettings;

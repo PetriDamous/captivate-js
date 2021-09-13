@@ -1,24 +1,34 @@
 import { stayMute, hidePlayPause } from "../../uiFunctions";
+import {
+  resume,
+  openCloseToc,
+} from "../../../Custom-Captivate/customFunctions";
+import { isTogglePausePlay } from "../PausePlay/pausePlaySettings";
 
-const play = 1;
 const delayTimeOut = 300;
 
 // Delays replay for progress bar
 export function replayDelayProgressBar() {
   if (cpCmndPause) {
-    setTimeout(function () {
-      cpCmndResume = play;
+    setTimeout(() => {
+      resume(true);
     }, delayTimeOut);
   }
 }
 
 export function closeTocOnReplay() {
   if (cpCmndTOCVisible === true) {
-    cpCmndTOCVisible = false;
-    hidePlayPause("Play");
+    openCloseToc(false);
+    handlePlay();
     stayMute();
   } else {
-    hidePlayPause("Play");
+    handlePlay();
     stayMute();
+  }
+}
+
+function handlePlay() {
+  if (isTogglePausePlay) {
+    hidePlayPause("Play");
   }
 }
