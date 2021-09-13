@@ -1,6 +1,6 @@
-import { stayMute, hidePlayPause } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalObjFunctions";
-// import { firstFrame } from "../../../index";
+import { replayDelayProgressBar, closeTocOnReplay } from "./replayBtnFunctions";
+import { isProgressBar, isTocCloseOnReplay } from "./replayBtnSettings";
 
 export function replayFunc() {
   const {
@@ -9,18 +9,11 @@ export function replayFunc() {
 
   cpCmndGotoFrame = firstFrame;
 
-  if (cpCmndPause) {
-    setTimeout(function () {
-      cpCmndResume = 1;
-    }, 300);
+  if (isProgressBar) {
+    replayDelayProgressBar();
   }
 
-  if (cpCmndTOCVisible === 1) {
-    cpCmndTOCVisible = 0;
-    hidePlayPause("Play");
-    stayMute();
-  } else {
-    hidePlayPause("Play");
-    stayMute();
+  if (isTocCloseOnReplay) {
+    closeTocOnReplay();
   }
 }
