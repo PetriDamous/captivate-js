@@ -29,6 +29,8 @@ cd ../GitHub/captivate-js/git-hub
 26. Test on LMS and check performance
 27. Add Error handling
 28. have manuel CC box element be rendered on module load
+29. try to make custom functions to handle common Captivate operations (ex: cpCmndPause = 1 > cpPause(1))
+30. Try to use JSS
 
 #Futrue:
 
