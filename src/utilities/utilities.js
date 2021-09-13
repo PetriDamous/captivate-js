@@ -25,12 +25,14 @@ export function isValueInArray(array, value) {
 }
 
 // Fetches the element or ID
-export function getElement(name, property, elm = "div", type = "button") {
-  return property === "obj"
-    ? document.querySelector(`${elm}[data-${type}="${name}"]`)
-    : document
-        .querySelector(`${elm}[data-${type}="${name}"]`)
-        .getAttribute("id");
+export function getElement(
+  name,
+  property = "obj",
+  elm = "div",
+  type = "button"
+) {
+  const $elment = document.querySelector(`${elm}[data-${type}="${name}"]`);
+  return property === "obj" ? $elment : $elment.getAttribute("id");
 }
 
 export function getElementAttr(name, attr, elm = div) {
