@@ -1,7 +1,8 @@
-import { hidePlayPause, stayMute } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalObjFunctions";
+import { handlePlay, handleToc } from "./rewindBtnFunctions";
+import { stayMute } from "../../uiFunctions";
+import { resumeAndPlay } from "../../../Custom-Captivate/customFunctions";
 
-// Rewind
 export function rewindFunc() {
   const rewindTime = 90;
 
@@ -10,17 +11,17 @@ export function rewindFunc() {
   } = fetchGlobal("slideData");
 
   if (
-    cpInfoCurrentFrame != firstFrame &&
+    cpInfoCurrentFrame !== firstFrame &&
     cpInfoCurrentFrame > firstFrame + rewindTime
   ) {
-    cpCmndGotoFrameAndResume = cpInfoCurrentFrame - rewindTime;
-    hidePlayPause("Play");
+    resumeAndPlay(cpInfoCurrentFrame - rewindTime);
+    handlePlay();
     stayMute();
-    cpCmndTOCVisible = 0;
+    handleToc();
   } else {
-    cpCmndGotoFrameAndResume = firstFrame;
-    hidePlayPause("Play");
+    resumeAndPlay(firstFrame);
+    handlePlay();
     stayMute();
-    cpCmndTOCVisible = 0;
+    handleToc();
   }
 }
