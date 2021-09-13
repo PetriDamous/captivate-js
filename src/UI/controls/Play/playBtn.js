@@ -3,6 +3,8 @@ import { playVideo } from "../Video/video";
 import { isTogglePausePlay } from "../PausePlay/pausePlaySettings";
 import { fetchGlobal } from "../../../global/globalObjFunctions";
 
+let play = 1;
+
 // Play
 export function playFunc() {
   const {
@@ -11,7 +13,7 @@ export function playFunc() {
 
   playVideo();
 
-  cpCmndResume = 1;
+  cpCmndResume = play;
 
   if (isTogglePausePlay) {
     hidePlayPause("Play");

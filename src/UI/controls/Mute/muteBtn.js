@@ -1,8 +1,10 @@
 import { hideMuteUnmute } from "../../uiFunctions";
 import { isToggleMuteUnmute } from "../MuteUnmute/muteUnmuteSettings";
 
+let muted = 1;
+
 export function muteFunc() {
-  cpCmndMute = 1;
+  cpCmndMute = muted;
 
   if (isToggleMuteUnmute) {
     hideMuteUnmute("Mute");

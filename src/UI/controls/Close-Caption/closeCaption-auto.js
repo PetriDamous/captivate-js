@@ -2,14 +2,24 @@ import { getButtonsArray } from "../../uiFunctions";
 import { fetchGlobal } from "../../../global/globalObjFunctions";
 import { ccSetBoxPos_auto } from "./closeCaptionSettings-auto";
 
+/***************************************
+  Variables
+****************************************/
+let open = 1;
+let close = 0;
+
+/***************************************
+  Main CC functions
+****************************************/
+
 // Opens and closes CC box
 export function ccFunc_auto() {
-  if (cpCmndCC === 0) {
-    cpCmndCC = 1;
+  if (cpCmndCC === close) {
+    cpCmndCC = open;
     cp.hide("ccClose");
     ccToolTip_auto();
   } else {
-    cpCmndCC = 0;
+    cpCmndCC = close;
     ccToolTip_auto();
   }
 }
@@ -19,7 +29,7 @@ function ccToolTip_auto() {
   const ccBtnsArray = getButtonsArray("Closed Caption");
 
   ccBtnsArray.forEach(function (ccBtn) {
-    cpCmndCC === 0
+    cpCmndCC === close
       ? ccBtn.setAttribute("title", "Closed Caption Open")
       : ccBtn.setAttribute("title", "Closed Caption Close");
   });
@@ -42,7 +52,7 @@ export function ccBoxOnEnter_auto() {
 
   // Subtracts frames to help keep CC text box open
   // when slide transition occurs
-  const framesSubtracted = -10;
+  const framesSubtracted = -300;
 
   // Repositions CC Box
   if (isCCRepostion) {
