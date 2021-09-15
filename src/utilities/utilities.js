@@ -20,8 +20,120 @@ export function customSettings() {
   }
 }
 
+/*******************************
+ *
+ * Array Functions
+ *
+ *******************************/
+
+// Checks to if single value is in array
+// Returns true or false
 export function isValueInArray(array, value) {
   return array.some((elm) => elm === value);
+}
+
+// Checks to see if value matches all values in array
+// Returns true or false
+export function valueMatchAllVaulesArray(array, value) {
+  return array.every((elm) => elm === value);
+}
+
+// At least one array value is in another array
+// None nested arrays only
+// Returns true or false
+export function arrayValueInArray(array1, array2) {
+  return (returnValue = array1.some((elm) => {
+    const value = elm;
+    return array2.some((elm) => elm === value);
+  }));
+}
+
+/***********************************************************************
+ *  1st arg array whos values are arrays
+ * 
+ *  2nd arg flat array
+ * 
+ *  If all values in 2nd arg matches
+ *    at least one array value in 1st arg
+ *    true is returned otherwise false
+ *
+ *  Dependant on isValueInArray()
+ * 
+ *  Example: 
+ *    const array1 = ["Unmute", "Mute"]
+
+      const nestedArray = [["Play", "Pause"], ["Mute", "Unmute"]]
+
+      arrayValueInNestedArray(nestedArray, array1) //true
+ ***********************************************************************/
+
+export function arrayValueInNestedArray(nestedArray, array) {
+  return nestedArray.some((singleArray) => {
+    return singleArray.every((singleValue) =>
+      isValueInArray(array, singleValue)
+    );
+  });
+}
+
+/*************************************
+ * Returns true or false
+ *  if some values from an
+ *  array match the values
+ *  inside of another array
+ *
+ * 1st arg array
+ * 2nd arg array*
+ *
+ *
+ ****************************************/
+
+export function isSomeArrayMatching(array1, array2) {
+  return array1.every((elm) => isValueInArray(array2, elm));
+}
+
+/*****************************************
+ * Checks to see if values in
+ *  array are identical
+ *
+ * Takes in two arrays
+ *
+ * Returns true or false
+ *
+ * Arrays must be same length
+ *  if not false is returned
+ *
+ * Dependant on isValueInArray()
+ ****************************************/
+
+export function isArrayMatching(array1, array2) {
+  if (array1.length !== array2.length) return false;
+
+  for (let i = 0; i < array1.length; i++) {
+    if (!isValueInArray(array1, array2[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/*******************************************
+ * Finds matching array in nested array
+ *
+ * Returns matching array if found
+ *
+ * Dependant on isArrayMatching()
+ *
+ *******************************************/
+
+export function findMatchingArray(nestedArray, array) {
+  for (let i = 0; i < nestedArray.length; i++) {
+    if (isArrayMatching(nestedArray[i], array)) {
+      return nestedArray[i];
+    }
+  }
+
+  console.log("Array cannot be found");
 }
 
 // Fetches the element or ID
